@@ -1,0 +1,772 @@
+:root {
+    --bg-color: #12141a;
+    --bg-gradient: radial-gradient(circle at 50% -10%, #1c2030 0%, #12141a 55%);
+    --text-color: #edeef2;
+    --text-muted: #9195a3;
+    --accent-color: #e8a33d;
+    --tag-bg: rgba(255, 255, 255, 0.05);
+    --tag-hover: rgba(255, 255, 255, 0.09);
+    --tag-active: #e8a33d;
+    --tag-active-text: #1a1408;
+    --overlay-bg: rgba(10, 11, 15, 0.97);
+    --page-bg: #fbf8f2;
+    --page-text: #2c2a26;
+    --control-bg: rgba(255, 255, 255, 0.07);
+    --control-hover: rgba(255, 255, 255, 0.14);
+    --border-soft: rgba(255, 255, 255, 0.08);
+    --logo-color: #edeef2;
+    --shelf-shadow: rgba(0, 0, 0, 0.55);
+    --page-edge: #e4ded0;
+    --fore-edge-color: #f1ead9;
+    --card-shadow: rgba(0, 0, 0, 0.45);
+}
+
+:root[data-theme="light"] {
+    --bg-color: #f6f4ef;
+    --bg-gradient: radial-gradient(circle at 50% -10%, #ffffff 0%, #f0ede5 55%);
+    --text-color: #232220;
+    --text-muted: #7a756c;
+    --accent-color: #b3572c;
+    --tag-bg: rgba(0, 0, 0, 0.035);
+    --tag-hover: rgba(0, 0, 0, 0.07);
+    --tag-active: #b3572c;
+    --tag-active-text: #fff8ef;
+    --overlay-bg: rgba(246, 244, 239, 0.97);
+    --page-bg: #ffffff;
+    --page-text: #262420;
+    --control-bg: rgba(0, 0, 0, 0.05);
+    --control-hover: rgba(0, 0, 0, 0.1);
+    --border-soft: rgba(0, 0, 0, 0.08);
+    --logo-color: #232220;
+    --shelf-shadow: rgba(60, 50, 30, 0.18);
+    --page-edge: #e7e2d6;
+    --fore-edge-color: #f4f0e6;
+    --card-shadow: rgba(60, 50, 30, 0.16);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background: var(--bg-gradient);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+header {
+    padding: 2.5rem 4rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.75rem;
+    position: relative;
+    z-index: 10;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+    justify-content: center;
+    position: relative;
+}
+
+.logo h1 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 2rem;
+    letter-spacing: -0.3px;
+    color: var(--logo-color);
+}
+
+.header-controls {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.icon-btn {
+    background: var(--tag-bg);
+    border: 1px solid var(--border-soft);
+    color: var(--text-color);
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.icon-btn:hover {
+    background: var(--tag-hover);
+    transform: scale(1.08);
+}
+
+.layout-control {
+    position: relative;
+}
+
+.layout-popover {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    width: 230px;
+    background: var(--overlay-bg);
+    border: 1px solid var(--border-soft);
+    border-radius: 14px;
+    padding: 1rem;
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(10px);
+    z-index: 20;
+    text-align: left;
+}
+
+.layout-popover.hidden {
+    display: none;
+}
+
+.layout-popover-title {
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--text-muted);
+    margin-bottom: 0.75rem;
+}
+
+.layout-popover-row {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 0.9rem;
+}
+
+.layout-quick-btn {
+    flex: 1;
+    background: var(--tag-bg);
+    border: 1px solid var(--border-soft);
+    color: var(--text-color);
+    padding: 0.45rem 0.6rem;
+    border-radius: 8px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.layout-quick-btn:hover {
+    background: var(--tag-hover);
+}
+
+.layout-quick-btn.active {
+    background: var(--tag-active);
+    border-color: var(--tag-active);
+    color: var(--tag-active-text);
+    font-weight: 600;
+}
+
+.layout-slider-row label {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+}
+
+.layout-slider-row input[type="range"] {
+    width: 100%;
+    accent-color: var(--accent-color);
+    cursor: pointer;
+}
+
+.tags {
+    display: flex;
+    gap: 0.6rem;
+    list-style: none;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 900px;
+}
+
+.tag {
+    background: var(--tag-bg);
+    border: 1px solid var(--border-soft);
+    color: var(--text-muted);
+    padding: 0.5rem 1.1rem;
+    border-radius: 99px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.tag:hover {
+    background: var(--tag-hover);
+    color: var(--text-color);
+    transform: translateY(-1px);
+}
+
+.tag.active {
+    background: var(--tag-active);
+    border-color: var(--tag-active);
+    color: var(--tag-active-text);
+    font-weight: 600;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem 2rem 5rem;
+}
+
+.bookshelf-container {
+    position: relative;
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.bookshelf-rows {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.shelf-row {
+    position: relative;
+}
+
+.bookshelf-viewport {
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+    padding: 70px 4px 6px;
+    margin-top: -70px;
+    -webkit-overflow-scrolling: touch;
+}
+
+.bookshelf-viewport::-webkit-scrollbar {
+    height: 6px;
+}
+
+.bookshelf-viewport::-webkit-scrollbar-thumb {
+    background: var(--border-soft);
+    border-radius: 3px;
+}
+
+.bookshelf {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 3px;
+    position: relative;
+    z-index: 2;
+    padding: 0 20px 6px;
+    width: max-content;
+    min-width: 100%;
+    transform-style: preserve-3d;
+}
+
+.shelf-nav {
+    position: absolute;
+    top: calc(50% - 35px);
+    transform: translateY(-50%);
+    z-index: 6;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--control-bg);
+    border: 1px solid var(--border-soft);
+    color: var(--text-color);
+    font-size: 1.5rem;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    backdrop-filter: blur(6px);
+}
+
+.shelf-nav:hover {
+    background: var(--control-hover);
+}
+
+.shelf-nav:disabled {
+    opacity: 0.25;
+    cursor: default;
+}
+
+.shelf-nav.hidden {
+    display: none;
+}
+
+.shelf-nav-left {
+    left: -4px;
+}
+
+.shelf-nav-right {
+    right: -4px;
+}
+
+/* Dark wood plank the books visually rest on — replaces the old
+   shadow-only "floating books" look with an actual shelf surface. */
+.shelf-plank {
+    position: relative;
+    z-index: 1;
+    width: 94%;
+    margin: -4px auto 0;
+    height: 22px;
+    border-radius: 4px;
+    background: linear-gradient(180deg, #7a4a26 0%, #5c3418 45%, #3d2110 100%);
+    box-shadow:
+        0 14px 22px var(--shelf-shadow),
+        inset 0 2px 0 rgba(255, 255, 255, 0.12),
+        inset 0 -4px 6px rgba(0, 0, 0, 0.4);
+}
+
+.shelf-plank::before {
+    content: '';
+    position: absolute;
+    inset: 3px 6px;
+    border-radius: 3px;
+    background-image: repeating-linear-gradient(
+        90deg,
+        rgba(0, 0, 0, 0.15) 0px,
+        rgba(0, 0, 0, 0.15) 1px,
+        transparent 1px,
+        transparent 16px
+    );
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.shelf-plank::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 3px;
+    border-radius: 4px 4px 0 0;
+    background: rgba(255, 220, 180, 0.15);
+    pointer-events: none;
+}
+
+.shelf-top, .shelf-front {
+    display: none;
+}
+
+/* ---------- 3D Book Construction ---------- */
+/* Faces follow standard cube geometry: front/back = width x height,
+   spine/fore-edge = thickness x height, top/bottom = width x thickness. */
+
+/* The slot is the flex item and the ONLY element the mouse hit-tests
+   against for hover/click — it never moves. The .book inside it animates
+   freely on hover without ever dragging the hoverable region out from
+   under the cursor (which is what caused the old flicker). */
+.book-slot {
+    position: relative;
+    cursor: pointer;
+    /* Each book gets its OWN perspective, centered on itself. A single
+       perspective shared across the whole row (previously on <main>) skews
+       every book away from the row's center, which is what was flaring the
+       top page-block face out into a visible pale strip on most spines. */
+    perspective: 700px;
+}
+
+.book-slot:hover {
+    z-index: 5;
+}
+
+.book {
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transform: rotateY(var(--rest-y, -90deg)) rotateZ(var(--rest-z, 0deg));
+    will-change: transform;
+}
+
+/* translateY/translateZ/scale are listed BEFORE the rotateY/rotateZ resting
+   rotation, so they apply outermost, in plain world space — a straight lift
+   up and toward the viewer. Putting them after the rotation (as before)
+   made them inherit the book's own resting rotation, turning "toward the
+   viewer" into "sideways", which read as the book sliding left on hover. */
+.book-slot:hover .book {
+    transform: translateY(-16px) translateZ(50px) scale(1.08)
+               rotateY(var(--rest-y, -90deg)) rotateZ(var(--rest-z, 0deg));
+}
+
+.book-face {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-size: cover;
+    background-position: center;
+    backface-visibility: hidden;
+}
+
+.book-front {
+    border-radius: 3px 6px 6px 3px;
+    box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+}
+
+.cover-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.cover-fallback {
+    position: absolute;
+    inset: 0;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 1.5rem;
+    color: rgba(255, 255, 255, 0.95);
+}
+
+.cover-fallback-active .cover-fallback {
+    display: flex;
+}
+
+.fallback-title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 1rem;
+    margin-bottom: 0.6rem;
+    line-height: 1.3;
+}
+
+.fallback-author {
+    font-size: 0.75rem;
+    opacity: 0.85;
+    letter-spacing: 0.02em;
+}
+
+.book-back {
+    border-radius: 3px 6px 6px 3px;
+    box-shadow: inset 0 0 25px rgba(0, 0, 0, 0.25);
+}
+
+.book-spine {
+    border-radius: 3px 3px 3px 3px;
+    box-shadow: inset 3px 0 8px rgba(0, 0, 0, 0.18), inset -1px 0 3px rgba(255, 255, 255, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.book-spine-title {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    transform: rotate(180deg);
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.94);
+    padding: 12px 0;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    max-height: 100%;
+    letter-spacing: 0.01em;
+}
+
+.rating-badge {
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.28);
+    color: #fff;
+    font-size: 0.6rem;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 8px;
+    z-index: 2;
+    backdrop-filter: blur(2px);
+}
+
+.book-fore-edge {
+    background: var(--fore-edge-color);
+    background-image: repeating-linear-gradient(0deg, var(--page-edge), var(--page-edge) 1px, var(--fore-edge-color) 1px, var(--fore-edge-color) 3px);
+}
+
+.book-top, .book-bottom {
+    background: var(--fore-edge-color);
+    background-image: repeating-linear-gradient(90deg, var(--page-edge), var(--page-edge) 1px, var(--fore-edge-color) 1px, var(--fore-edge-color) 3px);
+}
+
+/* ---------- Overlay / Inspect Mode ---------- */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: var(--overlay-bg);
+    backdrop-filter: blur(14px);
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    opacity: 1;
+    transition: opacity 0.4s ease;
+}
+
+.overlay.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.overlay-controls {
+    padding: 2rem;
+    display: flex;
+    justify-content: space-between;
+    z-index: 110;
+}
+
+.overlay-controls-right {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.lamp-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.lamp-btn-icon {
+    font-size: 1rem;
+    filter: grayscale(1) brightness(0.8);
+    transition: filter 0.25s ease;
+}
+
+.lamp-btn[aria-pressed="true"] {
+    background: rgba(232, 163, 61, 0.18);
+    box-shadow: inset 0 0 0 1px rgba(232, 163, 61, 0.5);
+}
+
+.lamp-btn[aria-pressed="true"] .lamp-btn-icon {
+    filter: none;
+    text-shadow: 0 0 8px rgba(255, 200, 80, 0.9);
+}
+
+.control-btn {
+    padding: 0.7rem 1.4rem;
+    border-radius: 10px;
+    border: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background: var(--control-bg);
+    color: var(--text-color);
+}
+
+.control-btn:hover {
+    background: var(--control-hover);
+}
+
+.control-btn.primary {
+    background: var(--accent-color);
+    color: var(--tag-active-text);
+}
+
+.control-btn.primary:hover {
+    filter: brightness(1.08);
+    box-shadow: 0 0 24px rgba(232, 163, 61, 0.35);
+}
+
+.control-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    filter: none;
+    box-shadow: none;
+}
+
+.control-btn:disabled:hover {
+    background: var(--control-bg);
+}
+
+.control-btn.primary:disabled {
+    background: var(--control-bg);
+    color: var(--text-muted);
+}
+
+.inspect-stage {
+    flex: 1;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.inspect-stage canvas {
+    display: block;
+}
+
+.drag-hint {
+    position: absolute;
+    bottom: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    letter-spacing: 0.02em;
+    pointer-events: none;
+    opacity: 0.85;
+}
+
+/* ---------- Loading spinner (shown while the cover texture downloads) ---------- */
+.inspect-loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 4;
+    pointer-events: none;
+}
+
+.inspect-loader.hidden {
+    display: none;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 3px solid var(--border-soft);
+    border-top-color: var(--accent-color);
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* ---------- Reading Interface / Open Book ---------- */
+.reading-interface {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 105;
+    background: var(--overlay-bg);
+}
+
+.reading-interface.hidden {
+    display: none;
+}
+
+.open-book-container {
+    perspective: 2200px;
+    margin-bottom: 2rem;
+}
+
+.open-book {
+    position: relative;
+    transform-style: preserve-3d;
+}
+
+.page {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 50%;
+    height: 100%;
+    background: var(--page-bg);
+    transform-origin: left center;
+    transition: transform 0.8s cubic-bezier(0.645, 0.045, 0.355, 1);
+    transform-style: preserve-3d;
+    border: 1px solid var(--border-soft);
+    box-shadow: 0 10px 40px var(--card-shadow), inset 6px 0 12px rgba(0, 0, 0, 0.04);
+    border-radius: 0 4px 4px 0;
+}
+
+.page-front, .page-back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    padding: 2.2rem;
+    overflow-y: auto;
+    color: var(--page-text);
+    background: var(--page-bg);
+}
+
+.page-front {
+    transform: rotateY(0deg);
+}
+
+.page-back {
+    transform: rotateY(180deg);
+}
+
+.page.flipped {
+    transform: rotateY(-180deg);
+}
+
+.page-front h2, .page-back h2 {
+    font-family: 'Playfair Display', serif;
+    margin-bottom: 1rem;
+    color: var(--page-text);
+}
+
+.page-front p, .page-back p {
+    margin-bottom: 1rem;
+    line-height: 1.65;
+    font-size: 0.95rem;
+}
+
+.page-controls {
+    display: flex;
+    gap: 1rem;
+}
+
+.nav-btn {
+    background: var(--control-bg);
+    border: 1px solid var(--border-soft);
+    color: var(--text-color);
+    padding: 0.55rem 1.1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: 0.2s;
+}
+
+.nav-btn:hover {
+    background: var(--control-hover);
+}

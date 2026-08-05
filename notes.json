@@ -1,0 +1,51 @@
+{
+  "book1": [
+    { "page": 1, "content": "<h2>Chapter 1</h2><p>The Boy Who Lived.</p><p>Mr. and Mrs. Dursley, of number four, Privet Drive, were proud to say that they were perfectly normal, thank you very much.</p>" },
+    { "page": 2, "content": "<p>They were the last people you'd expect to be involved in anything strange or mysterious, because they just didn't hold with such nonsense.</p>" },
+    { "page": 3, "content": "<p>Mr. Dursley was the director of a firm called Grunnings, which made drills.</p>" }
+  ],
+  "book2": [
+    { "page": 1, "content": "<h2>Chapter 1</h2><p>An Unexpected Party.</p><p>In a hole in the ground there lived a hobbit. Not a nasty, dirty, wet hole, filled with the ends of worms and an oozy smell...</p>" },
+    { "page": 2, "content": "<p>...nor yet a dry, bare, sandy hole with nothing in it to sit down on or to eat: it was a hobbit-hole, and that means comfort.</p>" }
+  ],
+  "book3": [
+    { "page": 1, "content": "<h2>Part One</h2><p>Chapter 1</p><p>It was a bright cold day in April, and the clocks were striking thirteen.</p>" },
+    { "page": 2, "content": "<p>Winston Smith, his chin nuzzled into his breast in an effort to escape the vile wind, slipped quickly through the glass doors of Victory Mansions...</p>" }
+  ],
+  "book4": [
+    { "page": 1, "content": "<h2>Part One</h2><p>Chapter 1</p><p>When he was nearly thirteen, my brother Jem got his arm badly broken at the elbow.</p>" },
+    { "page": 2, "content": "<p>Maycomb was an old town, but it was a tired old town when I first knew it.</p>" }
+  ],
+  "book5": [
+    { "page": 1, "content": "<h2>Chapter 1</h2><p>In my younger and more vulnerable years my father gave me some advice that I've been turning over in my mind ever since.</p>" },
+    { "page": 2, "content": "<p>'Whenever you feel like criticizing any one,' he told me, 'just remember that all the people in this world haven't had the advantages that you've had.'</p>" }
+  ],
+  "book6": [
+    { "page": 1, "content": "<h2>Chapter 1</h2><p>It is a truth universally acknowledged, that a single man in possession of a good fortune, must be in want of a wife.</p>" },
+    { "page": 2, "content": "<p>However little known the feelings or views of such a man may be on his first entering a neighbourhood, this truth is well fixed in the minds of the surrounding families.</p>" }
+  ],
+  "book7": [
+    { "page": 1, "content": "<h2>Chapter 1</h2><p>If you really want to hear about it, the first thing you'll probably want to know is where I was born.</p>" },
+    { "page": 2, "content": "<p>But I don't feel like going into it, if you want to know the truth.</p>" }
+  ],
+  "book8": [
+    { "page": 1, "content": "<h2>Chapter 1</h2><p>The Sound of the Shell.</p><p>The boy with fair hair lowered himself down the last few feet of rock and began to pick his way toward the lagoon.</p>" },
+    { "page": 2, "content": "<p>'Hi!' it said. 'Wait a minute!' The undergrowth at the side of the scar was shaken and a multitude of raindrops fell pattering.</p>" }
+  ],
+  "book9": [
+    { "page": 1, "content": "<h2>Chapter 1</h2><p>Mr. Jones, of the Manor Farm, had locked the hen-houses for the night, but was too drunk to remember to shut the pop-holes.</p>" },
+    { "page": 2, "content": "<p>As soon as the light in the bedroom went out there was a stirring and a fluttering all through the farm buildings.</p>" }
+  ],
+  "book10": [
+    { "page": 1, "content": "<h2>Part I</h2><p>The Hearth and the Salamander.</p><p>It was a pleasure to burn.</p>" },
+    { "page": 2, "content": "<p>It was a special pleasure to see things eaten, to see things blackened and changed.</p>" }
+  ],
+  "book11": [
+    { "page": 1, "content": "<h2>Part One</h2><p>The boy's name was Santiago. Dusk was falling as the boy arrived with his herd at an abandoned church.</p>" },
+    { "page": 2, "content": "<p>The roof had fallen in long ago, and an enormous sycamore had grown on the spot where the sacristy had once stood.</p>" }
+  ],
+  "book12": [
+    { "page": 1, "content": "<h2>Chapter 1</h2><p>Once when I was six years old I saw a magnificent picture in a book about the primeval forest called True Stories.</p>" },
+    { "page": 2, "content": "<p>It was a picture of a boa constrictor in the act of swallowing an animal.</p>" }
+  ]
+}

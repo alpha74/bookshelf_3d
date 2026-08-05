@@ -1,0 +1,973 @@
+[
+  {
+    "id": "book1",
+    "title": "Harry Potter and the Sorcerer's Stone",
+    "author": "J.K. Rowling",
+    "isbn": "9780590353403",
+    "tags": [
+      "fantasy",
+      "fiction",
+      "young-adult"
+    ],
+    "date_added": "2023-11-01T10:00:00Z",
+    "pages": 320,
+    "rating": 4.7,
+    "color": "#7d2e46",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book2",
+    "title": "The Hobbit",
+    "author": "J.R.R. Tolkien",
+    "isbn": "9780547928227",
+    "tags": [
+      "fantasy",
+      "fiction",
+      "classic"
+    ],
+    "date_added": "2023-11-02T10:00:00Z",
+    "pages": 310,
+    "rating": 4.6,
+    "color": "#2f4b6e",
+    "dimensions": {
+      "width": 135,
+      "height": 205
+    }
+  },
+  {
+    "id": "book3",
+    "title": "1984",
+    "author": "George Orwell",
+    "isbn": "9780451524935",
+    "tags": [
+      "dystopian",
+      "fiction",
+      "classic"
+    ],
+    "date_added": "2023-11-03T10:00:00Z",
+    "pages": 328,
+    "rating": 4.8,
+    "color": "#7a1f1f",
+    "dimensions": {
+      "width": 130,
+      "height": 200
+    }
+  },
+  {
+    "id": "book4",
+    "title": "To Kill a Mockingbird",
+    "author": "Harper Lee",
+    "isbn": "9780060935467",
+    "tags": [
+      "fiction",
+      "classic",
+      "historical"
+    ],
+    "date_added": "2023-11-04T10:00:00Z",
+    "pages": 336,
+    "rating": 4.6,
+    "color": "#2f5d46",
+    "dimensions": {
+      "width": 135,
+      "height": 205
+    }
+  },
+  {
+    "id": "book5",
+    "title": "The Great Gatsby",
+    "author": "F. Scott Fitzgerald",
+    "isbn": "9780743273565",
+    "tags": [
+      "fiction",
+      "classic",
+      "romance"
+    ],
+    "date_added": "2023-11-05T10:00:00Z",
+    "pages": 180,
+    "rating": 4.2,
+    "color": "#c08a2c",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book6",
+    "title": "Pride and Prejudice",
+    "author": "Jane Austen",
+    "isbn": "9780141439518",
+    "tags": [
+      "romance",
+      "fiction",
+      "classic"
+    ],
+    "date_added": "2023-11-06T10:00:00Z",
+    "pages": 279,
+    "rating": 4.5,
+    "color": "#5b3b70",
+    "dimensions": {
+      "width": 130,
+      "height": 195
+    }
+  },
+  {
+    "id": "book7",
+    "title": "The Catcher in the Rye",
+    "author": "J.D. Salinger",
+    "isbn": "9780316769174",
+    "tags": [
+      "fiction",
+      "classic"
+    ],
+    "date_added": "2023-11-07T10:00:00Z",
+    "pages": 224,
+    "rating": 3.9,
+    "color": "#2b6777",
+    "dimensions": {
+      "width": 135,
+      "height": 200
+    }
+  },
+  {
+    "id": "book8",
+    "title": "Lord of the Flies",
+    "author": "William Golding",
+    "isbn": "9780399501487",
+    "tags": [
+      "fiction",
+      "dystopian",
+      "classic"
+    ],
+    "date_added": "2023-11-08T10:00:00Z",
+    "pages": 224,
+    "rating": 3.8,
+    "color": "#3f4756",
+    "dimensions": {
+      "width": 130,
+      "height": 205
+    }
+  },
+  {
+    "id": "book9",
+    "title": "Animal Farm",
+    "author": "George Orwell",
+    "isbn": "9780451526342",
+    "tags": [
+      "fiction",
+      "satire",
+      "classic"
+    ],
+    "date_added": "2023-11-09T10:00:00Z",
+    "pages": 112,
+    "rating": 4.3,
+    "color": "#8a3b2e",
+    "dimensions": {
+      "width": 125,
+      "height": 190
+    }
+  },
+  {
+    "id": "book10",
+    "title": "Fahrenheit 451",
+    "author": "Ray Bradbury",
+    "isbn": "9781451673319",
+    "tags": [
+      "dystopian",
+      "fiction",
+      "sci-fi"
+    ],
+    "date_added": "2023-11-10T10:00:00Z",
+    "pages": 194,
+    "rating": 4.1,
+    "color": "#b5541e",
+    "dimensions": {
+      "width": 135,
+      "height": 210
+    }
+  },
+  {
+    "id": "book11",
+    "title": "The Alchemist",
+    "author": "Paulo Coelho",
+    "isbn": "9780061122415",
+    "tags": [
+      "fantasy",
+      "fiction",
+      "adventure"
+    ],
+    "date_added": "2023-11-11T10:00:00Z",
+    "pages": 208,
+    "rating": 4.4,
+    "color": "#a8791f",
+    "dimensions": {
+      "width": 140,
+      "height": 215
+    }
+  },
+  {
+    "id": "book12",
+    "title": "The Little Prince",
+    "author": "Antoine de Saint-Exupéry",
+    "isbn": "9780156012195",
+    "tags": [
+      "fantasy",
+      "children",
+      "classic"
+    ],
+    "date_added": "2023-11-12T10:00:00Z",
+    "pages": 96,
+    "rating": 4.7,
+    "color": "#2e6e64",
+    "dimensions": {
+      "width": 130,
+      "height": 200
+    }
+  },
+  {
+    "id": "book13",
+    "title": "Brave New World",
+    "author": "Aldous Huxley",
+    "isbn": "9780060850524",
+    "tags": [
+      "dystopian",
+      "fiction",
+      "sci-fi",
+      "classic"
+    ],
+    "date_added": "2023-11-13T10:00:00Z",
+    "pages": 288,
+    "rating": 4.5,
+    "color": "#6e3b8a",
+    "dimensions": {
+      "width": 132,
+      "height": 204
+    }
+  },
+  {
+    "id": "book14",
+    "title": "The Lord of the Rings",
+    "author": "J.R.R. Tolkien",
+    "isbn": "9780618640157",
+    "tags": [
+      "fantasy",
+      "fiction",
+      "classic",
+      "adventure"
+    ],
+    "date_added": "2023-11-14T10:00:00Z",
+    "pages": 1178,
+    "rating": 4.9,
+    "color": "#1f3b5c",
+    "dimensions": {
+      "width": 145,
+      "height": 222
+    }
+  },
+  {
+    "id": "book15",
+    "title": "The Chronicles of Narnia",
+    "author": "C.S. Lewis",
+    "isbn": "9780066238500",
+    "tags": [
+      "fantasy",
+      "fiction",
+      "children",
+      "classic"
+    ],
+    "date_added": "2023-11-15T10:00:00Z",
+    "pages": 767,
+    "rating": 4.7,
+    "color": "#a1552e",
+    "dimensions": {
+      "width": 140,
+      "height": 212
+    }
+  },
+  {
+    "id": "book16",
+    "title": "Jane Eyre",
+    "author": "Charlotte Brontë",
+    "isbn": "9780142437209",
+    "tags": [
+      "romance",
+      "fiction",
+      "classic",
+      "gothic"
+    ],
+    "date_added": "2023-11-16T10:00:00Z",
+    "pages": 532,
+    "rating": 4.4,
+    "color": "#4a3b2e",
+    "dimensions": {
+      "width": 132,
+      "height": 204
+    }
+  },
+  {
+    "id": "book17",
+    "title": "Wuthering Heights",
+    "author": "Emily Brontë",
+    "isbn": "9780141439556",
+    "tags": [
+      "romance",
+      "fiction",
+      "classic",
+      "gothic"
+    ],
+    "date_added": "2023-11-17T10:00:00Z",
+    "pages": 342,
+    "rating": 4.0,
+    "color": "#3b2f3f",
+    "dimensions": {
+      "width": 130,
+      "height": 200
+    }
+  },
+  {
+    "id": "book18",
+    "title": "Moby-Dick",
+    "author": "Herman Melville",
+    "isbn": "9781503280786",
+    "tags": [
+      "fiction",
+      "classic",
+      "adventure"
+    ],
+    "date_added": "2023-11-18T10:00:00Z",
+    "pages": 704,
+    "rating": 3.9,
+    "color": "#1c4b5e",
+    "dimensions": {
+      "width": 138,
+      "height": 212
+    }
+  },
+  {
+    "id": "book19",
+    "title": "War and Peace",
+    "author": "Leo Tolstoy",
+    "isbn": "9781400079988",
+    "tags": [
+      "fiction",
+      "classic",
+      "historical",
+      "russian-literature"
+    ],
+    "date_added": "2023-11-19T10:00:00Z",
+    "pages": 1225,
+    "rating": 4.5,
+    "color": "#7a2f2f",
+    "dimensions": {
+      "width": 140,
+      "height": 215
+    }
+  },
+  {
+    "id": "book20",
+    "title": "Crime and Punishment",
+    "author": "Fyodor Dostoevsky",
+    "isbn": "9780486415871",
+    "tags": [
+      "fiction",
+      "classic",
+      "russian-literature",
+      "philosophy"
+    ],
+    "date_added": "2023-11-20T10:00:00Z",
+    "pages": 671,
+    "rating": 4.6,
+    "color": "#2e2e35",
+    "dimensions": {
+      "width": 130,
+      "height": 205
+    }
+  },
+  {
+    "id": "book21",
+    "title": "The Brothers Karamazov",
+    "author": "Fyodor Dostoevsky",
+    "isbn": "9780374528379",
+    "tags": [
+      "fiction",
+      "classic",
+      "russian-literature",
+      "philosophy"
+    ],
+    "date_added": "2023-11-21T10:00:00Z",
+    "pages": 796,
+    "rating": 4.6,
+    "color": "#3a2e40",
+    "dimensions": {
+      "width": 138,
+      "height": 212
+    }
+  },
+  {
+    "id": "book22",
+    "title": "Anna Karenina",
+    "author": "Leo Tolstoy",
+    "isbn": "9780143035008",
+    "tags": [
+      "fiction",
+      "classic",
+      "romance",
+      "russian-literature"
+    ],
+    "date_added": "2023-11-22T10:00:00Z",
+    "pages": 864,
+    "rating": 4.5,
+    "color": "#7d3a52",
+    "dimensions": {
+      "width": 138,
+      "height": 212
+    }
+  },
+  {
+    "id": "book23",
+    "title": "Don Quixote",
+    "author": "Miguel de Cervantes",
+    "isbn": "9780060934347",
+    "tags": [
+      "fiction",
+      "classic",
+      "adventure",
+      "satire"
+    ],
+    "date_added": "2023-11-23T10:00:00Z",
+    "pages": 1023,
+    "rating": 4.3,
+    "color": "#c0762c",
+    "dimensions": {
+      "width": 140,
+      "height": 214
+    }
+  },
+  {
+    "id": "book24",
+    "title": "The Odyssey",
+    "author": "Homer",
+    "isbn": "9780140449112",
+    "tags": [
+      "classic",
+      "adventure",
+      "fiction"
+    ],
+    "date_added": "2023-11-24T10:00:00Z",
+    "pages": 541,
+    "rating": 4.4,
+    "color": "#4b6e8a",
+    "dimensions": {
+      "width": 132,
+      "height": 206
+    }
+  },
+  {
+    "id": "book25",
+    "title": "Frankenstein",
+    "author": "Mary Shelley",
+    "isbn": "9780486282114",
+    "tags": [
+      "classic",
+      "horror",
+      "sci-fi",
+      "gothic"
+    ],
+    "date_added": "2023-11-25T10:00:00Z",
+    "pages": 280,
+    "rating": 4.1,
+    "color": "#2e3b2e",
+    "dimensions": {
+      "width": 128,
+      "height": 198
+    }
+  },
+  {
+    "id": "book26",
+    "title": "Dracula",
+    "author": "Bram Stoker",
+    "isbn": "9780486411095",
+    "tags": [
+      "classic",
+      "horror",
+      "gothic",
+      "fiction"
+    ],
+    "date_added": "2023-11-26T10:00:00Z",
+    "pages": 418,
+    "rating": 4.3,
+    "color": "#3b1f1f",
+    "dimensions": {
+      "width": 130,
+      "height": 200
+    }
+  },
+  {
+    "id": "book27",
+    "title": "The Picture of Dorian Gray",
+    "author": "Oscar Wilde",
+    "isbn": "9780486278070",
+    "tags": [
+      "classic",
+      "fiction",
+      "gothic",
+      "philosophy"
+    ],
+    "date_added": "2023-11-27T10:00:00Z",
+    "pages": 254,
+    "rating": 4.4,
+    "color": "#4a3b5c",
+    "dimensions": {
+      "width": 128,
+      "height": 198
+    }
+  },
+  {
+    "id": "book28",
+    "title": "Slaughterhouse-Five",
+    "author": "Kurt Vonnegut",
+    "isbn": "9780385333849",
+    "tags": [
+      "fiction",
+      "sci-fi",
+      "satire",
+      "classic"
+    ],
+    "date_added": "2023-11-28T10:00:00Z",
+    "pages": 275,
+    "rating": 4.2,
+    "color": "#3b6e6e",
+    "dimensions": {
+      "width": 132,
+      "height": 203
+    }
+  },
+  {
+    "id": "book29",
+    "title": "One Hundred Years of Solitude",
+    "author": "Gabriel García Márquez",
+    "isbn": "9780060883287",
+    "tags": [
+      "fiction",
+      "classic",
+      "magical-realism"
+    ],
+    "date_added": "2023-11-29T10:00:00Z",
+    "pages": 417,
+    "rating": 4.5,
+    "color": "#a1622e",
+    "dimensions": {
+      "width": 134,
+      "height": 207
+    }
+  },
+  {
+    "id": "book30",
+    "title": "The Kite Runner",
+    "author": "Khaled Hosseini",
+    "isbn": "9781594631931",
+    "tags": [
+      "fiction",
+      "historical",
+      "drama"
+    ],
+    "date_added": "2023-11-30T10:00:00Z",
+    "pages": 371,
+    "rating": 4.6,
+    "color": "#6e4b2e",
+    "dimensions": {
+      "width": 134,
+      "height": 208
+    }
+  },
+  {
+    "id": "book31",
+    "title": "Life of Pi",
+    "author": "Yann Martel",
+    "isbn": "9780156027328",
+    "tags": [
+      "fiction",
+      "adventure",
+      "philosophy"
+    ],
+    "date_added": "2023-12-01T10:00:00Z",
+    "pages": 319,
+    "rating": 4.0,
+    "color": "#2e7a8a",
+    "dimensions": {
+      "width": 134,
+      "height": 208
+    }
+  },
+  {
+    "id": "book32",
+    "title": "The Book Thief",
+    "author": "Markus Zusak",
+    "isbn": "9780375842207",
+    "tags": [
+      "fiction",
+      "historical",
+      "young-adult",
+      "war"
+    ],
+    "date_added": "2023-12-02T10:00:00Z",
+    "pages": 552,
+    "rating": 4.7,
+    "color": "#4b4b52",
+    "dimensions": {
+      "width": 134,
+      "height": 208
+    }
+  },
+  {
+    "id": "book33",
+    "title": "The Road",
+    "author": "Cormac McCarthy",
+    "isbn": "9780307387899",
+    "tags": [
+      "fiction",
+      "dystopian",
+      "sci-fi"
+    ],
+    "date_added": "2023-12-03T10:00:00Z",
+    "pages": 287,
+    "rating": 4.2,
+    "color": "#3b3b3b",
+    "dimensions": {
+      "width": 130,
+      "height": 204
+    }
+  },
+  {
+    "id": "book34",
+    "title": "Beloved",
+    "author": "Toni Morrison",
+    "isbn": "9781400033416",
+    "tags": [
+      "fiction",
+      "classic",
+      "historical"
+    ],
+    "date_added": "2023-12-04T10:00:00Z",
+    "pages": 324,
+    "rating": 4.0,
+    "color": "#5c2e3b",
+    "dimensions": {
+      "width": 132,
+      "height": 205
+    }
+  },
+  {
+    "id": "book35",
+    "title": "The Handmaid's Tale",
+    "author": "Margaret Atwood",
+    "isbn": "9780385490818",
+    "tags": [
+      "dystopian",
+      "fiction",
+      "sci-fi"
+    ],
+    "date_added": "2023-12-05T10:00:00Z",
+    "pages": 311,
+    "rating": 4.3,
+    "color": "#7a1f2e",
+    "dimensions": {
+      "width": 132,
+      "height": 206
+    }
+  },
+  {
+    "id": "book36",
+    "title": "Never Let Me Go",
+    "author": "Kazuo Ishiguro",
+    "isbn": "9781400078776",
+    "tags": [
+      "fiction",
+      "sci-fi",
+      "drama"
+    ],
+    "date_added": "2023-12-06T10:00:00Z",
+    "pages": 288,
+    "rating": 4.1,
+    "color": "#4b5c6e",
+    "dimensions": {
+      "width": 132,
+      "height": 205
+    }
+  },
+  {
+    "id": "book37",
+    "title": "The Curious Incident of the Dog in the Night-Time",
+    "author": "Mark Haddon",
+    "isbn": "9781400032716",
+    "tags": [
+      "fiction",
+      "mystery",
+      "drama"
+    ],
+    "date_added": "2023-12-07T10:00:00Z",
+    "pages": 226,
+    "rating": 3.9,
+    "color": "#c0a12c",
+    "dimensions": {
+      "width": 132,
+      "height": 204
+    }
+  },
+  {
+    "id": "book38",
+    "title": "Gone Girl",
+    "author": "Gillian Flynn",
+    "isbn": "9780307588364",
+    "tags": [
+      "thriller",
+      "mystery",
+      "fiction"
+    ],
+    "date_added": "2023-12-08T10:00:00Z",
+    "pages": 422,
+    "rating": 4.1,
+    "color": "#2e2e2e",
+    "dimensions": {
+      "width": 132,
+      "height": 206
+    }
+  },
+  {
+    "id": "book39",
+    "title": "The Girl with the Dragon Tattoo",
+    "author": "Stieg Larsson",
+    "isbn": "9780307454546",
+    "tags": [
+      "thriller",
+      "mystery",
+      "fiction"
+    ],
+    "date_added": "2023-12-09T10:00:00Z",
+    "pages": 672,
+    "rating": 4.2,
+    "color": "#1f2e3b",
+    "dimensions": {
+      "width": 134,
+      "height": 208
+    }
+  },
+  {
+    "id": "book40",
+    "title": "The Da Vinci Code",
+    "author": "Dan Brown",
+    "isbn": "9780307474278",
+    "tags": [
+      "thriller",
+      "mystery",
+      "fiction",
+      "adventure"
+    ],
+    "date_added": "2023-12-10T10:00:00Z",
+    "pages": 489,
+    "rating": 3.9,
+    "color": "#6e1f1f",
+    "dimensions": {
+      "width": 132,
+      "height": 206
+    }
+  },
+  {
+    "id": "book41",
+    "title": "Angels & Demons",
+    "author": "Dan Brown",
+    "isbn": "9781416524793",
+    "tags": [
+      "thriller",
+      "mystery",
+      "fiction",
+      "adventure"
+    ],
+    "date_added": "2023-12-11T10:00:00Z",
+    "pages": 736,
+    "rating": 3.9,
+    "color": "#5c1f2e",
+    "dimensions": {
+      "width": 132,
+      "height": 206
+    }
+  },
+  {
+    "id": "book42",
+    "title": "The Hunger Games",
+    "author": "Suzanne Collins",
+    "isbn": "9780439023528",
+    "tags": [
+      "dystopian",
+      "fiction",
+      "young-adult",
+      "adventure"
+    ],
+    "date_added": "2023-12-12T10:00:00Z",
+    "pages": 374,
+    "rating": 4.7,
+    "color": "#2e4b2e",
+    "dimensions": {
+      "width": 134,
+      "height": 208
+    }
+  },
+  {
+    "id": "book43",
+    "title": "Divergent",
+    "author": "Veronica Roth",
+    "isbn": "9780062024039",
+    "tags": [
+      "dystopian",
+      "fiction",
+      "young-adult",
+      "adventure"
+    ],
+    "date_added": "2023-12-13T10:00:00Z",
+    "pages": 487,
+    "rating": 4.3,
+    "color": "#3b3b6e",
+    "dimensions": {
+      "width": 134,
+      "height": 208
+    }
+  },
+  {
+    "id": "book44",
+    "title": "The Fault in Our Stars",
+    "author": "John Green",
+    "isbn": "9780525478812",
+    "tags": [
+      "fiction",
+      "romance",
+      "young-adult",
+      "drama"
+    ],
+    "date_added": "2023-12-14T10:00:00Z",
+    "pages": 313,
+    "rating": 4.5,
+    "color": "#2e6e5c",
+    "dimensions": {
+      "width": 132,
+      "height": 205
+    }
+  },
+  {
+    "id": "book45",
+    "title": "Twilight",
+    "author": "Stephenie Meyer",
+    "isbn": "9780316015844",
+    "tags": [
+      "romance",
+      "fantasy",
+      "young-adult"
+    ],
+    "date_added": "2023-12-15T10:00:00Z",
+    "pages": 498,
+    "rating": 3.7,
+    "color": "#2e1f2e",
+    "dimensions": {
+      "width": 132,
+      "height": 206
+    }
+  },
+  {
+    "id": "book46",
+    "title": "Percy Jackson and the Lightning Thief",
+    "author": "Rick Riordan",
+    "isbn": "9780786838653",
+    "tags": [
+      "fantasy",
+      "fiction",
+      "young-adult",
+      "adventure"
+    ],
+    "date_added": "2023-12-16T10:00:00Z",
+    "pages": 377,
+    "rating": 4.6,
+    "color": "#2e6e8a",
+    "dimensions": {
+      "width": 134,
+      "height": 207
+    }
+  },
+  {
+    "id": "book47",
+    "title": "The Giver",
+    "author": "Lois Lowry",
+    "isbn": "9780544336261",
+    "tags": [
+      "dystopian",
+      "fiction",
+      "young-adult"
+    ],
+    "date_added": "2023-12-17T10:00:00Z",
+    "pages": 240,
+    "rating": 4.1,
+    "color": "#6e6e6e",
+    "dimensions": {
+      "width": 128,
+      "height": 200
+    }
+  },
+  {
+    "id": "book48",
+    "title": "Charlotte's Web",
+    "author": "E.B. White",
+    "isbn": "9780064400558",
+    "tags": [
+      "children",
+      "fiction",
+      "classic"
+    ],
+    "date_added": "2023-12-18T10:00:00Z",
+    "pages": 184,
+    "rating": 4.8,
+    "color": "#3b8a5c",
+    "dimensions": {
+      "width": 124,
+      "height": 192
+    }
+  },
+  {
+    "id": "book49",
+    "title": "Matilda",
+    "author": "Roald Dahl",
+    "isbn": "9780142410370",
+    "tags": [
+      "children",
+      "fiction",
+      "fantasy"
+    ],
+    "date_added": "2023-12-19T10:00:00Z",
+    "pages": 240,
+    "rating": 4.7,
+    "color": "#c02c4b",
+    "dimensions": {
+      "width": 124,
+      "height": 192
+    }
+  },
+  {
+    "id": "book50",
+    "title": "James and the Giant Peach",
+    "author": "Roald Dahl",
+    "isbn": "9780142410363",
+    "tags": [
+      "children",
+      "fiction",
+      "fantasy",
+      "adventure"
+    ],
+    "date_added": "2023-12-20T10:00:00Z",
+    "pages": 146,
+    "rating": 4.5,
+    "color": "#2c8a6e",
+    "dimensions": {
+      "width": 122,
+      "height": 190
+    }
+  }
+]

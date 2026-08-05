@@ -1,0 +1,7 @@
+{
+  "source": "Google Drive",
+  "description": "When this file is present, the app fetches the book catalog from `link` instead of the local books.json. Delete this file (or make `link` unreachable) to go back to the local catalog.",
+  "link": "https://drive.google.com/uc?export=download&id=REPLACE_WITH_YOUR_FILE_ID",
+  "format": "The link must resolve directly to a JSON array of book objects, each shaped like the entries in books.json (id, title, author, isbn, tags, date_added, pages, rating, color, dimensions).",
+  "note": "Plain Google Drive share links return an HTML page, not JSON — use the uc?export=download&id=<FILE_ID> form instead. Drive also often omits the CORS headers browsers require for cross-origin fetch(); if it's blocked, this app automatically falls back to books.json, so nothing breaks. A raw GitHub/Gist URL or a small JSON-hosting service (e.g. jsonbin.io) tends to work more reliably than Drive for this."
+}
