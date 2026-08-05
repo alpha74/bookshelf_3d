@@ -471,7 +471,15 @@ function makeCoverFallbackTexture(book) {
     return tex;
 }
 
-function makePagesTexture(lineCount) {
+// `vertical: true` draws the ruled lines running top-to-bottom instead of
+// left-to-right. On a BoxGeometry's +x/-x faces (the page block's fore-edge,
+// facing the viewer), u maps to depth and v maps to height — so horizontal
+// canvas lines land as bands running the full depth of the block, repeated
+// up its height, which reads as horizontal stripes on the fore-edge. Real
+// page edges run the other way (each page is a full-height sheet, stacked
+// side-by-side through the block's depth), so that face needs vertical
+// lines instead; +y/-y (top/bottom) keep the horizontal orientation.
+function makePagesTexture(lineCount, vertical = false) {
     const canvas = document.createElement('canvas');
     canvas.width = 64;
     canvas.height = 64;
@@ -481,10 +489,15 @@ function makePagesTexture(lineCount) {
     ctx.strokeStyle = '#e2dbc9';
     ctx.lineWidth = 1;
     const step = 64 / Math.max(4, lineCount);
-    for (let y = step / 2; y < 64; y += step) {
+    for (let pos = step / 2; pos < 64; pos += step) {
         ctx.beginPath();
-        ctx.moveTo(0, y);
-        ctx.lineTo(64, y);
+        if (vertical) {
+            ctx.moveTo(pos, 0);
+            ctx.lineTo(pos, 64);
+        } else {
+            ctx.moveTo(0, pos);
+            ctx.lineTo(64, pos);
+        }
         ctx.stroke();
     }
     const tex = new THREE.CanvasTexture(canvas);
@@ -586,13 +599,23 @@ function buildHardcoverGroup(book, w, h, pagesD, color) {
     const edgeMat = new THREE.MeshStandardMaterial({ color: edgeColor, roughness: 0.75, metalness: 0.03 });
 
     // Page block: inset on top/bottom/fore-edge, flush against the spine.
+    // The fore-edge (+x/-x) and the top/bottom (+y/-y) need differently
+    // oriented ruled textures — see makePagesTexture — so this is a
+    // material array rather than one material shared by every face.
     const pagesW = w - overhang;
     const pagesH = h - overhang * 2;
-    const pagesMat = new THREE.MeshStandardMaterial({
-        map: makePagesTexture(Math.round(book.dimensions.height / 8)),
+    const foreEdgeMat = new THREE.MeshStandardMaterial({
+        map: makePagesTexture(Math.max(8, Math.min(60, Math.round(book.pages / 8))), true),
         roughness: 0.95,
     });
-    const pagesMesh = new THREE.Mesh(new THREE.BoxGeometry(pagesW, pagesH, pagesD), pagesMat);
+    const pagesMat = new THREE.MeshStandardMaterial({
+        map: makePagesTexture(Math.round(book.dimensions.width / 8)),
+        roughness: 0.95,
+    });
+    const pagesMesh = new THREE.Mesh(
+        new THREE.BoxGeometry(pagesW, pagesH, pagesD),
+        [foreEdgeMat, foreEdgeMat, pagesMat, pagesMat, pagesMat, pagesMat]
+    );
     pagesMesh.position.x = -overhang / 2;
     group.add(pagesMesh);
 
@@ -664,7 +687,26 @@ function createInspectScene(book) {
     const scene = new THREE.Scene();
 
     const camera = new THREE.PerspectiveCamera(42, rect.width / rect.height, 0.1, 100);
-    camera.position.set(-1.6, 0.55, 5.4);
+
+    // The original fixed camera distance was tuned for a wide/landscape
+    // aspect ratio. On a narrow mobile portrait viewport, the horizontal
+    // field of view at that same distance is much tighter, so the book's
+    // edges get cropped — which reads as "zoomed in". Instead, derive the
+    // distance needed to fit the book's width AND height (with a margin) at
+    // whatever aspect ratio the stage actually has, along the same viewing
+    // angle as before (spine-on-the-left).
+    const cameraDir = new THREE.Vector3(-1.6, 0.55, 5.4).normalize();
+    function fitCameraDistance(aspect) {
+        const halfW = w / 2 + 0.35;
+        const halfH = h / 2 + 0.35;
+        const vFov = (camera.fov * Math.PI) / 180;
+        const distForHeight = halfH / Math.tan(vFov / 2);
+        const distForWidth = halfW / (Math.tan(vFov / 2) * aspect);
+        return Math.max(distForHeight, distForWidth, 3.2);
+    }
+
+    let cameraDistance = fitCameraDistance(rect.width / rect.height);
+    camera.position.copy(cameraDir).multiplyScalar(cameraDistance);
 
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
@@ -746,8 +788,11 @@ function createInspectScene(book) {
     controls.enableDamping = true;
     controls.dampingFactor = 0.08;
     controls.enablePan = false;
-    controls.minDistance = 3;
-    controls.maxDistance = 9;
+    // Proportional to the fitted distance rather than fixed values, so the
+    // zoom range still makes sense on a mobile viewport where the base
+    // distance itself is larger than on desktop.
+    controls.minDistance = cameraDistance * 0.55;
+    controls.maxDistance = cameraDistance * 1.7;
     controls.rotateSpeed = 0.85;
     controls.update();
 
@@ -771,6 +816,19 @@ function createInspectScene(book) {
     function onResize() {
         const r = inspectStageEl.getBoundingClientRect();
         camera.aspect = r.width / r.height;
+
+        // Rescale the camera's distance from target for the new aspect
+        // (e.g. a phone rotating between portrait/landscape) without
+        // resetting the direction the user has already rotated to.
+        const newDistance = fitCameraDistance(camera.aspect);
+        const currentDistance = camera.position.length();
+        if (currentDistance > 0.001) {
+            camera.position.multiplyScalar(newDistance / currentDistance);
+        }
+        cameraDistance = newDistance;
+        controls.minDistance = cameraDistance * 0.55;
+        controls.maxDistance = cameraDistance * 1.7;
+
         camera.updateProjectionMatrix();
         renderer.setSize(r.width, r.height);
     }

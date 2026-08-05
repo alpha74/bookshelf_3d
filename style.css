@@ -99,6 +99,35 @@ header {
     gap: 0.6rem;
 }
 
+/* Below this width, the centered title and the absolutely-positioned
+   controls start overlapping — switch .logo to a plain space-between row
+   instead of a title floating under an overlay, and tighten things up to
+   fit a phone screen. */
+@media (max-width: 480px) {
+    header {
+        padding: 1.5rem 1.25rem 1.25rem;
+        gap: 1.25rem;
+    }
+
+    .logo {
+        justify-content: space-between;
+    }
+
+    .logo h1 {
+        font-size: 1.4rem;
+    }
+
+    .header-controls {
+        position: static;
+        transform: none;
+    }
+
+    .icon-btn {
+        width: 38px;
+        height: 38px;
+    }
+}
+
 .icon-btn {
     background: var(--tag-bg);
     border: 1px solid var(--border-soft);
