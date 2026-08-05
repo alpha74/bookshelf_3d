@@ -1,3 +1,5 @@
+<img width="800" height="380" alt="image" src="https://github.com/user-attachments/assets/f90c94bb-3a6f-4d91-a20a-943178a1cad3" />
+
 # 3D Interactive Bookshelf
 
 A beautiful, interactive 3D bookshelf built with HTML, CSS, JavaScript, and Three.js. Browse your book collection, inspect books in 3D, and read notes with elegant page-flip animations.
