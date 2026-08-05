@@ -288,8 +288,13 @@ main {
     overflow-y: hidden;
     scroll-behavior: smooth;
     scrollbar-width: thin;
-    padding: 70px 4px 6px;
-    margin-top: -70px;
+    /* Top padding is headroom for both the hover-lift and the tooltip
+       balloon above it — overflow-y is hidden (needed to clip horizontal
+       scroll cleanly), so anything taller than this gets cut off. The
+       matching negative margin keeps the row's own position unchanged
+       when nothing is hovered. */
+    padding: 150px 4px 6px;
+    margin-top: -150px;
     -webkit-overflow-scrolling: touch;
 }
 
@@ -443,6 +448,61 @@ main {
 .book-slot:hover .book {
     transform: translateY(-16px) translateZ(50px) scale(1.08)
                rotateY(var(--rest-y, -90deg)) rotateZ(var(--rest-z, 0deg));
+}
+
+/* Hover tooltip — a small speech-balloon above the book showing title +
+   author. It's a plain 2D element (a sibling of .book, not inside it), so
+   it isn't subject to the book's own 3D perspective/rotation — it just
+   fades and pops in in place, sized to whatever text it holds. */
+.book-tooltip {
+    position: absolute;
+    left: 50%;
+    bottom: calc(100% + 14px);
+    transform: translateX(-50%) translateY(6px) scale(0.94);
+    width: max-content;
+    max-width: 190px;
+    background: var(--overlay-bg);
+    border: 1px solid var(--border-soft);
+    border-radius: 10px;
+    padding: 0.5rem 0.75rem;
+    text-align: center;
+    z-index: 8;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(8px);
+}
+
+.book-tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 6px solid transparent;
+    border-top-color: var(--overlay-bg);
+}
+
+.book-slot:hover .book-tooltip {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0) scale(1);
+}
+
+.book-tooltip-title {
+    display: block;
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 0.82rem;
+    line-height: 1.3;
+    color: var(--text-color);
+}
+
+.book-tooltip-author {
+    display: block;
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    margin-top: 0.2rem;
 }
 
 .book-face {

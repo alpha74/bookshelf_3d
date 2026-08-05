@@ -266,7 +266,19 @@ function renderBooks() {
             bookEl.style.setProperty('--rest-y', `${-90 + jitterY}deg`);
             bookEl.style.setProperty('--rest-z', `${jitterZ}deg`);
 
+            // A hover tooltip showing title + author. It's a sibling of
+            // .book rather than a child of it, so it stays in normal 2D
+            // layout and isn't dragged along by the book's own 3D hover
+            // transform (lift/scale/rotation) — it just fades in in place.
+            const tooltip = document.createElement('div');
+            tooltip.className = 'book-tooltip';
+            tooltip.innerHTML = `
+                <span class="book-tooltip-title">${book.title}</span>
+                <span class="book-tooltip-author">${book.author}</span>
+            `;
+
             slot.appendChild(bookEl);
+            slot.appendChild(tooltip);
             slot.addEventListener('click', () => inspectBook(book));
             shelf.appendChild(slot);
         });
