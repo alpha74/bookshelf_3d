@@ -1,56 +1,91 @@
 [
   {
     "id": "book1",
-    "title": "Harry Potter and the Sorcerer's Stone",
-    "author": "J.K. Rowling",
-    "isbn": "9780590353403",
+    "title": "Malgudi Days",
+    "author": "R. K. Narayan",
+    "isbn": "9788185986173",
     "tags": [
-      "fantasy",
-      "fiction",
-      "young-adult"
+      "fiction"
     ],
-    "date_added": "2023-11-01T10:00:00Z",
-    "pages": 320,
-    "rating": 4.7,
+    "date_added": null,
+    "pages": 97,
+    "rating": null,
     "color": "#7d2e46",
+    "dimensions": {
+      "width": 160,
+      "height": 250
+    }
+  },
+  {
+    "id": "book2",
+    "title": "Life in the Uniform",
+    "author": null,
+    "isbn": null,
+    "tags": [
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 333,
+    "rating": null,
+    "color": "#3c6e71",
     "dimensions": {
       "width": 140,
       "height": 210
     }
   },
+
+
+
+
+
+
+  {
+    "id": "book1",
+    "title": "Jane Eyre",
+    "author": "Charlotte Brontë",
+    "isbn": "9780141441146",
+    "tags": [
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 528,
+    "rating": null,
+    "color": "#2f3e46",
+    "dimensions": {
+      "width": 130,
+      "height": 200
+    }
+  },
   {
     "id": "book2",
-    "title": "The Hobbit",
-    "author": "J.R.R. Tolkien",
-    "isbn": "9780547928227",
+    "title": "The Hound of Baskervilles",
+    "author": "Arthur Conan Doyle",
+    "isbn": "978-0425104057",
     "tags": [
-      "fantasy",
-      "fiction",
-      "classic"
+      "fiction"
     ],
-    "date_added": "2023-11-02T10:00:00Z",
-    "pages": 310,
-    "rating": 4.6,
-    "color": "#2f4b6e",
+    "date_added": null,
+    "pages": 208,
+    "rating": null,
+    "color": "#0f4c5c",
     "dimensions": {
-      "width": 135,
-      "height": 205
+      "width": 130,
+      "height": 200
     }
   },
   {
     "id": "book3",
-    "title": "1984",
-    "author": "George Orwell",
-    "isbn": "9780451524935",
+    "title": "Frankenstein",
+    "author": "Mary Shelley",
+    "isbn": "978-0141439471",
     "tags": [
-      "dystopian",
-      "fiction",
-      "classic"
+      "classic",
+      "fiction"
     ],
-    "date_added": "2023-11-03T10:00:00Z",
-    "pages": 328,
-    "rating": 4.8,
-    "color": "#7a1f1f",
+    "date_added": null,
+    "pages": 352,
+    "rating": null,
+    "color": "#8d6e63",
     "dimensions": {
       "width": 130,
       "height": 200
@@ -58,916 +93,3233 @@
   },
   {
     "id": "book4",
-    "title": "To Kill a Mockingbird",
-    "author": "Harper Lee",
-    "isbn": "9780060935467",
+    "title": "Adventures of Tom Sawyer",
+    "author": "Mark Twain",
+    "isbn": "978-0192806826",
     "tags": [
-      "fiction",
-      "classic",
-      "historical"
+      "fiction"
     ],
-    "date_added": "2023-11-04T10:00:00Z",
-    "pages": 336,
-    "rating": 4.6,
-    "color": "#2f5d46",
+    "date_added": null,
+    "pages": 272,
+    "rating": null,
+    "color": "#5d576b",
     "dimensions": {
-      "width": 135,
-      "height": 205
+      "width": 130,
+      "height": 200
     }
   },
   {
     "id": "book5",
-    "title": "The Great Gatsby",
-    "author": "F. Scott Fitzgerald",
-    "isbn": "9780743273565",
+    "title": "Journey to the Centre of Earth",
+    "author": "Jules Verne",
+    "isbn": "978-0141441979",
     "tags": [
-      "fiction",
-      "classic",
-      "romance"
+      "fiction"
     ],
-    "date_added": "2023-11-05T10:00:00Z",
-    "pages": 180,
-    "rating": 4.2,
-    "color": "#c08a2c",
+    "date_added": null,
+    "pages": 256,
+    "rating": null,
+    "color": "#6a994e",
     "dimensions": {
-      "width": 140,
-      "height": 210
+      "width": 130,
+      "height": 200
     }
   },
   {
     "id": "book6",
-    "title": "Pride and Prejudice",
-    "author": "Jane Austen",
-    "isbn": "9780141439518",
+    "title": "The Canterville Ghost",
+    "author": "Oscar Wilde",
+    "isbn": "978-1558586246",
     "tags": [
-      "romance",
-      "fiction",
-      "classic"
+      "fiction"
     ],
-    "date_added": "2023-11-06T10:00:00Z",
-    "pages": 279,
-    "rating": 4.5,
-    "color": "#5b3b70",
+    "date_added": null,
+    "pages": 96,
+    "rating": null,
+    "color": "#c44536",
     "dimensions": {
-      "width": 130,
-      "height": 195
-    }
-  },
-  {
-    "id": "book7",
-    "title": "The Catcher in the Rye",
-    "author": "J.D. Salinger",
-    "isbn": "9780316769174",
-    "tags": [
-      "fiction",
-      "classic"
-    ],
-    "date_added": "2023-11-07T10:00:00Z",
-    "pages": 224,
-    "rating": 3.9,
-    "color": "#2b6777",
-    "dimensions": {
-      "width": 135,
-      "height": 200
-    }
-  },
-  {
-    "id": "book8",
-    "title": "Lord of the Flies",
-    "author": "William Golding",
-    "isbn": "9780399501487",
-    "tags": [
-      "fiction",
-      "dystopian",
-      "classic"
-    ],
-    "date_added": "2023-11-08T10:00:00Z",
-    "pages": 224,
-    "rating": 3.8,
-    "color": "#3f4756",
-    "dimensions": {
-      "width": 130,
-      "height": 205
-    }
-  },
-  {
-    "id": "book9",
-    "title": "Animal Farm",
-    "author": "George Orwell",
-    "isbn": "9780451526342",
-    "tags": [
-      "fiction",
-      "satire",
-      "classic"
-    ],
-    "date_added": "2023-11-09T10:00:00Z",
-    "pages": 112,
-    "rating": 4.3,
-    "color": "#8a3b2e",
-    "dimensions": {
-      "width": 125,
-      "height": 190
-    }
-  },
-  {
-    "id": "book10",
-    "title": "Fahrenheit 451",
-    "author": "Ray Bradbury",
-    "isbn": "9781451673319",
-    "tags": [
-      "dystopian",
-      "fiction",
-      "sci-fi"
-    ],
-    "date_added": "2023-11-10T10:00:00Z",
-    "pages": 194,
-    "rating": 4.1,
-    "color": "#b5541e",
-    "dimensions": {
-      "width": 135,
+      "width": 140,
       "height": 210
     }
   },
   {
-    "id": "book11",
-    "title": "The Alchemist",
-    "author": "Paulo Coelho",
-    "isbn": "9780061122415",
+    "id": "book7",
+    "title": "Up from Slavery",
+    "author": "Booker T. Washington",
+    "isbn": "978-0140390513",
     "tags": [
-      "fantasy",
-      "fiction",
-      "adventure"
+      "fiction"
     ],
-    "date_added": "2023-11-11T10:00:00Z",
-    "pages": 208,
-    "rating": 4.4,
-    "color": "#a8791f",
+    "date_added": null,
+    "pages": 336,
+    "rating": null,
+    "color": "#355c7d",
+    "dimensions": {
+      "width": 150,
+      "height": 230
+    }
+  },
+  {
+    "id": "book8",
+    "title": "The Call of Wild",
+    "author": "Jack London",
+    "isbn": "978-0141321059",
+    "tags": [
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 160,
+    "rating": null,
+    "color": "#6c757d",
+    "dimensions": {
+      "width": 130,
+      "height": 200
+    }
+  },
+  {
+    "id": "book9",
+    "title": "20,000 Leagues Under the Sea",
+    "author": "Jules Verne",
+    "isbn": "978-0141394930",
+    "tags": [
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 448,
+    "rating": null,
+    "color": "#7d2e46",
+    "dimensions": {
+      "width": 160,
+      "height": 250
+    }
+  },
+  {
+    "id": "book10",
+    "title": "Life of Pi",
+    "author": "Yann Martel",
+    "isbn": "9780857865533",
+    "tags": [
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 352,
+    "rating": null,
+    "color": "#3c6e71",
+    "dimensions": {
+      "width": 150,
+      "height": 220
+    }
+  },
+  {
+    "id": "book11",
+    "title": "Five Point Someone",
+    "author": "Chetan Bhagat",
+    "isbn": "978-8129104595",
+    "tags": [
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 224,
+    "rating": null,
+    "color": "#2f3e46",
     "dimensions": {
       "width": 140,
-      "height": 215
+      "height": 210
     }
   },
   {
     "id": "book12",
-    "title": "The Little Prince",
-    "author": "Antoine de Saint-Exupéry",
-    "isbn": "9780156012195",
+    "title": "Panchatantra",
+    "author": "Vishnu Sharma",
+    "isbn": "978-8171670659",
     "tags": [
-      "fantasy",
-      "children",
-      "classic"
+      "fiction"
     ],
-    "date_added": "2023-11-12T10:00:00Z",
-    "pages": 96,
-    "rating": 4.7,
-    "color": "#2e6e64",
+    "date_added": null,
+    "pages": 90,
+    "rating": null,
+    "color": "#0f4c5c",
     "dimensions": {
-      "width": 130,
-      "height": 200
+      "width": 200,
+      "height": 270
     }
   },
   {
     "id": "book13",
-    "title": "Brave New World",
-    "author": "Aldous Huxley",
-    "isbn": "9780060850524",
+    "title": "Invisible Man",
+    "author": "H.G. Wells",
+    "isbn": "978-0141439983",
     "tags": [
-      "dystopian",
-      "fiction",
-      "sci-fi",
-      "classic"
+      "fiction"
     ],
-    "date_added": "2023-11-13T10:00:00Z",
-    "pages": 288,
-    "rating": 4.5,
-    "color": "#6e3b8a",
+    "date_added": null,
+    "pages": 208,
+    "rating": null,
+    "color": "#8d6e63",
     "dimensions": {
-      "width": 132,
-      "height": 204
+      "width": 140,
+      "height": 210
     }
   },
   {
     "id": "book14",
-    "title": "The Lord of the Rings",
-    "author": "J.R.R. Tolkien",
-    "isbn": "9780618640157",
+    "title": "The Da Vinci Code",
+    "author": "Dan Brown",
+    "isbn": "978-0307474278",
     "tags": [
-      "fantasy",
-      "fiction",
-      "classic",
-      "adventure"
+      "fiction"
     ],
-    "date_added": "2023-11-14T10:00:00Z",
-    "pages": 1178,
-    "rating": 4.9,
-    "color": "#1f3b5c",
+    "date_added": null,
+    "pages": 597,
+    "rating": null,
+    "color": "#5d576b",
     "dimensions": {
-      "width": 145,
-      "height": 222
+      "width": 120,
+      "height": 200
     }
   },
   {
     "id": "book15",
-    "title": "The Chronicles of Narnia",
-    "author": "C.S. Lewis",
-    "isbn": "9780066238500",
+    "title": "3 Mistakes of My Life",
+    "author": "Chetan Bhagat",
+    "isbn": "978-8129135513",
     "tags": [
-      "fantasy",
-      "fiction",
-      "children",
-      "classic"
+      "fiction"
     ],
-    "date_added": "2023-11-15T10:00:00Z",
-    "pages": 767,
-    "rating": 4.7,
-    "color": "#a1552e",
+    "date_added": null,
+    "pages": 260,
+    "rating": null,
+    "color": "#6a994e",
     "dimensions": {
       "width": 140,
-      "height": 212
+      "height": 210
     }
   },
   {
     "id": "book16",
-    "title": "Jane Eyre",
-    "author": "Charlotte Brontë",
-    "isbn": "9780142437209",
+    "title": "3 Men in a Boat",
+    "author": "Jerome K. Jerome",
+    "isbn": "978-0141441214",
     "tags": [
-      "romance",
-      "fiction",
-      "classic",
-      "gothic"
+      "fiction"
     ],
-    "date_added": "2023-11-16T10:00:00Z",
-    "pages": 532,
-    "rating": 4.4,
-    "color": "#4a3b2e",
+    "date_added": null,
+    "pages": 160,
+    "rating": null,
+    "color": "#c44536",
     "dimensions": {
-      "width": 132,
-      "height": 204
+      "width": 140,
+      "height": 210
     }
   },
   {
     "id": "book17",
-    "title": "Wuthering Heights",
-    "author": "Emily Brontë",
-    "isbn": "9780141439556",
+    "title": "Digital Fortress",
+    "author": "Dan Brown",
+    "isbn": "978-0552159739",
     "tags": [
-      "romance",
-      "fiction",
-      "classic",
-      "gothic"
+      "fiction"
     ],
-    "date_added": "2023-11-17T10:00:00Z",
-    "pages": 342,
-    "rating": 4.0,
-    "color": "#3b2f3f",
+    "date_added": null,
+    "pages": 432,
+    "rating": null,
+    "color": "#355c7d",
     "dimensions": {
-      "width": 130,
-      "height": 200
+      "width": 120,
+      "height": 190
     }
   },
   {
     "id": "book18",
-    "title": "Moby-Dick",
-    "author": "Herman Melville",
-    "isbn": "9781503280786",
+    "title": "Revolution 2020",
+    "author": "Chetan Bhagat",
+    "isbn": "978-8129118806",
     "tags": [
-      "fiction",
-      "classic",
-      "adventure"
+      "fiction"
     ],
-    "date_added": "2023-11-18T10:00:00Z",
-    "pages": 704,
-    "rating": 3.9,
-    "color": "#1c4b5e",
+    "date_added": null,
+    "pages": 96,
+    "rating": null,
+    "color": "#6c757d",
     "dimensions": {
-      "width": 138,
-      "height": 212
+      "width": 140,
+      "height": 210
     }
   },
   {
     "id": "book19",
-    "title": "War and Peace",
-    "author": "Leo Tolstoy",
-    "isbn": "9781400079988",
+    "title": "Gulliver's Travels",
+    "author": "Jonathan Swift",
+    "isbn": "978-0486292731",
     "tags": [
-      "fiction",
-      "classic",
-      "historical",
-      "russian-literature"
+      "fiction"
     ],
-    "date_added": "2023-11-19T10:00:00Z",
-    "pages": 1225,
-    "rating": 4.5,
-    "color": "#7a2f2f",
+    "date_added": null,
+    "pages": 240,
+    "rating": null,
+    "color": "#7d2e46",
     "dimensions": {
-      "width": 140,
-      "height": 215
+      "width": 120,
+      "height": 190
     }
   },
   {
     "id": "book20",
-    "title": "Crime and Punishment",
-    "author": "Fyodor Dostoevsky",
-    "isbn": "9780486415871",
+    "title": "Angels and Demons",
+    "author": "Dan Brown",
+    "isbn": "978-1416524793",
     "tags": [
-      "fiction",
-      "classic",
-      "russian-literature",
-      "philosophy"
+      "fiction"
     ],
-    "date_added": "2023-11-20T10:00:00Z",
-    "pages": 671,
-    "rating": 4.6,
-    "color": "#2e2e35",
+    "date_added": null,
+    "pages": 610,
+    "rating": null,
+    "color": "#3c6e71",
     "dimensions": {
-      "width": 130,
-      "height": 205
+      "width": 110,
+      "height": 170
     }
   },
   {
     "id": "book21",
-    "title": "The Brothers Karamazov",
-    "author": "Fyodor Dostoevsky",
-    "isbn": "9780374528379",
+    "title": "Wings of Fire",
+    "author": "A. P. J. Abdul Kalam",
+    "isbn": "978-8173711466",
     "tags": [
-      "fiction",
-      "classic",
-      "russian-literature",
-      "philosophy"
+      "non-fiction",
+      "biography",
+      "memoir"
     ],
-    "date_added": "2023-11-21T10:00:00Z",
-    "pages": 796,
-    "rating": 4.6,
-    "color": "#3a2e40",
+    "date_added": null,
+    "pages": 180,
+    "rating": null,
+    "color": "#2f3e46",
     "dimensions": {
-      "width": 138,
-      "height": 212
+      "width": 160,
+      "height": 240
     }
   },
   {
     "id": "book22",
-    "title": "Anna Karenina",
-    "author": "Leo Tolstoy",
-    "isbn": "9780143035008",
+    "title": "Sita & Forest Bandits",
+    "author": null,
+    "isbn": "978-8170119777",
     "tags": [
-      "fiction",
-      "classic",
-      "romance",
-      "russian-literature"
-    ],
-    "date_added": "2023-11-22T10:00:00Z",
-    "pages": 864,
-    "rating": 4.5,
-    "color": "#7d3a52",
-    "dimensions": {
-      "width": 138,
-      "height": 212
-    }
-  },
-  {
-    "id": "book23",
-    "title": "Don Quixote",
-    "author": "Miguel de Cervantes",
-    "isbn": "9780060934347",
-    "tags": [
-      "fiction",
-      "classic",
-      "adventure",
-      "satire"
-    ],
-    "date_added": "2023-11-23T10:00:00Z",
-    "pages": 1023,
-    "rating": 4.3,
-    "color": "#c0762c",
-    "dimensions": {
-      "width": 140,
-      "height": 214
-    }
-  },
-  {
-    "id": "book24",
-    "title": "The Odyssey",
-    "author": "Homer",
-    "isbn": "9780140449112",
-    "tags": [
-      "classic",
-      "adventure",
       "fiction"
     ],
-    "date_added": "2023-11-24T10:00:00Z",
-    "pages": 541,
-    "rating": 4.4,
-    "color": "#4b6e8a",
-    "dimensions": {
-      "width": 132,
-      "height": 206
-    }
-  },
-  {
-    "id": "book25",
-    "title": "Frankenstein",
-    "author": "Mary Shelley",
-    "isbn": "9780486282114",
-    "tags": [
-      "classic",
-      "horror",
-      "sci-fi",
-      "gothic"
-    ],
-    "date_added": "2023-11-25T10:00:00Z",
-    "pages": 280,
-    "rating": 4.1,
-    "color": "#2e3b2e",
-    "dimensions": {
-      "width": 128,
-      "height": 198
-    }
-  },
-  {
-    "id": "book26",
-    "title": "Dracula",
-    "author": "Bram Stoker",
-    "isbn": "9780486411095",
-    "tags": [
-      "classic",
-      "horror",
-      "gothic",
-      "fiction"
-    ],
-    "date_added": "2023-11-26T10:00:00Z",
-    "pages": 418,
-    "rating": 4.3,
-    "color": "#3b1f1f",
+    "date_added": null,
+    "pages": 135,
+    "rating": null,
+    "color": "#0f4c5c",
     "dimensions": {
       "width": 130,
       "height": 200
     }
   },
   {
-    "id": "book27",
-    "title": "The Picture of Dorian Gray",
-    "author": "Oscar Wilde",
-    "isbn": "9780486278070",
+    "id": "book23",
+    "title": "Monk Who sold his Ferrari",
+    "author": "Robin Sharma",
+    "isbn": "9780062515674",
     "tags": [
-      "classic",
-      "fiction",
-      "gothic",
-      "philosophy"
+      "fiction"
     ],
-    "date_added": "2023-11-27T10:00:00Z",
-    "pages": 254,
-    "rating": 4.4,
-    "color": "#4a3b5c",
+    "date_added": null,
+    "pages": 322,
+    "rating": null,
+    "color": "#8d6e63",
     "dimensions": {
-      "width": 128,
-      "height": 198
+      "width": 140,
+      "height": 210
     }
   },
   {
-    "id": "book28",
-    "title": "Slaughterhouse-Five",
-    "author": "Kurt Vonnegut",
-    "isbn": "9780385333849",
+    "id": "book24",
+    "title": "Diary of Wimpy Kid (1-7)",
+    "author": "Jeff Kinney",
+    "isbn": null,
     "tags": [
-      "fiction",
-      "sci-fi",
-      "satire",
-      "classic"
+      "children",
+      "humor",
+      "fiction"
     ],
-    "date_added": "2023-11-28T10:00:00Z",
-    "pages": 275,
-    "rating": 4.2,
-    "color": "#3b6e6e",
+    "date_added": null,
+    "pages": 333,
+    "rating": null,
+    "color": "#5d576b",
     "dimensions": {
-      "width": 132,
-      "height": 203
+      "width": 140,
+      "height": 210
     }
   },
   {
-    "id": "book29",
-    "title": "One Hundred Years of Solitude",
-    "author": "Gabriel García Márquez",
-    "isbn": "9780060883287",
+    "id": "book31",
+    "title": "Half Girlfriend",
+    "author": "Chetan Bhagat",
+    "isbn": "9788129135502",
     "tags": [
-      "fiction",
-      "classic",
-      "magical-realism"
+      "fiction"
     ],
-    "date_added": "2023-11-29T10:00:00Z",
-    "pages": 417,
-    "rating": 4.5,
-    "color": "#a1622e",
+    "date_added": null,
+    "pages": 273,
+    "rating": null,
+    "color": "#6a994e",
     "dimensions": {
-      "width": 134,
-      "height": 207
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book32",
+    "title": "The Immortals of Meluha",
+    "author": "Amish Tripathi",
+    "isbn": "9789380658744",
+    "tags": [
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 400,
+    "rating": null,
+    "color": "#c44536",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book33",
+    "title": "The Scion of Ikshvaku",
+    "author": "Amish Tripathi",
+    "isbn": "9789385155200",
+    "tags": [
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 350,
+    "rating": null,
+    "color": "#355c7d",
+    "dimensions": {
+      "width": 140,
+      "height": 210
     }
   },
   {
     "id": "book30",
+    "title": "I Too Had a Love Story",
+    "author": "Ravinder Singh",
+    "isbn": "9780143067110",
+    "tags": [
+      "fiction",
+      "contemporary"
+    ],
+    "date_added": null,
+    "pages": 240,
+    "rating": null,
+    "color": "#6c757d",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book31",
+    "title": "The ABC Murder",
+    "author": "Agatha Christie",
+    "isbn": "9780062073563",
+    "tags": [
+      "mystery",
+      "thriller",
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 256,
+    "rating": null,
+    "color": "#7d2e46",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book32",
+    "title": "Ignited Minds",
+    "author": "A. P. J. Abdul Kalam",
+    "isbn": "9780143424127",
+    "tags": [
+      "non-fiction",
+      "biography",
+      "memoir"
+    ],
+    "date_added": null,
+    "pages": 272,
+    "rating": null,
+    "color": "#3c6e71",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book33",
+    "title": "Chanakya: The Kingmaker and The Philosopher",
+    "author": "Ashwin Sanghi",
+    "isbn": "9789380658973",
+    "tags": [
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 400,
+    "rating": null,
+    "color": "#2f3e46",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book34",
+    "title": "Zero to One",
+    "author": "Peter Thiel",
+    "isbn": "9780804139298",
+    "tags": [
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 342,
+    "rating": null,
+    "color": "#0f4c5c",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book35",
+    "title": "When Only Love Remains",
+    "author": "Durjoy Datta",
+    "isbn": "9780143421379",
+    "tags": [
+      "fiction",
+      "contemporary"
+    ],
+    "date_added": null,
+    "pages": 392,
+    "rating": null,
+    "color": "#8d6e63",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book36",
+    "title": "The Alchemist",
+    "author": "Paulo Coelho",
+    "isbn": "9780061122415",
+    "tags": [
+      "fiction",
+      "contemporary"
+    ],
+    "date_added": null,
+    "pages": 224,
+    "rating": null,
+    "color": "#5d576b",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book37",
+    "title": "Made in Japan",
+    "author": "Akio Morita",
+    "isbn": null,
+    "tags": [
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 288,
+    "rating": null,
+    "color": "#6a994e",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book38",
+    "title": "The Secret of Leadership",
+    "author": "Pranab Mukherjee",
+    "isbn": null,
+    "tags": [
+      "non-fiction",
+      "self-help",
+      "business"
+    ],
+    "date_added": null,
+    "pages": 333,
+    "rating": null,
+    "color": "#c44536",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book39",
+    "title": "Wuthering Heights",
+    "author": "Emily Brontë",
+    "isbn": "9780141439550",
+    "tags": [
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 330,
+    "rating": null,
+    "color": "#355c7d",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book40",
+    "title": "How Google Works",
+    "author": "Eric Schmidt",
+    "isbn": "9781455582327",
+    "tags": [
+      "non-fiction",
+      "self-help",
+      "business"
+    ],
+    "date_added": null,
+    "pages": 528,
+    "rating": null,
+    "color": "#6c757d",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book41",
+    "title": "Can Love Happen Twice",
+    "author": "Ravinder Singh",
+    "isbn": "9780143421362",
+    "tags": [
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 390,
+    "rating": null,
+    "color": "#7d2e46",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book42",
+    "title": "1984",
+    "author": "George Orwell",
+    "isbn": "9780451524935",
+    "tags": [
+      "classic",
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 328,
+    "rating": null,
+    "color": "#3c6e71",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book43",
+    "title": "Anything For you Ma'am",
+    "author": null,
+    "isbn": null,
+    "tags": [
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 333,
+    "rating": null,
+    "color": "#2f3e46",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book44",
+    "title": "The White Tiger",
+    "author": "Aravind Adiga",
+    "isbn": "9781416562603",
+    "tags": [
+      "nature",
+      "adventure",
+      "non-fiction",
+      "classic"
+    ],
+    "date_added": null,
+    "pages": 487,
+    "rating": null,
+    "color": "#0f4c5c",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book45",
+    "title": "Stay Hungry, Stay Foolish",
+    "author": "Rashmi Bansal",
+    "isbn": "9780143103251",
+    "tags": [
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 272,
+    "rating": null,
+    "color": "#8d6e63",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book46",
+    "title": "The Power of your Subconscious mind",
+    "author": "Joseph Murphy",
+    "isbn": "9788192910916",
+    "tags": [
+      "non-fiction",
+      "self-help",
+      "business"
+    ],
+    "date_added": null,
+    "pages": 304,
+    "rating": null,
+    "color": "#5d576b",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book47",
+    "title": "Steve Jobs by WI",
+    "author": "Walter Isaacson",
+    "isbn": "9781451648539",
+    "tags": [
+      "non-fiction",
+      "biography",
+      "memoir"
+    ],
+    "date_added": null,
+    "pages": 571,
+    "rating": null,
+    "color": "#6a994e",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book48",
+    "title": "The Catcher in the Rye",
+    "author": "J. D. Salinger",
+    "isbn": "9780316769488",
+    "tags": [
+      "classic",
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 216,
+    "rating": null,
+    "color": "#c44536",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book49",
+    "title": "The Man-Eating Leopard of Rudraprayag",
+    "author": "Jim Corbett",
+    "isbn": "9788171674053",
+    "tags": [
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 155,
+    "rating": null,
+    "color": "#355c7d",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book50",
+    "title": "Nausea",
+    "author": "Jean-Paul Sartre",
+    "isbn": "9780679733737",
+    "tags": [
+      "classic",
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 450,
+    "rating": null,
+    "color": "#6c757d",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book51",
+    "title": "The Magic of Thinking Big",
+    "author": "David J. Schwartz",
+    "isbn": "9780671646783",
+    "tags": [
+      "non-fiction",
+      "self-help",
+      "business"
+    ],
+    "date_added": null,
+    "pages": 279,
+    "rating": null,
+    "color": "#7d2e46",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book52",
+    "title": "Turning Points",
+    "author": "A. P. J. Abdul Kalam",
+    "isbn": "9780670083794",
+    "tags": [
+      "non-fiction",
+      "biography",
+      "memoir"
+    ],
+    "date_added": null,
+    "pages": 360,
+    "rating": null,
+    "color": "#3c6e71",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book53",
+    "title": "The Promise",
+    "author": null,
+    "isbn": null,
+    "tags": [
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 333,
+    "rating": null,
+    "color": "#2f3e46",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book54",
+    "title": "Return to Almora",
+    "author": null,
+    "isbn": null,
+    "tags": [
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 333,
+    "rating": null,
+    "color": "#0f4c5c",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book55",
+    "title": "Morning, Noon and Night",
+    "author": null,
+    "isbn": null,
+    "tags": [
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 333,
+    "rating": null,
+    "color": "#8d6e63",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book56",
+    "title": "Tuesdays with Morrie",
+    "author": "Mitch Albom",
+    "isbn": "9780767905923",
+    "tags": [
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 192,
+    "rating": null,
+    "color": "#5d576b",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book57",
+    "title": "Modern India-NCERT",
+    "author": null,
+    "isbn": null,
+    "tags": [
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 333,
+    "rating": null,
+    "color": "#6a994e",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book58",
+    "title": "Autobiography of a Yogi",
+    "author": "Paramahansa Yogananda",
+    "isbn": "9780553208845",
+    "tags": [
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 498,
+    "rating": null,
+    "color": "#c44536",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book59",
+    "title": "Waiting For a Visa",
+    "author": "B. R. Ambedkar",
+    "isbn": "9780670081264",
+    "tags": [
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 252,
+    "rating": null,
+    "color": "#355c7d",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book60",
+    "title": "Mai Nastik Kyu Hu",
+    "author": null,
+    "isbn": null,
+    "tags": [
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 333,
+    "rating": null,
+    "color": "#6c757d",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book61",
+    "title": "Siddhartha-Hesse",
+    "author": "Hermann Hesse",
+    "isbn": "9780553208845",
+    "tags": [
+      "classic",
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 498,
+    "rating": null,
+    "color": "#7d2e46",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book62",
+    "title": "Dark Horse-Mrinal",
+    "author": null,
+    "isbn": null,
+    "tags": [
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 333,
+    "rating": null,
+    "color": "#3c6e71",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book63",
+    "title": "Animal Farm",
+    "author": "George Orwell",
+    "isbn": "9780451526342",
+    "tags": [
+      "classic",
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 118,
+    "rating": null,
+    "color": "#2f3e46",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book64",
+    "title": "The Adventures of Sherlock Holmes",
+    "author": "Arthur Conan Doyle",
+    "isbn": "9780486474915",
+    "tags": [
+      "mystery",
+      "thriller",
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 560,
+    "rating": null,
+    "color": "#0f4c5c",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book65",
+    "title": "The High Performance Entrepreneur",
+    "author": "Subroto Bagchi",
+    "isbn": null,
+    "tags": [
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 256,
+    "rating": null,
+    "color": "#8d6e63",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book66",
+    "title": "You are the Best Wife",
+    "author": null,
+    "isbn": null,
+    "tags": [
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 333,
+    "rating": null,
+    "color": "#5d576b",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book67",
+    "title": "The Richest Man In Babylon",
+    "author": "George S. Clason",
+    "isbn": null,
+    "tags": [
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 230,
+    "rating": null,
+    "color": "#6a994e",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book68",
+    "title": "A Girl to Remember",
+    "author": null,
+    "isbn": null,
+    "tags": [
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 333,
+    "rating": null,
+    "color": "#c44536",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book69",
+    "title": "Murder on the Orient Express",
+    "author": "Agatha Christie",
+    "isbn": null,
+    "tags": [
+      "mystery",
+      "thriller",
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 256,
+    "rating": null,
+    "color": "#355c7d",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book70",
+    "title": "The Memoirs of Sherlock Holmes",
+    "author": null,
+    "isbn": null,
+    "tags": [
+      "mystery",
+      "thriller",
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 320,
+    "rating": null,
+    "color": "#6c757d",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book71",
+    "title": "The Return of Sherlock Holmes",
+    "author": null,
+    "isbn": null,
+    "tags": [
+      "mystery",
+      "thriller",
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 328,
+    "rating": null,
+    "color": "#7d2e46",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book72",
+    "title": "The Sign of Four",
+    "author": null,
+    "isbn": null,
+    "tags": [
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 128,
+    "rating": null,
+    "color": "#3c6e71",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book73",
+    "title": "His Last Bow",
+    "author": null,
+    "isbn": null,
+    "tags": [
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 176,
+    "rating": null,
+    "color": "#2f3e46",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book74",
+    "title": "The Casebook of Sherlock Holmes",
+    "author": null,
+    "isbn": null,
+    "tags": [
+      "mystery",
+      "thriller",
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 384,
+    "rating": null,
+    "color": "#0f4c5c",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book75",
+    "title": "Study in Scarlet",
+    "author": null,
+    "isbn": null,
+    "tags": [
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 152,
+    "rating": null,
+    "color": "#8d6e63",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book76",
+    "title": "The Valley of Fear",
+    "author": null,
+    "isbn": null,
+    "tags": [
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 208,
+    "rating": null,
+    "color": "#5d576b",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book77",
+    "title": "Hooked-How to form Habit forming products",
+    "author": null,
+    "isbn": null,
+    "tags": [
+      "non-fiction",
+      "self-help",
+      "business"
+    ],
+    "date_added": null,
+    "pages": 254,
+    "rating": null,
+    "color": "#6a994e",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book78",
+    "title": "The Ride of LifeTime - Disney",
+    "author": null,
+    "isbn": null,
+    "tags": [
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 333,
+    "rating": null,
+    "color": "#c44536",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book79",
+    "title": "Everything I Never Told You",
+    "author": null,
+    "isbn": null,
+    "tags": [
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 322,
+    "rating": null,
+    "color": "#355c7d",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book80",
+    "title": "No Rules Rules-Netflix",
+    "author": null,
+    "isbn": null,
+    "tags": [
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 333,
+    "rating": null,
+    "color": "#6c757d",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book81",
+    "title": "Atomic Habits",
+    "author": "James Clear",
+    "isbn": "9780735211292",
+    "tags": [
+      "non-fiction",
+      "self-help",
+      "business"
+    ],
+    "date_added": null,
+    "pages": 320,
+    "rating": null,
+    "color": "#7d2e46",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book82",
+    "title": "A Man Called Ove",
+    "author": "Fredrik Backman",
+    "isbn": null,
+    "tags": [
+      "fiction",
+      "contemporary"
+    ],
+    "date_added": null,
+    "pages": 377,
+    "rating": null,
+    "color": "#3c6e71",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book83",
+    "title": "Doesn't Hurt To Ask",
+    "author": null,
+    "isbn": null,
+    "tags": [
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 333,
+    "rating": null,
+    "color": "#2f3e46",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book84",
+    "title": "Pride and Prejudice",
+    "author": "Jane Austen",
+    "isbn": "9780141439512",
+    "tags": [
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 279,
+    "rating": null,
+    "color": "#0f4c5c",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book85",
     "title": "The Kite Runner",
     "author": "Khaled Hosseini",
     "isbn": "9781594631931",
     "tags": [
       "fiction",
-      "historical",
-      "drama"
+      "contemporary"
     ],
-    "date_added": "2023-11-30T10:00:00Z",
-    "pages": 371,
-    "rating": 4.6,
-    "color": "#6e4b2e",
-    "dimensions": {
-      "width": 134,
-      "height": 208
-    }
-  },
-  {
-    "id": "book31",
-    "title": "Life of Pi",
-    "author": "Yann Martel",
-    "isbn": "9780156027328",
-    "tags": [
-      "fiction",
-      "adventure",
-      "philosophy"
-    ],
-    "date_added": "2023-12-01T10:00:00Z",
-    "pages": 319,
-    "rating": 4.0,
-    "color": "#2e7a8a",
-    "dimensions": {
-      "width": 134,
-      "height": 208
-    }
-  },
-  {
-    "id": "book32",
-    "title": "The Book Thief",
-    "author": "Markus Zusak",
-    "isbn": "9780375842207",
-    "tags": [
-      "fiction",
-      "historical",
-      "young-adult",
-      "war"
-    ],
-    "date_added": "2023-12-02T10:00:00Z",
-    "pages": 552,
-    "rating": 4.7,
-    "color": "#4b4b52",
-    "dimensions": {
-      "width": 134,
-      "height": 208
-    }
-  },
-  {
-    "id": "book33",
-    "title": "The Road",
-    "author": "Cormac McCarthy",
-    "isbn": "9780307387899",
-    "tags": [
-      "fiction",
-      "dystopian",
-      "sci-fi"
-    ],
-    "date_added": "2023-12-03T10:00:00Z",
-    "pages": 287,
-    "rating": 4.2,
-    "color": "#3b3b3b",
-    "dimensions": {
-      "width": 130,
-      "height": 204
-    }
-  },
-  {
-    "id": "book34",
-    "title": "Beloved",
-    "author": "Toni Morrison",
-    "isbn": "9781400033416",
-    "tags": [
-      "fiction",
-      "classic",
-      "historical"
-    ],
-    "date_added": "2023-12-04T10:00:00Z",
+    "date_added": null,
     "pages": 324,
-    "rating": 4.0,
-    "color": "#5c2e3b",
+    "rating": null,
+    "color": "#8d6e63",
     "dimensions": {
-      "width": 132,
-      "height": 205
+      "width": 140,
+      "height": 210
     }
   },
   {
-    "id": "book35",
-    "title": "The Handmaid's Tale",
-    "author": "Margaret Atwood",
-    "isbn": "9780385490818",
+    "id": "book86",
+    "title": "Do Bailon Ki Katha[Hindi]",
+    "author": null,
+    "isbn": null,
     "tags": [
-      "dystopian",
-      "fiction",
-      "sci-fi"
-    ],
-    "date_added": "2023-12-05T10:00:00Z",
-    "pages": 311,
-    "rating": 4.3,
-    "color": "#7a1f2e",
-    "dimensions": {
-      "width": 132,
-      "height": 206
-    }
-  },
-  {
-    "id": "book36",
-    "title": "Never Let Me Go",
-    "author": "Kazuo Ishiguro",
-    "isbn": "9781400078776",
-    "tags": [
-      "fiction",
-      "sci-fi",
-      "drama"
-    ],
-    "date_added": "2023-12-06T10:00:00Z",
-    "pages": 288,
-    "rating": 4.1,
-    "color": "#4b5c6e",
-    "dimensions": {
-      "width": 132,
-      "height": 205
-    }
-  },
-  {
-    "id": "book37",
-    "title": "The Curious Incident of the Dog in the Night-Time",
-    "author": "Mark Haddon",
-    "isbn": "9781400032716",
-    "tags": [
-      "fiction",
-      "mystery",
-      "drama"
-    ],
-    "date_added": "2023-12-07T10:00:00Z",
-    "pages": 226,
-    "rating": 3.9,
-    "color": "#c0a12c",
-    "dimensions": {
-      "width": 132,
-      "height": 204
-    }
-  },
-  {
-    "id": "book38",
-    "title": "Gone Girl",
-    "author": "Gillian Flynn",
-    "isbn": "9780307588364",
-    "tags": [
-      "thriller",
-      "mystery",
       "fiction"
     ],
-    "date_added": "2023-12-08T10:00:00Z",
-    "pages": 422,
-    "rating": 4.1,
-    "color": "#2e2e2e",
+    "date_added": null,
+    "pages": 140,
+    "rating": null,
+    "color": "#5d576b",
     "dimensions": {
-      "width": 132,
-      "height": 206
+      "width": 140,
+      "height": 210
     }
   },
   {
-    "id": "book39",
-    "title": "The Girl with the Dragon Tattoo",
-    "author": "Stieg Larsson",
-    "isbn": "9780307454546",
+    "id": "book87",
+    "title": "A Thousand Splendid Suns",
+    "author": "Khaled Hosseini",
+    "isbn": "9781594489501",
     "tags": [
-      "thriller",
-      "mystery",
+      "fiction",
+      "contemporary"
+    ],
+    "date_added": null,
+    "pages": 491,
+    "rating": null,
+    "color": "#6a994e",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book88",
+    "title": "Kafan[Hindi]",
+    "author": null,
+    "isbn": null,
+    "tags": [
       "fiction"
     ],
-    "date_added": "2023-12-09T10:00:00Z",
-    "pages": 672,
-    "rating": 4.2,
-    "color": "#1f2e3b",
+    "date_added": null,
+    "pages": 88,
+    "rating": null,
+    "color": "#c44536",
     "dimensions": {
-      "width": 134,
-      "height": 208
+      "width": 140,
+      "height": 210
     }
   },
   {
-    "id": "book40",
-    "title": "The Da Vinci Code",
-    "author": "Dan Brown",
-    "isbn": "9780307474278",
+    "id": "book89",
+    "title": "Pratigya[Hindi]",
+    "author": null,
+    "isbn": null,
     "tags": [
-      "thriller",
-      "mystery",
-      "fiction",
-      "adventure"
+      "fiction"
     ],
-    "date_added": "2023-12-10T10:00:00Z",
-    "pages": 489,
-    "rating": 3.9,
-    "color": "#6e1f1f",
+    "date_added": null,
+    "pages": 96,
+    "rating": null,
+    "color": "#355c7d",
     "dimensions": {
-      "width": 132,
-      "height": 206
+      "width": 140,
+      "height": 210
     }
   },
   {
-    "id": "book41",
-    "title": "Angels & Demons",
-    "author": "Dan Brown",
-    "isbn": "9781416524793",
+    "id": "book90",
+    "title": "And the Mountains Echoed",
+    "author": "Khaled Hosseini",
+    "isbn": null,
     "tags": [
-      "thriller",
-      "mystery",
-      "fiction",
-      "adventure"
+      "fiction"
     ],
-    "date_added": "2023-12-11T10:00:00Z",
-    "pages": 736,
-    "rating": 3.9,
-    "color": "#5c1f2e",
+    "date_added": null,
+    "pages": 389,
+    "rating": null,
+    "color": "#6c757d",
     "dimensions": {
-      "width": 132,
-      "height": 206
+      "width": 140,
+      "height": 210
     }
   },
   {
-    "id": "book42",
-    "title": "The Hunger Games",
-    "author": "Suzanne Collins",
-    "isbn": "9780439023528",
+    "id": "book91",
+    "title": "Idgaah[Hindi]",
+    "author": null,
+    "isbn": null,
     "tags": [
-      "dystopian",
-      "fiction",
-      "young-adult",
-      "adventure"
+      "fiction"
     ],
-    "date_added": "2023-12-12T10:00:00Z",
-    "pages": 374,
-    "rating": 4.7,
-    "color": "#2e4b2e",
+    "date_added": null,
+    "pages": 80,
+    "rating": null,
+    "color": "#7d2e46",
     "dimensions": {
-      "width": 134,
-      "height": 208
+      "width": 140,
+      "height": 210
     }
   },
   {
-    "id": "book43",
-    "title": "Divergent",
-    "author": "Veronica Roth",
-    "isbn": "9780062024039",
+    "id": "book92",
+    "title": "Ikigai",
+    "author": "Héctor García",
+    "isbn": "9780143130720",
     "tags": [
-      "dystopian",
-      "fiction",
-      "young-adult",
-      "adventure"
+      "fiction"
     ],
-    "date_added": "2023-12-13T10:00:00Z",
-    "pages": 487,
-    "rating": 4.3,
-    "color": "#3b3b6e",
+    "date_added": null,
+    "pages": 368,
+    "rating": null,
+    "color": "#3c6e71",
     "dimensions": {
-      "width": 134,
-      "height": 208
+      "width": 140,
+      "height": 210
     }
   },
   {
-    "id": "book44",
+    "id": "book93",
+    "title": "Namaha: Stories from the Land of Gods",
+    "author": null,
+    "isbn": null,
+    "tags": [
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 256,
+    "rating": null,
+    "color": "#2f3e46",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book94",
+    "title": "Thinking, Fast and Slow",
+    "author": "Daniel Kahneman",
+    "isbn": "9780374533557",
+    "tags": [
+      "non-fiction",
+      "self-help",
+      "business"
+    ],
+    "date_added": null,
+    "pages": 499,
+    "rating": null,
+    "color": "#0f4c5c",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book95",
+    "title": "Vardaan - Munshi Premchand",
+    "author": null,
+    "isbn": null,
+    "tags": [
+      "classic",
+      "indian-literature",
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 120,
+    "rating": null,
+    "color": "#8d6e63",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book96",
+    "title": "Veronika Decides to Die",
+    "author": "Paulo Coelho",
+    "isbn": null,
+    "tags": [
+      "classic",
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 240,
+    "rating": null,
+    "color": "#5d576b",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book97",
+    "title": "The HitcherHiker's Guide to the Galaxy",
+    "author": "Douglas Adams",
+    "isbn": null,
+    "tags": [
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 193,
+    "rating": null,
+    "color": "#6a994e",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book98",
+    "title": "The Restaurant at the End of the Universe",
+    "author": "Douglas Adams",
+    "isbn": null,
+    "tags": [
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 250,
+    "rating": null,
+    "color": "#c44536",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book99",
+    "title": "Life, The Universe and Everything",
+    "author": "Douglas Adams",
+    "isbn": null,
+    "tags": [
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 227,
+    "rating": null,
+    "color": "#355c7d",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book100",
+    "title": "So Long and Thanks for All the Fish",
+    "author": "Douglas Adams",
+    "isbn": null,
+    "tags": [
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 174,
+    "rating": null,
+    "color": "#6c757d",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book101",
+    "title": "Mostly Harmless",
+    "author": "Douglas Adams",
+    "isbn": null,
+    "tags": [
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 277,
+    "rating": null,
+    "color": "#7d2e46",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book102",
     "title": "The Fault in Our Stars",
     "author": "John Green",
     "isbn": "9780525478812",
     "tags": [
-      "fiction",
-      "romance",
-      "young-adult",
-      "drama"
+      "fiction"
     ],
-    "date_added": "2023-12-14T10:00:00Z",
+    "date_added": null,
     "pages": 313,
-    "rating": 4.5,
-    "color": "#2e6e5c",
+    "rating": null,
+    "color": "#3c6e71",
     "dimensions": {
-      "width": 132,
-      "height": 205
+      "width": 140,
+      "height": 210
     }
   },
   {
-    "id": "book45",
-    "title": "Twilight",
-    "author": "Stephenie Meyer",
-    "isbn": "9780316015844",
+    "id": "book103",
+    "title": "Never Split the Difference",
+    "author": "Chris Voss",
+    "isbn": null,
     "tags": [
-      "romance",
-      "fantasy",
-      "young-adult"
+      "fiction"
     ],
-    "date_added": "2023-12-15T10:00:00Z",
-    "pages": 498,
-    "rating": 3.7,
-    "color": "#2e1f2e",
+    "date_added": null,
+    "pages": 416,
+    "rating": null,
+    "color": "#2f3e46",
     "dimensions": {
-      "width": 132,
-      "height": 206
+      "width": 140,
+      "height": 210
     }
   },
   {
-    "id": "book46",
-    "title": "Percy Jackson and the Lightning Thief",
-    "author": "Rick Riordan",
-    "isbn": "9780786838653",
+    "id": "book104",
+    "title": "How to Win Friends and Influence People",
+    "author": "Dale Carnegie",
+    "isbn": "9780671027032",
     "tags": [
-      "fantasy",
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 320,
+    "rating": null,
+    "color": "#0f4c5c",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book105",
+    "title": "Sangram[Hindi]",
+    "author": null,
+    "isbn": null,
+    "tags": [
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 333,
+    "rating": null,
+    "color": "#8d6e63",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book106",
+    "title": "$100 Startup",
+    "author": "Chris Guillebeau",
+    "isbn": null,
+    "tags": [
+      "non-fiction",
+      "self-help",
+      "business"
+    ],
+    "date_added": null,
+    "pages": 297,
+    "rating": null,
+    "color": "#5d576b",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book107",
+    "title": "Tomb of Sand",
+    "author": "Geetanjali Shree",
+    "isbn": null,
+    "tags": [
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 360,
+    "rating": null,
+    "color": "#6a994e",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book108",
+    "title": "Immortals of Meluha (again)",
+    "author": null,
+    "isbn": null,
+    "tags": [
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 400,
+    "rating": null,
+    "color": "#c44536",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book109",
+    "title": "The Secret of Nagas",
+    "author": null,
+    "isbn": null,
+    "tags": [
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 340,
+    "rating": null,
+    "color": "#355c7d",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book110",
+    "title": "The Oath of Vayuputras",
+    "author": null,
+    "isbn": null,
+    "tags": [
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 400,
+    "rating": null,
+    "color": "#6c757d",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book111",
+    "title": "The Lean Startup",
+    "author": "Eric Ries",
+    "isbn": "9780307887894",
+    "tags": [
+      "non-fiction",
+      "self-help",
+      "business"
+    ],
+    "date_added": null,
+    "pages": 345,
+    "rating": null,
+    "color": "#7d2e46",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book112",
+    "title": "Man's Search for Meaning",
+    "author": "Viktor E. Frankl",
+    "isbn": "9780807014295",
+    "tags": [
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 165,
+    "rating": null,
+    "color": "#3c6e71",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book113",
+    "title": "Sevasadan[Hindi]",
+    "author": null,
+    "isbn": null,
+    "tags": [
+      "classic",
+      "indian-literature",
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 88,
+    "rating": null,
+    "color": "#2f3e46",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book114",
+    "title": "The Psychology of Money",
+    "author": "Morgan Housel",
+    "isbn": "9780857197689",
+    "tags": [
+      "non-fiction",
+      "self-help",
+      "business"
+    ],
+    "date_added": null,
+    "pages": 352,
+    "rating": null,
+    "color": "#0f4c5c",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book115",
+    "title": "Karmabhoomi[Hindi]",
+    "author": null,
+    "isbn": null,
+    "tags": [
+      "classic",
+      "indian-literature",
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 190,
+    "rating": null,
+    "color": "#8d6e63",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book116",
+    "title": "This is Marketing",
+    "author": "Seth Godin",
+    "isbn": null,
+    "tags": [
+      "non-fiction",
+      "self-help",
+      "business"
+    ],
+    "date_added": null,
+    "pages": 395,
+    "rating": null,
+    "color": "#5d576b",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book117",
+    "title": "Scion of Ikshvaku(again)",
+    "author": null,
+    "isbn": null,
+    "tags": [
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 350,
+    "rating": null,
+    "color": "#6a994e",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book118",
+    "title": "Warrior of Mithila",
+    "author": null,
+    "isbn": null,
+    "tags": [
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 370,
+    "rating": null,
+    "color": "#c44536",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book119",
+    "title": "Enemy of Aryavarta",
+    "author": null,
+    "isbn": null,
+    "tags": [
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 380,
+    "rating": null,
+    "color": "#355c7d",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book120",
+    "title": "War of Lanka",
+    "author": null,
+    "isbn": null,
+    "tags": [
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 400,
+    "rating": null,
+    "color": "#6c757d",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book121",
+    "title": "The Winner Stands Alone",
+    "author": null,
+    "isbn": null,
+    "tags": [
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 392,
+    "rating": null,
+    "color": "#7d2e46",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book122",
+    "title": "Metamorphosis",
+    "author": "Franz Kafka",
+    "isbn": null,
+    "tags": [
+      "classic",
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 98,
+    "rating": null,
+    "color": "#3c6e71",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book123",
+    "title": "The Almanack of Naval Ravikant",
+    "author": "Eric Jorgenson",
+    "isbn": "9781544514212",
+    "tags": [
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 262,
+    "rating": null,
+    "color": "#2f3e46",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book124",
+    "title": "Gaban[Hindi]",
+    "author": "Munshi Premchand",
+    "isbn": null,
+    "tags": [
+      "classic",
+      "indian-literature",
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 160,
+    "rating": null,
+    "color": "#0f4c5c",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book125",
+    "title": "Sell Like Crazy",
+    "author": "Sabri Suby",
+    "isbn": null,
+    "tags": [
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 336,
+    "rating": null,
+    "color": "#8d6e63",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book126",
+    "title": "Surrounded by Idiots",
+    "author": "Thomas Erikson",
+    "isbn": null,
+    "tags": [
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 368,
+    "rating": null,
+    "color": "#5d576b",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book127",
+    "title": "The Last Queen",
+    "author": "Chitra Banerjee Divakaruni",
+    "isbn": null,
+    "tags": [
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 448,
+    "rating": null,
+    "color": "#6a994e",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book128",
+    "title": "The Lost Symbol",
+    "author": "Dan Brown",
+    "isbn": null,
+    "tags": [
+      "mystery",
+      "thriller",
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 601,
+    "rating": null,
+    "color": "#c44536",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book129",
+    "title": "Nirmala[Hindi]",
+    "author": null,
+    "isbn": null,
+    "tags": [
+      "classic",
+      "indian-literature",
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 175,
+    "rating": null,
+    "color": "#355c7d",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book130",
+    "title": "India's Most Fearless-3",
+    "author": null,
+    "isbn": null,
+    "tags": [
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 400,
+    "rating": null,
+    "color": "#6c757d",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book131",
+    "title": "Shoe Dog",
+    "author": "Phil Knight",
+    "isbn": "9781501128035",
+    "tags": [
+      "non-fiction",
+      "biography",
+      "memoir"
+    ],
+    "date_added": null,
+    "pages": 399,
+    "rating": null,
+    "color": "#7d2e46",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book132",
+    "title": "Anxious People",
+    "author": "Fredrik Backman",
+    "isbn": null,
+    "tags": [
       "fiction",
-      "young-adult",
-      "adventure"
+      "contemporary"
     ],
-    "date_added": "2023-12-16T10:00:00Z",
-    "pages": 377,
-    "rating": 4.6,
-    "color": "#2e6e8a",
+    "date_added": null,
+    "pages": 520,
+    "rating": null,
+    "color": "#3c6e71",
     "dimensions": {
-      "width": 134,
-      "height": 207
+      "width": 140,
+      "height": 210
     }
   },
   {
-    "id": "book47",
-    "title": "The Giver",
-    "author": "Lois Lowry",
-    "isbn": "9780544336261",
+    "id": "book133",
+    "title": "The Silent Patient",
+    "author": "Alex Michaelides",
+    "isbn": null,
     "tags": [
-      "dystopian",
-      "fiction",
-      "young-adult"
+      "mystery",
+      "thriller",
+      "fiction"
     ],
-    "date_added": "2023-12-17T10:00:00Z",
-    "pages": 240,
-    "rating": 4.1,
-    "color": "#6e6e6e",
+    "date_added": null,
+    "pages": 336,
+    "rating": null,
+    "color": "#2f3e46",
     "dimensions": {
-      "width": 128,
-      "height": 200
+      "width": 140,
+      "height": 210
     }
   },
   {
-    "id": "book48",
-    "title": "Charlotte's Web",
-    "author": "E.B. White",
-    "isbn": "9780064400558",
+    "id": "book134",
+    "title": "To Kill a Mockingbird",
+    "author": "Harper Lee",
+    "isbn": "9780060935467",
+    "tags": [
+      "classic",
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 324,
+    "rating": null,
+    "color": "#0f4c5c",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book135",
+    "title": "The Seven Moons of Mali Almeida",
+    "author": "Shehan Karunatilaka",
+    "isbn": "9781982182933",
+    "tags": [
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 434,
+    "rating": null,
+    "color": "#8d6e63",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book136",
+    "title": "The Subtle Art of Not Giving a Fuck",
+    "author": "Mark Manson",
+    "isbn": "9780062457714",
+    "tags": [
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 204,
+    "rating": null,
+    "color": "#5d576b",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book137",
+    "title": "Brida",
+    "author": "Paulo Coelho",
+    "isbn": "9780061852633",
+    "tags": [
+      "classic",
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 210,
+    "rating": null,
+    "color": "#6a994e",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book138",
+    "title": "Open Eyed Meditations",
+    "author": null,
+    "isbn": null,
+    "tags": [
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 333,
+    "rating": null,
+    "color": "#c44536",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book139",
+    "title": "Introduction to Indus Valley Civilization",
+    "author": null,
+    "isbn": null,
+    "tags": [
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 333,
+    "rating": null,
+    "color": "#355c7d",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book140",
+    "title": "What it Takes to be Free",
+    "author": null,
+    "isbn": null,
+    "tags": [
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 333,
+    "rating": null,
+    "color": "#6c757d",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book141",
+    "title": "As a Man Thinketh",
+    "author": "James Allen",
+    "isbn": "9780486270660",
+    "tags": [
+      "non-fiction",
+      "self-help",
+      "business"
+    ],
+    "date_added": null,
+    "pages": 50,
+    "rating": null,
+    "color": "#7d2e46",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book142",
+    "title": "The Path to Prosperity",
+    "author": "James Allen",
+    "isbn": "9780486270660",
+    "tags": [
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 50,
+    "rating": null,
+    "color": "#3c6e71",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book143",
+    "title": "The Race of My Life",
+    "author": "M. S. Dhoni",
+    "isbn": "9788184004386",
+    "tags": [
+      "non-fiction",
+      "biography",
+      "memoir"
+    ],
+    "date_added": null,
+    "pages": 352,
+    "rating": null,
+    "color": "#2f3e46",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book144",
+    "title": "Diary of a Wimpy Kid (17) No Brainer",
+    "author": "Jeff Kinney",
+    "isbn": null,
     "tags": [
       "children",
-      "fiction",
-      "classic"
+      "humor",
+      "fiction"
     ],
-    "date_added": "2023-12-18T10:00:00Z",
+    "date_added": null,
+    "pages": 217,
+    "rating": null,
+    "color": "#0f4c5c",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book145",
+    "title": "Orbital",
+    "author": "Samantha Harvey",
+    "isbn": null,
+    "tags": [
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 280,
+    "rating": null,
+    "color": "#8d6e63",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book146",
+    "title": "RAW: A History of India's Covert Operations",
+    "author": "Yatish Yadav",
+    "isbn": null,
+    "tags": [
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 350,
+    "rating": null,
+    "color": "#5d576b",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book147",
+    "title": "My Gita",
+    "author": "Devdutt Pattanaik",
+    "isbn": "9780143427524",
+    "tags": [
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 448,
+    "rating": null,
+    "color": "#6a994e",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book148",
+    "title": "How to Become People Magnet",
+    "author": null,
+    "isbn": null,
+    "tags": [
+      "non-fiction",
+      "self-help",
+      "business"
+    ],
+    "date_added": null,
+    "pages": 333,
+    "rating": null,
+    "color": "#c44536",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book149",
+    "title": "Diary of a Wimpy Kid - Hard Luck",
+    "author": "Jeff Kinney",
+    "isbn": null,
+    "tags": [
+      "children",
+      "humor",
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 217,
+    "rating": null,
+    "color": "#355c7d",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book150",
+    "title": "Inside Delta Force",
+    "author": "Eric Haney",
+    "isbn": null,
+    "tags": [
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 480,
+    "rating": null,
+    "color": "#6c757d",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book151",
+    "title": "Diary of a Wimpy Kid - The Long Haul",
+    "author": "Jeff Kinney",
+    "isbn": null,
+    "tags": [
+      "children",
+      "humor",
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 217,
+    "rating": null,
+    "color": "#7d2e46",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book152",
+    "title": "Diary of a Wimpy Kid - Old School",
+    "author": "Jeff Kinney",
+    "isbn": null,
+    "tags": [
+      "children",
+      "humor",
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 217,
+    "rating": null,
+    "color": "#3c6e71",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book153",
+    "title": "Diary of a Wimpy Kid - Double Down",
+    "author": "Jeff Kinney",
+    "isbn": null,
+    "tags": [
+      "children",
+      "humor",
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 217,
+    "rating": null,
+    "color": "#2f3e46",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book154",
+    "title": "Fantastic Mr. Fox",
+    "author": "Roald Dahl",
+    "isbn": null,
+    "tags": [
+      "children",
+      "humor",
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 119,
+    "rating": null,
+    "color": "#0f4c5c",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book155",
+    "title": "Diary of a Wimpy Kid - The Getaway",
+    "author": "Jeff Kinney",
+    "isbn": null,
+    "tags": [
+      "children",
+      "humor",
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 217,
+    "rating": null,
+    "color": "#8d6e63",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book156",
+    "title": "Made in America",
+    "author": "Sam Walton",
+    "isbn": null,
+    "tags": [
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 269,
+    "rating": null,
+    "color": "#5d576b",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book157",
+    "title": "Nationalism - Tagore",
+    "author": "Rabindranath Tagore",
+    "isbn": null,
+    "tags": [
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 100,
+    "rating": null,
+    "color": "#6a994e",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book158",
+    "title": "Godan[Hindi]",
+    "author": "Munshi Premchand",
+    "isbn": null,
+    "tags": [
+      "classic",
+      "indian-literature",
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 170,
+    "rating": null,
+    "color": "#c44536",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book159",
+    "title": "Elon Musk[Vance]",
+    "author": "Ashlee Vance",
+    "isbn": null,
+    "tags": [
+      "non-fiction",
+      "biography",
+      "memoir"
+    ],
+    "date_added": null,
+    "pages": 679,
+    "rating": null,
+    "color": "#355c7d",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book160",
+    "title": "My Life in Full",
+    "author": "Indra Nooyi",
+    "isbn": null,
+    "tags": [
+      "non-fiction",
+      "biography",
+      "memoir"
+    ],
+    "date_added": null,
+    "pages": 544,
+    "rating": null,
+    "color": "#6c757d",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book161",
+    "title": "Can't Hurt Me",
+    "author": "David Goggins",
+    "isbn": null,
+    "tags": [
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 476,
+    "rating": null,
+    "color": "#7d2e46",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book162",
+    "title": "India Grows at Night",
+    "author": "Gurcharan Das",
+    "isbn": null,
+    "tags": [
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 352,
+    "rating": null,
+    "color": "#3c6e71",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book163",
+    "title": "Life in the Uniform",
+    "author": null,
+    "isbn": null,
+    "tags": [
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 333,
+    "rating": null,
+    "color": "#2f3e46",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book164",
+    "title": "Tiger of Drass",
+    "author": "Rachna Bisht Rawat",
+    "isbn": null,
+    "tags": [
+      "nature",
+      "adventure",
+      "non-fiction"
+    ],
+    "date_added": null,
+    "pages": 280,
+    "rating": null,
+    "color": "#0f4c5c",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book165",
+    "title": "White Nights",
+    "author": "Fyodor Dostoevsky",
+    "isbn": null,
+    "tags": [
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 143,
+    "rating": null,
+    "color": "#8d6e63",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book166",
+    "title": "The Hero of Tiger Hill",
+    "author": "Sandeep Unnithan",
+    "isbn": null,
+    "tags": [
+      "nature",
+      "adventure",
+      "non-fiction"
+    ],
+    "date_added": null,
+    "pages": 288,
+    "rating": null,
+    "color": "#5d576b",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book167",
+    "title": "Bad Guys - Mission Unpluckable",
+    "author": "Aaron Blabey",
+    "isbn": null,
+    "tags": [
+      "children",
+      "humor",
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 128,
+    "rating": null,
+    "color": "#6a994e",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book168",
+    "title": "Life's Amazing Secrets",
+    "author": "Gaur Gopal Das",
+    "isbn": null,
+    "tags": [
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 256,
+    "rating": null,
+    "color": "#c44536",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book169",
+    "title": "A Tiger for Malgudi",
+    "author": "R. K. Narayan",
+    "isbn": null,
+    "tags": [
+      "nature",
+      "adventure",
+      "non-fiction"
+    ],
+    "date_added": null,
+    "pages": 150,
+    "rating": null,
+    "color": "#355c7d",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book170",
+    "title": "Man Eaters of Kumaon",
+    "author": "Jim Corbett",
+    "isbn": null,
+    "tags": [
+      "nature",
+      "adventure",
+      "non-fiction"
+    ],
+    "date_added": null,
+    "pages": 256,
+    "rating": null,
+    "color": "#6c757d",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book171",
+    "title": "My India[Corbett]",
+    "author": "Jim Corbett",
+    "isbn": null,
+    "tags": [
+      "nature",
+      "adventure",
+      "non-fiction"
+    ],
+    "date_added": null,
+    "pages": 160,
+    "rating": null,
+    "color": "#7d2e46",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book172",
+    "title": "The Temple Tiger",
+    "author": "Jim Corbett",
+    "isbn": null,
+    "tags": [
+      "nature",
+      "adventure",
+      "non-fiction"
+    ],
+    "date_added": null,
+    "pages": 128,
+    "rating": null,
+    "color": "#3c6e71",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book173",
+    "title": "TreeTops[Corbett]",
+    "author": "Jim Corbett",
+    "isbn": null,
+    "tags": [
+      "nature",
+      "adventure",
+      "non-fiction"
+    ],
+    "date_added": null,
+    "pages": 176,
+    "rating": null,
+    "color": "#2f3e46",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book174",
+    "title": "India's Most Fearless 2",
+    "author": null,
+    "isbn": null,
+    "tags": [
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 400,
+    "rating": null,
+    "color": "#0f4c5c",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book175",
+    "title": "Jungle Lore",
+    "author": "Jim Corbett",
+    "isbn": null,
+    "tags": [
+      "nature",
+      "adventure",
+      "non-fiction"
+    ],
+    "date_added": null,
     "pages": 184,
-    "rating": 4.8,
-    "color": "#3b8a5c",
+    "rating": null,
+    "color": "#8d6e63",
     "dimensions": {
-      "width": 124,
-      "height": 192
+      "width": 140,
+      "height": 210
     }
   },
   {
-    "id": "book49",
-    "title": "Matilda",
-    "author": "Roald Dahl",
-    "isbn": "9780142410370",
+    "id": "book176",
+    "title": "The Girl on the Train",
+    "author": "Paula Hawkins",
+    "isbn": null,
     "tags": [
-      "children",
-      "fiction",
-      "fantasy"
+      "mystery",
+      "thriller",
+      "fiction"
     ],
-    "date_added": "2023-12-19T10:00:00Z",
-    "pages": 240,
-    "rating": 4.7,
-    "color": "#c02c4b",
+    "date_added": null,
+    "pages": 395,
+    "rating": null,
+    "color": "#5d576b",
     "dimensions": {
-      "width": 124,
-      "height": 192
+      "width": 140,
+      "height": 210
     }
   },
   {
-    "id": "book50",
-    "title": "James and the Giant Peach",
-    "author": "Roald Dahl",
-    "isbn": "9780142410363",
+    "id": "book177",
+    "title": "Ego is the enemy",
+    "author": "Ryan Holiday",
+    "isbn": null,
+    "tags": [
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 304,
+    "rating": null,
+    "color": "#6a994e",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book178",
+    "title": "The Mountain is You",
+    "author": "Brianna Wiest",
+    "isbn": null,
+    "tags": [
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 224,
+    "rating": null,
+    "color": "#c44536",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book179",
+    "title": "Gunaho ka Devta",
+    "author": "Dharamvir Bharati",
+    "isbn": null,
+    "tags": [
+      "classic",
+      "indian-literature",
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 192,
+    "rating": null,
+    "color": "#355c7d",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book180",
+    "title": "The Denial of Death",
+    "author": "Ernest Becker",
+    "isbn": null,
+    "tags": [
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 541,
+    "rating": null,
+    "color": "#6c757d",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book181",
+    "title": "Diary of a Wimpy Kid:The Meltdown",
+    "author": "Jeff Kinney",
+    "isbn": null,
     "tags": [
       "children",
-      "fiction",
-      "fantasy",
-      "adventure"
+      "humor",
+      "fiction"
     ],
-    "date_added": "2023-12-20T10:00:00Z",
-    "pages": 146,
-    "rating": 4.5,
-    "color": "#2c8a6e",
+    "date_added": null,
+    "pages": 217,
+    "rating": null,
+    "color": "#7d2e46",
     "dimensions": {
-      "width": 122,
-      "height": 190
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book182",
+    "title": "Diary of a Wimpy Kid: Wrecking Ball",
+    "author": "Jeff Kinney",
+    "isbn": null,
+    "tags": [
+      "children",
+      "humor",
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 217,
+    "rating": null,
+    "color": "#3c6e71",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book183",
+    "title": "Rashmirathi",
+    "author": "Ramdhari Singh Dinkar",
+    "isbn": null,
+    "tags": [
+      "classic",
+      "indian-literature",
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 144,
+    "rating": null,
+    "color": "#2f3e46",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book184",
+    "title": "Open Secrets: India's Intelligence Unveiled",
+    "author": null,
+    "isbn": null,
+    "tags": [
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 320,
+    "rating": null,
+    "color": "#0f4c5c",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book185",
+    "title": "48 Laws of Power",
+    "author": "Robert Greene",
+    "isbn": null,
+    "tags": [
+      "non-fiction",
+      "self-help",
+      "business"
+    ],
+    "date_added": null,
+    "pages": 333,
+    "rating": null,
+    "color": "#8d6e63",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book186",
+    "title": "Fahrenheit 451",
+    "author": "Ray Bradbury",
+    "isbn": "9781451673319",
+    "tags": [
+      "classic",
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 249,
+    "rating": null,
+    "color": "#5d576b",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book187",
+    "title": "The Great Gatsby",
+    "author": "F. Scott Fitzgerald",
+    "isbn": "9780743273565",
+    "tags": [
+      "classic",
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 180,
+    "rating": null,
+    "color": "#6a994e",
+    "dimensions": {
+      "width": 140,
+      "height": 210
     }
   }
 ]
