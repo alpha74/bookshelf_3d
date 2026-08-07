@@ -362,13 +362,29 @@ main {
     right: -4px;
 }
 
-/* Dark wood plank the books visually rest on — replaces the old
-   shadow-only "floating books" look with an actual shelf surface. */
-.shelf-plank {
+/* The plank's own width is set from JS to match the row's full scrollable
+   content width (which can be much wider than the visible viewport once a
+   row overflows, e.g. in "All" mode) — so it needs its own clipped "track"
+   the same visible width as the viewport, otherwise the oversized plank
+   would stick out past the row on both sides. Extra bottom padding on the
+   track gives the plank's drop shadow room to render without being clipped. */
+.shelf-plank-track {
     position: relative;
+    overflow: hidden;
+    margin-top: -4px;
+    padding-bottom: 20px;
+    height: 22px;
+}
+
+/* Dark wood plank the books visually rest on — replaces the old
+   shadow-only "floating books" look with an actual shelf surface. Position
+   and width are driven by JS (see syncPlank in main.js) so it always spans
+   exactly as wide as the books, including while mid-scroll. */
+.shelf-plank {
+    position: absolute;
+    top: 0;
+    left: 0;
     z-index: 1;
-    width: 94%;
-    margin: -4px auto 0;
     height: 22px;
     border-radius: 4px;
     background: linear-gradient(180deg, #7a4a26 0%, #5c3418 45%, #3d2110 100%);
@@ -376,6 +392,7 @@ main {
         0 14px 22px var(--shelf-shadow),
         inset 0 2px 0 rgba(255, 255, 255, 0.12),
         inset 0 -4px 6px rgba(0, 0, 0, 0.4);
+    will-change: transform;
 }
 
 .shelf-plank::before {

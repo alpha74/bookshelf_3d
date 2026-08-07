@@ -217,10 +217,15 @@ function shade(hex, percent) {
 // a single pair of arrows can drive every row (with different book counts
 // per row) in sync.
 let shelfViewports = [];
+// One "keep the plank matched to its row's width/scroll position" sync
+// function per row — re-run on window resize since a row's scrollWidth can
+// change (e.g. font/zoom changes) even without re-rendering the books.
+let plankSyncFns = [];
 
 function renderBooks() {
     bookshelfRowsEl.innerHTML = '';
     shelfViewports = [];
+    plankSyncFns = [];
 
     let booksToRender = [];
     if (activeTag === 'latest') {
@@ -284,7 +289,32 @@ function renderBooks() {
         });
 
         viewport.appendChild(shelf);
-        viewport.addEventListener('scroll', updateShelfScrollState);
+        rowEl.appendChild(viewport);
+
+        // The plank has to match the row's actual (possibly scrollable)
+        // content width, not just the visible viewport — otherwise it falls
+        // short of the outermost books once a row overflows (e.g. "All").
+        // It lives in its own clipped track (same visible width as the
+        // viewport) and is widened to the full scrollable content width,
+        // then translated to mirror the viewport's scroll position so it
+        // stays glued under the books as you scroll.
+        const plankTrack = document.createElement('div');
+        plankTrack.className = 'shelf-plank-track';
+        const plank = document.createElement('div');
+        plank.className = 'shelf-plank';
+        plankTrack.appendChild(plank);
+        rowEl.appendChild(plankTrack);
+
+        function syncPlank() {
+            plank.style.width = `${viewport.scrollWidth}px`;
+            plank.style.transform = `translateX(${-viewport.scrollLeft}px)`;
+        }
+        syncPlank();
+
+        viewport.addEventListener('scroll', () => {
+            updateShelfScrollState();
+            syncPlank();
+        });
         // Mouse wheels/trackpads usually send vertical deltaY even when the
         // user means to scroll a horizontal row — convert that to horizontal.
         viewport.addEventListener('wheel', (e) => {
@@ -293,17 +323,14 @@ function renderBooks() {
                 viewport.scrollLeft += e.deltaY;
             }
         }, { passive: false });
-        rowEl.appendChild(viewport);
-
-        const plank = document.createElement('div');
-        plank.className = 'shelf-plank';
-        rowEl.appendChild(plank);
 
         bookshelfRowsEl.appendChild(rowEl);
         shelfViewports.push(viewport);
+        plankSyncFns.push(syncPlank);
     }
 
     shelfViewports.forEach((v) => { v.scrollLeft = 0; });
+    plankSyncFns.forEach((sync) => sync());
     requestAnimationFrame(updateShelfScrollState);
 }
 
@@ -324,7 +351,10 @@ function updateShelfScrollState() {
     shelfNextBtn.disabled = shelfViewports.every((v) => v.scrollLeft >= v.scrollWidth - v.clientWidth - 2);
 }
 
-window.addEventListener('resize', updateShelfScrollState);
+window.addEventListener('resize', () => {
+    plankSyncFns.forEach((sync) => sync());
+    updateShelfScrollState();
+});
 
 shelfPrevBtn.addEventListener('click', () => {
     shelfViewports.forEach((v) => v.scrollBy({ left: -360, behavior: 'smooth' }));
@@ -352,26 +382,37 @@ function createBookElement(book) {
     el.className = 'book';
     el.dataset.id = book.id;
 
+    // Each face gets a tiny (2%) extra scale, centered on itself, on top of
+    // its positioning transform. Six independently-transformed rectangles
+    // only form a perfectly seamless box if every shared edge lines up to
+    // the sub-pixel — in practice, per-book rounding (thickness is an
+    // integer from getThickness, but w/h and their halves aren't always)
+    // leaves a hairline gap at one edge on some books, which shows up as a
+    // triangular sliver of the page background at a corner. The extra scale
+    // makes every face slightly overlap its neighbors at every seam instead
+    // of butting exactly against them, closing that gap regardless of which
+    // corner it would otherwise show up on.
+    const OVERLAP = 'scale(1.02)';
     el.innerHTML = `
-        <div class="book-face book-front cover-fallback-active" style="width:${w}px;height:${h}px;transform:translateZ(${d/2}px);">
+        <div class="book-face book-front cover-fallback-active" style="width:${w}px;height:${h}px;transform:translateZ(${d/2}px) ${OVERLAP};">
             <div class="cover-fallback" style="background:${color};">
                 <span class="fallback-title">${book.title}</span>
                 <span class="fallback-author">${book.author}</span>
             </div>
         </div>
 
-        <div class="book-face book-back" style="width:${w}px;height:${h}px;transform:rotateY(180deg) translateZ(${d/2}px);background:${shade(color, -25)};"></div>
+        <div class="book-face book-back" style="width:${w}px;height:${h}px;transform:rotateY(180deg) translateZ(${d/2}px) ${OVERLAP};background:${shade(color, -25)};"></div>
 
-        <div class="book-face book-spine" style="width:${d}px;height:${h}px;transform:rotateY(90deg) translateZ(${w/2}px);background:${color};">
+        <div class="book-face book-spine" style="width:${d}px;height:${h}px;transform:rotateY(90deg) translateZ(${w/2}px) ${OVERLAP};background:${color};">
             <span class="rating-badge">${(book.rating ?? '').toString()}</span>
             <span class="book-spine-title">${book.title}</span>
         </div>
 
-        <div class="book-face book-fore-edge" style="width:${d}px;height:${h}px;transform:rotateY(-90deg) translateZ(${w/2}px);"></div>
+        <div class="book-face book-fore-edge" style="width:${d}px;height:${h}px;transform:rotateY(-90deg) translateZ(${w/2}px) ${OVERLAP};"></div>
 
-        <div class="book-face book-top" style="width:${w}px;height:${d}px;transform:rotateX(90deg) translateZ(${h/2}px);"></div>
+        <div class="book-face book-top" style="width:${w}px;height:${d}px;transform:rotateX(90deg) translateZ(${h/2}px) ${OVERLAP};"></div>
 
-        <div class="book-face book-bottom" style="width:${w}px;height:${d}px;transform:rotateX(-90deg) translateZ(${h/2}px);"></div>
+        <div class="book-face book-bottom" style="width:${w}px;height:${d}px;transform:rotateX(-90deg) translateZ(${h/2}px) ${OVERLAP};"></div>
     `;
 
     return el;
