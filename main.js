@@ -283,7 +283,12 @@ function renderBooks() {
 
     let booksToRender = [];
     if (activeTag === 'latest') {
-        booksToRender = allBooks.slice(0, 10);
+        // No book actually has a date_added, so allBooks' order is really
+        // just books.json's own insertion order — the 25 most recently
+        // added entries are the last 25 in that array, not the first.
+        // Reversed so the most recent of those (the very last entry) shows
+        // first on the shelf, counting backward from there.
+        booksToRender = allBooks.slice(-25).reverse();
     } else if (activeTag === 'all') {
         booksToRender = allBooks;
     } else {

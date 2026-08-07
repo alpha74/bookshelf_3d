@@ -3321,5 +3321,24 @@
       "width": 140,
       "height": 210
     }
+  },
+
+    {
+    "id": "book191",
+    "title": "How to Avoid a Climate Disaster",
+    "author": "Bill Gates",
+    "isbn": "978-0385546133",
+    "tags": [
+      "non-fiction",
+      "climate"
+    ],
+    "date_added": null,
+    "pages": 246,
+    "rating": null,
+    "color": "#A6A1A1",
+    "dimensions": {
+      "width": 150,
+      "height": 230
+    }
   }
 ]
