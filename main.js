@@ -403,16 +403,16 @@ function createBookElement(book) {
 
         <div class="book-face book-back" style="width:${w}px;height:${h}px;transform:rotateY(180deg) translateZ(${d/2}px) ${OVERLAP};background:${shade(color, -25)};"></div>
 
-        <div class="book-face book-spine" style="width:${d}px;height:${h}px;transform:rotateY(90deg) translateZ(${w/2}px) ${OVERLAP};background:${color};">
+        <div class="book-face book-spine" style="width:${d}px;height:${h}px;transform:rotateY(90deg) translateZ(${-d/2}px) ${OVERLAP};background:${color};">
             <span class="rating-badge">${(book.rating ?? '').toString()}</span>
             <span class="book-spine-title">${book.title}</span>
         </div>
 
-        <div class="book-face book-fore-edge" style="width:${d}px;height:${h}px;transform:rotateY(-90deg) translateZ(${w/2}px) ${OVERLAP};"></div>
+        <div class="book-face book-fore-edge" style="width:${d}px;height:${h}px;transform:rotateY(-90deg) translateZ(${d/2 - w}px) ${OVERLAP};"></div>
 
-        <div class="book-face book-top" style="width:${w}px;height:${d}px;transform:rotateX(90deg) translateZ(${h/2}px) ${OVERLAP};"></div>
+        <div class="book-face book-top" style="width:${w}px;height:${d}px;transform:rotateX(90deg) translateZ(${d/2}px) ${OVERLAP};"></div>
 
-        <div class="book-face book-bottom" style="width:${w}px;height:${d}px;transform:rotateX(-90deg) translateZ(${h/2}px) ${OVERLAP};"></div>
+        <div class="book-face book-bottom" style="width:${w}px;height:${d}px;transform:rotateX(-90deg) translateZ(${h - d/2}px) ${OVERLAP};"></div>
     `;
 
     return el;

@@ -441,8 +441,13 @@ main {
     /* Each book gets its OWN perspective, centered on itself. A single
        perspective shared across the whole row (previously on <main>) skews
        every book away from the row's center, which is what was flaring the
-       top page-block face out into a visible pale strip on most spines. */
-    perspective: 700px;
+       top page-block face out into a visible pale strip on most spines.
+       700px was aggressive enough that tall, thin books (large height,
+       small thickness) combined with the per-book rotation jitter could
+       foreshorten a face's far corner into a sharp spike poking above the
+       book's silhouette. A larger distance keeps the same tilted-book feel
+       with far less distortion. */
+    perspective: 2200px;
 }
 
 .book-slot:hover {
