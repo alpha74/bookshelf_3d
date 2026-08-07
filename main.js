@@ -378,6 +378,20 @@ function createBookElement(book) {
     const d = getThickness(book);
     const color = book.color || '#5b5b5b';
 
+    // On the shelf the book is rotated ~-90deg about Y to face its spine at the
+    // viewer, so the cover width `w` (~140px for almost every book) becomes the
+    // box's depth — how far it recedes from the spine toward/away from the
+    // viewer. Under the slot's perspective, the faces that span that depth
+    // (front/back/fore-edge/top/bottom) get their far top corner magnified and
+    // projected ABOVE the spine's silhouette — a thin, tapering "spike" poking
+    // up out of the book, worst on tall/thin books and amplified by the resting
+    // jitter. Capping the depth used to build the box bounds that magnification
+    // so no corner clears the silhouette, while leaving the spine's real
+    // thickness (d), height (h) and shelf position untouched. The full cover
+    // width is still used by the separate Three.js inspect view, so nothing is
+    // lost there. (This function builds shelf books only — inspect is Three.js.)
+    const depth = Math.min(w, 42);
+
     const el = document.createElement('div');
     el.className = 'book';
     el.dataset.id = book.id;
@@ -394,25 +408,25 @@ function createBookElement(book) {
     // corner it would otherwise show up on.
     const OVERLAP = 'scale(1.02)';
     el.innerHTML = `
-        <div class="book-face book-front cover-fallback-active" style="width:${w}px;height:${h}px;transform:translateZ(${d/2}px) ${OVERLAP};">
+        <div class="book-face book-front cover-fallback-active" style="width:${depth}px;height:${h}px;transform:translateZ(${d/2}px) ${OVERLAP};">
             <div class="cover-fallback" style="background:${color};">
                 <span class="fallback-title">${book.title}</span>
                 <span class="fallback-author">${book.author}</span>
             </div>
         </div>
 
-        <div class="book-face book-back" style="width:${w}px;height:${h}px;transform:rotateY(180deg) translateZ(${d/2}px) ${OVERLAP};background:${shade(color, -25)};"></div>
+        <div class="book-face book-back" style="width:${depth}px;height:${h}px;transform:rotateY(180deg) translateZ(${d/2}px) ${OVERLAP};background:${shade(color, -25)};"></div>
 
         <div class="book-face book-spine" style="width:${d}px;height:${h}px;transform:rotateY(90deg) translateZ(${-d/2}px) ${OVERLAP};background:${color};">
             <span class="rating-badge">${(book.rating ?? '').toString()}</span>
             <span class="book-spine-title">${book.title}</span>
         </div>
 
-        <div class="book-face book-fore-edge" style="width:${d}px;height:${h}px;transform:rotateY(-90deg) translateZ(${d/2 - w}px) ${OVERLAP};"></div>
+        <div class="book-face book-fore-edge" style="width:${d}px;height:${h}px;transform:rotateY(-90deg) translateZ(${d/2 - depth}px) ${OVERLAP};"></div>
 
-        <div class="book-face book-top" style="width:${w}px;height:${d}px;transform:rotateX(90deg) translateZ(${d/2}px) ${OVERLAP};"></div>
+        <div class="book-face book-top" style="width:${depth}px;height:${d}px;transform:rotateX(90deg) translateZ(${d/2}px) ${OVERLAP};"></div>
 
-        <div class="book-face book-bottom" style="width:${w}px;height:${d}px;transform:rotateX(-90deg) translateZ(${h - d/2}px) ${OVERLAP};"></div>
+        <div class="book-face book-bottom" style="width:${depth}px;height:${d}px;transform:rotateX(-90deg) translateZ(${h - d/2}px) ${OVERLAP};"></div>
     `;
 
     return el;
