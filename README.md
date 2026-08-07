@@ -15,6 +15,14 @@ A beautiful, interactive 3D bookshelf built with HTML, CSS, JavaScript, and Thre
 - **External Catalog Support**: Load books from Google Drive, GitHub, or any JSON API
 - **Lazy Loading**: Cover images load only when books are opened, not on the shelf
 
+## Run Locally
+
+```bash
+npx serve -l 5173 .
+```
+
+Then open **http://localhost:5173**. See [Setup](#setup) below for alternatives (Python) and notes on the `/<folder>` feature.
+
 ## Project Structure
 
 ```
@@ -24,7 +32,13 @@ book_3d/
 ├── main.js                 # Core logic (Three.js, interactions)
 ├── books.json              # Local book catalog
 ├── books_external.json     # External source configuration (optional)
-├── notes.json              # Book notes for reading interface
+├── <bookid>_notes.json     # Reading notes, one file per book (optional)
+├── serve.json              # `serve` rewrite rules for /<folder> URLs
+├── vercel.json             # Same rewrite rules for Vercel deploys
+├── profiles/
+│   └── <folder>/           # Optional alternate data folder (see below)
+│       ├── books.json
+│       └── <bookid>_notes.json
 ├── .claude/
 │   └── launch.json         # Dev server configuration
 └── README.md               # This file
@@ -62,6 +76,8 @@ python -m SimpleHTTPServer 5173
 ```
 
 Then open **http://localhost:5173** in your browser.
+
+**Note**: the `/<folder>` alternate-data-folder feature (below) needs a server that rewrites unmatched paths back to `index.html` — that's what `serve.json` does for Option 1. Options 2/3 (plain Python servers) don't support this, so `/<folder>` URLs will 404 there; the root `/` still works fine either way.
 
 ## Configuration
 
@@ -103,16 +119,20 @@ If the external link fails, the app automatically falls back to `books.json`.
 
 ### Book Notes
 
-Add reading notes in `notes.json`. Only books with note entries show an enabled "Read Notes" button:
+Add reading notes as `<bookid>_notes.json` — one file per book, named after that book's `id` in `books.json`. The file is a plain array of pages, fetched lazily the first time that book is opened. Books with no matching file just show a disabled "Read Notes" button:
 
 ```json
-{
-  "book1": [
-    { "page": 1, "content": "<h2>Chapter 1</h2><p>Opening passage...</p>" },
-    { "page": 2, "content": "<p>More notes...</p>" }
-  ]
-}
+[
+  { "page": 1, "content": "<h2>Chapter 1</h2><p>Opening passage...</p>" },
+  { "page": 2, "content": "<p>More notes...</p>" }
+]
 ```
+
+For a book with `"id": "book1"`, this goes in `book1_notes.json`.
+
+### Alternate Data Folders
+
+Visiting `/<folder>` (e.g. `/alpha74`) instead of `/` loads `profiles/<folder>/books.json` and `profiles/<folder>/<bookid>_notes.json` instead of the root files — useful for keeping a separate catalog (a different shelf, a shared demo, etc.) alongside the default one. The URL itself stays flat (just the folder name); create the actual folder under `profiles/` with its own `books.json` (and optional notes files). If `profiles/<folder>` doesn't exist, the app shows an in-page 404 instead of the shelf.
 
 ## Usage
 

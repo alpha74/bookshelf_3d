@@ -61,7 +61,7 @@
                 <button id="theme-toggle" class="icon-btn" title="Toggle light/dark theme">🌙</button>
             </div>
         </div>
-        <nav>
+        <nav id="tags-nav">
             <ul id="tags-container" class="tags">
                 <!-- Tags will be dynamically populated -->
                 <li><button class="tag active" data-tag="latest">Latest 10</button></li>
@@ -79,6 +79,14 @@
             </div>
 
             <button class="shelf-nav shelf-nav-right hidden" id="shelf-next" aria-label="Scroll shelf right">&#8250;</button>
+        </div>
+
+        <!-- Shown instead of the shelf when the /<folder> in the URL doesn't
+             have its own data (see resolveDataFolder/loadBooks in main.js). -->
+        <div class="not-found hidden" id="not-found">
+            <div class="not-found-code">404</div>
+            <p class="not-found-message" id="not-found-message">That data folder doesn't exist.</p>
+            <a class="not-found-home-link" href="/">Back to My Library</a>
         </div>
     </main>
 

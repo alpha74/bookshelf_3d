@@ -2,9 +2,22 @@ import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 
 let allBooks = [];
-let allNotes = {};
 let activeTag = 'latest';
 let currentInspectedBook = null;
+
+// Data folder — a single path segment in the URL (e.g. /alpha74) selects an
+// alternate data folder to load books/notes from instead of the project
+// root. The URL itself stays flat (just the folder name); the files
+// actually live one level deeper, under profiles/<folder>, keeping every
+// profile's data out of the project root. Resolved once at load; this is a
+// plain static site with full page loads per URL, not a client-side router,
+// so there's nothing to re-resolve later. Deeper paths just use their first
+// segment; the plain "/" root has none and keeps using the top-level files.
+const dataFolder = window.location.pathname.split('/').filter(Boolean)[0] || null;
+
+function dataPath(fileName) {
+    return dataFolder ? `profiles/${dataFolder}/${fileName}` : fileName;
+}
 
 // Theme
 const themeToggleBtn = document.getElementById('theme-toggle');
@@ -24,7 +37,10 @@ const bookshelfRowsEl = document.getElementById('bookshelf-rows');
 const bookshelfContainerEl = document.getElementById('bookshelf-container');
 const shelfPrevBtn = document.getElementById('shelf-prev');
 const shelfNextBtn = document.getElementById('shelf-next');
+const tagsNavEl = document.getElementById('tags-nav');
 const tagsContainerEl = document.getElementById('tags-container');
+const notFoundEl = document.getElementById('not-found');
+const notFoundMessageEl = document.getElementById('not-found-message');
 const layoutControlEl = document.getElementById('layout-control');
 const layoutToggleBtn = document.getElementById('layout-toggle');
 const layoutPopoverEl = document.getElementById('layout-popover');
@@ -100,6 +116,16 @@ layoutSliderEl.addEventListener('input', () => {
     setShelfCount(Number(layoutSliderEl.value));
 });
 
+// Thrown by loadBooks() when a /<folder> URL points at a folder that has no
+// usable books.json — init() catches this specifically to show the 404 page
+// instead of logging a generic load error.
+class FolderNotFoundError extends Error {
+    constructor(folder) {
+        super(`Data folder "${folder}" not found`);
+        this.folder = folder;
+    }
+}
+
 // Book source — checked once at startup. If books_external.json exists, its
 // `link` field is fetched and used as the catalog instead of the local
 // books.json; every other part of the app is unaware of the difference and
@@ -107,7 +133,27 @@ layoutSliderEl.addEventListener('input', () => {
 // (the manifest is missing, its link 404s, CORS blocks it, the response
 // isn't valid JSON, …) silently falls back to the local books.json — an
 // external source can only ever add books, never break the app.
+//
+// None of that applies when a /<folder> URL is active: that's an explicit
+// request for that folder's own local catalog, so it skips the external
+// manifest entirely and goes straight to <folder>/books.json — and unlike
+// the root case, a missing or unreadable file there is a real error (the
+// folder doesn't exist / has no data), surfaced as a FolderNotFoundError
+// rather than silently falling back to something else.
 async function loadBooks() {
+    if (dataFolder) {
+        try {
+            const res = await fetch(dataPath('books.json'));
+            if (res.ok) {
+                const books = await res.json();
+                if (Array.isArray(books)) return books;
+            }
+        } catch {
+            // network error / invalid JSON — treated the same as a missing folder below
+        }
+        throw new FolderNotFoundError(dataFolder);
+    }
+
     try {
         const manifestRes = await fetch('books_external.json');
         if (manifestRes.ok) {
@@ -136,22 +182,30 @@ async function loadBooks() {
     return localRes.json();
 }
 
+// Shown instead of the shelf when a /<folder> URL's folder has no usable
+// books.json (see FolderNotFoundError/loadBooks). Leaves the header (title,
+// theme toggle) in place — only the tag filters and shelf are folder-scoped.
+function showFolderNotFound(folder) {
+    tagsNavEl.style.display = 'none';
+    bookshelfContainerEl.style.display = 'none';
+    notFoundMessageEl.textContent = `The data folder "${folder}" doesn't exist.`;
+    notFoundEl.classList.remove('hidden');
+}
+
 // Initialize
 async function init() {
     try {
-        const [books, notesRes] = await Promise.all([
-            loadBooks(),
-            fetch('notes.json')
-        ]);
-        allBooks = books;
-        allNotes = await notesRes.json();
-
+        allBooks = await loadBooks();
         allBooks.sort((a, b) => new Date(b.date_added) - new Date(a.date_added));
 
         extractTags();
         renderBooks();
     } catch (err) {
-        console.error("Error loading data:", err);
+        if (err instanceof FolderNotFoundError) {
+            showFolderNotFound(err.folder);
+        } else {
+            console.error("Error loading data:", err);
+        }
     }
 }
 
@@ -919,15 +973,45 @@ function setNotesOpen(open) {
     inspectStageEl.style.display = open ? 'none' : 'flex';
 }
 
-function inspectBook(book) {
+// Notes live in one file per book — <bookid>_notes.json (see loadNotesForBook)
+// — rather than one shared notes.json, so a catalog can grow without every
+// book needing an entry, and most books simply have no file (404 => no
+// notes, handled the same as "book has no notes" always was). Fetched lazily
+// per book, on first inspect, and cached since a book's notes don't change
+// during a session.
+const notesCache = new Map();
+
+async function loadNotesForBook(book) {
+    if (notesCache.has(book.id)) return notesCache.get(book.id);
+
+    let notes = null;
+    try {
+        const res = await fetch(dataPath(`${book.id}_notes.json`));
+        if (res.ok) {
+            const data = await res.json();
+            if (Array.isArray(data) && data.length) notes = data;
+        }
+    } catch {
+        // No <bookid>_notes.json for this book — that's the normal case for most books.
+    }
+
+    notesCache.set(book.id, notes);
+    return notes;
+}
+
+async function inspectBook(book) {
     currentInspectedBook = book;
     overlayEl.classList.remove('hidden');
     setNotesOpen(false);
 
-    const notes = allNotes[book.id];
-    readBtn.disabled = !notes || notes.length === 0;
-
+    // Notes fetch is async, but the 3D scene doesn't wait on it — the Read
+    // Notes button just stays disabled until the fetch resolves.
+    readBtn.disabled = true;
     createInspectScene(book);
+
+    const notes = await loadNotesForBook(book);
+    if (currentInspectedBook !== book) return; // user closed/switched books while this was in flight
+    readBtn.disabled = !notes;
 }
 
 closeBtn.addEventListener('click', () => {
@@ -952,8 +1036,10 @@ readBtn.addEventListener('click', () => {
         return;
     }
 
-    const notes = allNotes[currentInspectedBook.id];
-    if (!notes || notes.length === 0) return; // button is disabled in this case anyway
+    // Already resolved by inspectBook()'s loadNotesForBook() call by the time
+    // this button is enabled — read the cache rather than re-fetching.
+    const notes = notesCache.get(currentInspectedBook.id);
+    if (!notes) return; // button is disabled in this case anyway
 
     setNotesOpen(true);
     buildReadingBook(notes);
