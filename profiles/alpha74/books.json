@@ -425,7 +425,7 @@
       "fiction"
     ],
     "date_added": null,
-    "pages": 322,
+    "pages": 198,
     "rating": null,
     "color": "#8d6e63",
     "dimensions": {
@@ -435,18 +435,132 @@
   },
   {
     "id": "book24",
-    "title": "Diary of Wimpy Kid (1-7)",
+    "title": "Diary of Wimpy Kid-I",
     "author": "Jeff Kinney",
-    "isbn": null,
+    "isbn": "978-0810993136",
     "tags": [
       "children",
       "humor",
       "fiction"
     ],
     "date_added": null,
-    "pages": 333,
+    "pages": 224,
+    "rating": null,
+    "color": "#7d2e46",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book25",
+    "title": "Diary of Wimpy Kid:Rodrick Rules",
+    "author": "Jeff Kinney",
+    "isbn": "978-0141324913",
+    "tags": [
+      "children",
+      "humor",
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 240,
+    "rating": null,
+    "color": "#7d2e46",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book26",
+    "title": "Diary of Wimpy Kid:The Last Straw",
+    "author": "Jeff Kinney",
+    "isbn": "978-0141324920",
+    "tags": [
+      "children",
+      "humor",
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 240,
     "rating": null,
     "color": "#5d576b",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book27",
+    "title": "Diary of Wimpy Kid:Dog Days",
+    "author": "Jeff Kinney",
+    "isbn": "978-0141331973",
+    "tags": [
+      "children",
+      "humor",
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 240,
+    "rating": null,
+    "color": "#7d2e46",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book28",
+    "title": "Diary of Wimpy Kid:The Ugly Truth",
+    "author": "Jeff Kinney",
+    "isbn": "978-0141331980",
+    "tags": [
+      "children",
+      "humor",
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 224,
+    "rating": null,
+    "color": "#7d2e46",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book29",
+    "title": "Diary of Wimpy Kid:Cabin Fever",
+    "author": "Jeff Kinney",
+    "isbn": "978-0141348551",
+    "tags": [
+      "children",
+      "humor",
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 224,
+    "rating": null,
+    "color": "#c44536",
+    "dimensions": {
+      "width": 140,
+      "height": 210
+    }
+  },
+  {
+    "id": "book30",
+    "title": "Diary of Wimpy Kid:The Third Wheel",
+    "author": "Jeff Kinney",
+    "isbn": "978-0141348568",
+    "tags": [
+      "children",
+      "humor",
+      "fiction"
+    ],
+    "date_added": null,
+    "pages": 224,
+    "rating": null,
+    "color": "#c44536",
     "dimensions": {
       "width": 140,
       "height": 210
