@@ -204,7 +204,7 @@ applyTimelineUI();
 // opens within the session (not localStorage — it's a "while I'm browsing"
 // mood, not a durable preference).
 let lampOn = true;
-const LAMP_INTENSITY = 2.25; // +25% over the original 1.8
+const LAMP_INTENSITY = 100; // original 1.8
 function applyLampUI() {
     lampToggleBtn.setAttribute('aria-pressed', String(lampOn));
     if (threeState) threeState.lampLight.intensity = lampOn ? LAMP_INTENSITY : 0;
