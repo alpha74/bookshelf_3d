@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Search for a book by name, author, or ISBN.">
+    <title>Search Books — My Library</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+</head>
+<body class="query-page">
+    <header>
+        <div class="logo">
+            <a href="/" class="logo-link"><h1>My Library</h1></a>
+            <div class="header-controls">
+                <button id="theme-toggle" class="icon-btn" title="Toggle light/dark theme">🌙</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="query-main">
+        <section class="query-panel">
+            <h2 class="query-heading">Search books</h2>
+            <p class="query-subheading">Look up a book by name, author, or ISBN — powered by Open Library.</p>
+
+            <form id="query-form" class="query-form" novalidate>
+                <div class="query-mode-row" role="radiogroup" aria-label="Search by">
+                    <button type="button" class="tag query-mode active" data-mode="isbn" aria-pressed="true">ISBN</button>
+                    <button type="button" class="tag query-mode" data-mode="title" aria-pressed="false">Name</button>
+                    <button type="button" class="tag query-mode" data-mode="author" aria-pressed="false">Author</button>
+                </div>
+                <div class="query-input-row">
+                    <input type="text" id="query-input" class="query-input" placeholder="Enter ISBN (e.g. 9780141439518)" autocomplete="off" inputmode="search">
+                    <button type="submit" class="control-btn primary query-submit" id="query-submit">Search</button>
+                </div>
+                <p class="query-error hidden" id="query-error"></p>
+            </form>
+        </section>
+
+        <section class="query-results-section">
+            <div class="query-status" id="query-status"></div>
+            <div class="query-results" id="query-results"></div>
+        </section>
+    </main>
+
+    <script type="module" src="query.js"></script>
+</body>
+</html>

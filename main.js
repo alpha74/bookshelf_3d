@@ -4,6 +4,9 @@ import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 let allBooks = [];
 let activeTag = 'latest';
 let currentInspectedBook = null;
+// Free-text search (title/author/isbn/date) — when non-empty, it overrides
+// whichever tag is selected rather than combining with it (see renderBooks).
+let searchQuery = '';
 
 const MONTH_ABBR = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
@@ -57,6 +60,7 @@ const shelfPrevBtn = document.getElementById('shelf-prev');
 const shelfNextBtn = document.getElementById('shelf-next');
 const tagsNavEl = document.getElementById('tags-nav');
 const tagsContainerEl = document.getElementById('tags-container');
+const shelfSearchInput = document.getElementById('shelf-search');
 const notFoundEl = document.getElementById('not-found');
 const notFoundMessageEl = document.getElementById('not-found-message');
 const layoutControlEl = document.getElementById('layout-control');
@@ -343,11 +347,28 @@ function setTag(tag) {
     document.querySelectorAll('.tag').forEach(btn => {
         btn.classList.toggle('active', btn.dataset.tag === tag);
     });
+    // A tag pick is a request to see that tag's books specifically — an
+    // in-progress search would otherwise keep overriding it (see
+    // renderBooks), silently ignoring the click.
+    searchQuery = '';
+    shelfSearchInput.value = '';
     renderBooks();
 }
 
 document.querySelector('.tag[data-tag="latest"]').addEventListener('click', () => setTag('latest'));
 document.querySelector('.tag[data-tag="all"]').addEventListener('click', () => setTag('all'));
+
+// Live shelf search — filters the whole catalog by title/author/isbn/date as
+// you type, debounced so a fast typist doesn't re-render on every keystroke.
+// No submit button: typing (or clearing the field) is the only trigger.
+let searchDebounceTimer = null;
+shelfSearchInput.addEventListener('input', () => {
+    clearTimeout(searchDebounceTimer);
+    searchDebounceTimer = setTimeout(() => {
+        searchQuery = shelfSearchInput.value.trim().toLowerCase();
+        renderBooks();
+    }, 1000);
+});
 
 // Thickness (spine width) derived from page count, trimmed to a believable range
 function getThickness(book) {
@@ -393,6 +414,21 @@ let plankSyncFns = [];
 // entries), so navigation tracks a position in this array instead.
 let renderedBooks = [];
 
+// `query` is already trimmed + lowercased by the caller. date_added is
+// stored as "YYYY-MM-DD HH:MM" (see books.json), so a plain startsWith
+// naturally covers all three date granularities the task asks for — a year
+// ("2026"), a year-month ("2026-05"), or a full day ("2026-05-12") — without
+// needing separate parsing per granularity. It's a no-op (never matches) for
+// a text query, since those don't start with a date's digit/hyphen prefix.
+function matchesSearch(book, query) {
+    return (
+        (book.title && book.title.toLowerCase().includes(query)) ||
+        (book.author && book.author.toLowerCase().includes(query)) ||
+        (book.isbn && String(book.isbn).toLowerCase().includes(query)) ||
+        (book.date_added && book.date_added.startsWith(query))
+    );
+}
+
 function renderBooks() {
     bookshelfRowsEl.innerHTML = '';
     shelfViewports = [];
@@ -400,7 +436,13 @@ function renderBooks() {
     renderedBooks = [];
 
     let booksToRender = [];
-    if (activeTag === 'latest') {
+    if (searchQuery) {
+        // A live search overrides the tag filter entirely rather than
+        // narrowing it — it searches the whole catalog, and the active tag
+        // pill stays visually selected underneath for when the search is
+        // cleared (see the input listener / setTag).
+        booksToRender = allBooks.filter((b) => matchesSearch(b, searchQuery));
+    } else if (activeTag === 'latest') {
         // allBooks is sorted newest-first, so the 25 most recently added
         // books are simply the first 25 — already in the newest-to-oldest
         // order the row should display left-to-right.
@@ -409,6 +451,23 @@ function renderBooks() {
         booksToRender = allBooks;
     } else {
         booksToRender = allBooks.filter(b => b.tags.includes(activeTag));
+    }
+
+    // No shelf-nav arrows or leftover rows should survive a search that
+    // matches nothing — the loop below naturally produces zero rows for an
+    // empty booksToRender, but shelfPrevBtn/shelfNextBtn's hidden state is
+    // otherwise only touched by updateShelfScrollState(), which bails out
+    // early when there are no viewports at all.
+    if (booksToRender.length === 0) {
+        shelfPrevBtn.classList.add('hidden');
+        shelfNextBtn.classList.add('hidden');
+        if (searchQuery) {
+            const empty = document.createElement('p');
+            empty.className = 'search-empty-message';
+            empty.textContent = `No books match "${shelfSearchInput.value.trim()}".`;
+            bookshelfRowsEl.appendChild(empty);
+        }
+        return;
     }
 
     const chunkSize = Math.max(1, Math.ceil(booksToRender.length / shelfCount));

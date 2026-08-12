@@ -1,5 +1,6 @@
 {
     "rewrites": [
+        { "source": "/query", "destination": "/query.html" },
         { "source": "/:folder([^/.]+)", "destination": "/index.html" }
     ]
 }
