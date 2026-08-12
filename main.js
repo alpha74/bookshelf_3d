@@ -305,9 +305,10 @@ async function init() {
 
     try {
         allBooks = await loadBooks();
-        // Ascending (oldest first) so every shelf row — and the timeline
-        // strip beneath it — reads left-to-right as oldest-to-newest.
-        allBooks.sort((a, b) => new Date(a.date_added) - new Date(b.date_added));
+        // Descending (newest first) so every shelf row — in every mode —
+        // reads left-to-right as newest-to-oldest, with the most recently
+        // added book always leftmost.
+        allBooks.sort((a, b) => new Date(b.date_added) - new Date(a.date_added));
 
         extractTags();
         renderBooks();
@@ -400,10 +401,10 @@ function renderBooks() {
 
     let booksToRender = [];
     if (activeTag === 'latest') {
-        // allBooks is sorted ascending by date_added, so the 25 most
-        // recently added books are the last 25 in the array — kept in that
-        // same ascending order so the row still reads oldest-to-newest.
-        booksToRender = allBooks.slice(-25);
+        // allBooks is sorted newest-first, so the 25 most recently added
+        // books are simply the first 25 — already in the newest-to-oldest
+        // order the row should display left-to-right.
+        booksToRender = allBooks.slice(0, 25);
     } else if (activeTag === 'all') {
         booksToRender = allBooks;
     } else {
