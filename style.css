@@ -223,6 +223,72 @@ header {
     cursor: pointer;
 }
 
+.about-control {
+    position: relative;
+}
+
+.about-control.hidden {
+    display: none;
+}
+
+.about-popover {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    min-width: 200px;
+    background: var(--overlay-bg);
+    border: 1px solid var(--border-soft);
+    border-radius: 14px;
+    padding: 1rem;
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(10px);
+    z-index: 20;
+    text-align: left;
+}
+
+.about-popover.hidden {
+    display: none;
+}
+
+.about-popover-title {
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--text-muted);
+    margin-bottom: 0.75rem;
+}
+
+.about-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.about-link {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.45rem 0.6rem;
+    border-radius: 8px;
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 0.88rem;
+    font-weight: 500;
+    text-transform: capitalize;
+    transition: background 0.2s ease;
+}
+
+.about-link:hover {
+    background: var(--tag-hover);
+}
+
+.about-link svg {
+    flex-shrink: 0;
+    color: var(--text-muted);
+}
+
 .tags {
     display: flex;
     gap: 0.6rem;

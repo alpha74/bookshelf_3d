@@ -116,6 +116,89 @@ layoutSliderEl.addEventListener('input', () => {
     setShelfCount(Number(layoutSliderEl.value));
 });
 
+// About — a popover of profile links sourced from about.json (root or
+// profiles/<folder>/about.json, via dataPath()). Each entry's `name` is
+// matched against ABOUT_ICONS (aliases included) to pick an icon; any name
+// not in that map — including keys added to about.json later — falls back
+// to a generic link glyph, so new link types show up automatically with no
+// code change.
+const aboutControlEl = document.getElementById('about-control');
+const aboutToggleBtn = document.getElementById('about-toggle');
+const aboutPopoverEl = document.getElementById('about-popover');
+const aboutLinksEl = document.getElementById('about-links');
+
+const ABOUT_ICON_PATHS = {
+    instagram: '<rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="0.6" fill="currentColor" stroke="none"/>',
+    twitter: '<path d="M22 5.9c-.7.3-1.5.6-2.3.7.8-.5 1.4-1.3 1.7-2.3-.8.5-1.7.8-2.6 1a4 4 0 0 0-6.9 3.6C8.3 8.6 5.7 7.2 3.8 5c-.3.6-.5 1.3-.5 2a4 4 0 0 0 1.8 3.3c-.7 0-1.4-.2-2-.5 0 1.9 1.4 3.6 3.2 4-.6.2-1.3.2-2 .1.6 1.7 2.1 2.9 4 3-1.5 1.2-3.3 1.8-5.3 1.8H2c1.8 1.2 4 1.9 6.3 1.9 7.5 0 11.7-6.3 11.7-11.7v-.5c.8-.6 1.5-1.3 2-2.1z"/>',
+    x: '<line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/>',
+    linkedin: '<rect x="3" y="3" width="18" height="18" rx="3"/><line x1="7.5" y1="10" x2="7.5" y2="17"/><circle cx="7.5" cy="6.8" r="0.6" fill="currentColor" stroke="none"/><path d="M11.5 17v-4.5c0-1.4 1-2.5 2.5-2.5s2.5 1.1 2.5 2.5V17" fill="none"/><line x1="11.5" y1="10" x2="11.5" y2="17"/>',
+    github: '<path d="M12 3a9 9 0 0 0-2.8 17.6c.4.1.6-.2.6-.4v-1.7c-2.4.5-3-1.1-3-1.1-.4-1-1-1.3-1-1.3-.8-.6.1-.5.1-.5.9.1 1.4.9 1.4.9.8 1.4 2.1 1 2.6.7.1-.6.3-1 .6-1.2-1.9-.2-3.9-1-3.9-4.3 0-.9.3-1.7.9-2.3-.1-.2-.4-1.1.1-2.3 0 0 .8-.2 2.5 1a8.5 8.5 0 0 1 4.5 0c1.7-1.2 2.5-1 2.5-1 .5 1.2.2 2.1.1 2.3.6.6.9 1.4.9 2.3 0 3.3-2 4.1-3.9 4.3.3.3.6.8.6 1.6v2.4c0 .2.2.5.6.4A9 9 0 0 0 12 3z"/>',
+    portfolio: '<circle cx="12" cy="12" r="9"/><line x1="3" y1="12" x2="21" y2="12"/><path d="M12 3a13 13 0 0 1 0 18a13 13 0 0 1 0-18z"/>',
+    website: '<circle cx="12" cy="12" r="9"/><line x1="3" y1="12" x2="21" y2="12"/><path d="M12 3a13 13 0 0 1 0 18a13 13 0 0 1 0-18z"/>',
+    email: '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M4 6.5l8 6 8-6"/>',
+    mail: '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M4 6.5l8 6 8-6"/>',
+    facebook: '<path d="M15 8.5h2V5.3c-.4 0-1.5-.1-2.5-.1-2.5 0-4 1.5-4 4.2v2.1H8v3.2h2.5V21H14v-6.3h2.4l.4-3.2H14v-1.7c0-.9.3-1.3 1-1.3z" fill="currentColor" stroke="none"/>',
+    youtube: '<rect x="3" y="5.5" width="18" height="13" rx="3"/><path d="M11 9.5l4 2.5-4 2.5z" fill="currentColor" stroke="none"/>',
+};
+const ABOUT_ICON_FALLBACK = '<path d="M9.5 14.5l5-5"/><path d="M13 6h3a3 3 0 0 1 3 3v0a3 3 0 0 1-3 3h-2"/><path d="M11 18H8a3 3 0 0 1-3-3v0a3 3 0 0 1 3-3h2"/>';
+
+function aboutIconSvg(name) {
+    const key = String(name || '').trim().toLowerCase();
+    const inner = ABOUT_ICON_PATHS[key] || ABOUT_ICON_FALLBACK;
+    return `<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${inner}</svg>`;
+}
+
+function aboutLinkHref(entry) {
+    const link = entry.link || '';
+    if (entry.type === 'email' && link && !link.startsWith('mailto:')) {
+        return `mailto:${link}`;
+    }
+    return link;
+}
+
+async function loadAbout() {
+    try {
+        const res = await fetch(dataPath('about.json'));
+        if (!res.ok) return [];
+        const data = await res.json();
+        return Array.isArray(data) ? data : [];
+    } catch {
+        return [];
+    }
+}
+
+function renderAbout(links) {
+    const usable = links.filter(entry => entry && entry.name && entry.link);
+    if (!usable.length) return;
+
+    usable.forEach(entry => {
+        const li = document.createElement('li');
+        const a = document.createElement('a');
+        a.className = 'about-link';
+        a.href = aboutLinkHref(entry);
+        a.target = '_blank';
+        a.rel = 'noopener noreferrer';
+        a.innerHTML = `${aboutIconSvg(entry.name)}<span>${entry.name}</span>`;
+        li.appendChild(a);
+        aboutLinksEl.appendChild(li);
+    });
+
+    aboutControlEl.classList.remove('hidden');
+}
+
+aboutToggleBtn.addEventListener('click', () => {
+    const willOpen = aboutPopoverEl.classList.contains('hidden');
+    aboutPopoverEl.classList.toggle('hidden', !willOpen);
+    aboutToggleBtn.setAttribute('aria-expanded', String(willOpen));
+});
+
+document.addEventListener('click', (e) => {
+    if (!aboutControlEl.contains(e.target)) {
+        aboutPopoverEl.classList.add('hidden');
+        aboutToggleBtn.setAttribute('aria-expanded', 'false');
+    }
+});
+
 // Thrown by loadBooks() when a /<folder> URL points at a folder that has no
 // usable books.json — init() catches this specifically to show the 404 page
 // instead of logging a generic load error.
@@ -194,6 +277,8 @@ function showFolderNotFound(folder) {
 
 // Initialize
 async function init() {
+    loadAbout().then(renderAbout);
+
     try {
         allBooks = await loadBooks();
         allBooks.sort((a, b) => new Date(b.date_added) - new Date(a.date_added));
