@@ -74,6 +74,10 @@ const prevPageBtn = document.getElementById('prev-page');
 const nextPageBtn = document.getElementById('next-page');
 const inspectLoaderEl = document.getElementById('inspect-loader');
 const lampToggleBtn = document.getElementById('lamp-toggle');
+const inspectPrevBtn = document.getElementById('inspect-prev');
+const inspectNextBtn = document.getElementById('inspect-next');
+const bookInfoLeftEl = document.getElementById('book-info-left');
+const bookInfoRightEl = document.getElementById('book-info-right');
 
 applyTimelineUI();
 
@@ -382,11 +386,17 @@ let shelfViewports = [];
 // function per row — re-run on window resize since a row's scrollWidth can
 // change (e.g. font/zoom changes) even without re-rendering the books.
 let plankSyncFns = [];
+// The books currently on the shelf, flattened across rows in display order —
+// this is the list the inspect view's prev/next arrows walk. Books can't be
+// identified by `id` here (books.json reuses ids like "book1" across
+// entries), so navigation tracks a position in this array instead.
+let renderedBooks = [];
 
 function renderBooks() {
     bookshelfRowsEl.innerHTML = '';
     shelfViewports = [];
     plankSyncFns = [];
+    renderedBooks = [];
 
     let booksToRender = [];
     if (activeTag === 'latest') {
@@ -450,9 +460,15 @@ function renderBooks() {
                 <span class="book-tooltip-author">${book.author}</span>
             `;
 
+            // Position in the flattened cross-row order, captured before the
+            // push so the click handler opens this exact shelf position (and
+            // the inspect arrows can step on from it).
+            const flatIndex = renderedBooks.length;
+            renderedBooks.push(book);
+
             slot.appendChild(bookEl);
             slot.appendChild(tooltip);
-            slot.addEventListener('click', () => inspectBook(book));
+            slot.addEventListener('click', () => inspectBook(flatIndex));
             shelf.appendChild(slot);
             slotEls.push(slot);
         });
@@ -1164,10 +1180,92 @@ async function loadNotesForBook(book) {
     return notes;
 }
 
-async function inspectBook(book) {
+// Position of the currently inspected book within renderedBooks — the anchor
+// the prev/next arrows step from. -1 when nothing is open.
+let currentInspectedIndex = -1;
+
+// "2024-08-12 00:00" (books.json's format) -> "12 Aug 2024". Falls back to
+// the raw string if it isn't a date this can parse, so a hand-edited entry
+// still shows *something* rather than "Invalid Date".
+function formatDateAdded(value) {
+    if (!value) return '—';
+    const d = new Date(String(value).replace(' ', 'T'));
+    if (isNaN(d)) return String(value);
+    return `${d.getDate()} ${MONTH_ABBR[d.getMonth()]} ${d.getFullYear()}`;
+}
+
+// One label + value pair. Values go in via textContent, never innerHTML —
+// book fields are free text (titles with &, a description with any
+// punctuation the reader typed) and must not be parsed as markup.
+function infoRow(label, value, valueClass) {
+    const row = document.createElement('div');
+    row.className = 'info-row';
+
+    const labelEl = document.createElement('span');
+    labelEl.className = 'info-label';
+    labelEl.textContent = label;
+
+    const valueEl = document.createElement('span');
+    valueEl.className = valueClass ? `info-value ${valueClass}` : 'info-value';
+    valueEl.textContent = value;
+
+    row.append(labelEl, valueEl);
+    return row;
+}
+
+function renderBookInfo(book) {
+    bookInfoLeftEl.innerHTML = '';
+    bookInfoRightEl.innerHTML = '';
+
+    const titleEl = document.createElement('h2');
+    titleEl.className = 'info-title';
+    titleEl.textContent = book.title || 'Untitled';
+    bookInfoLeftEl.appendChild(titleEl);
+
+    bookInfoLeftEl.appendChild(infoRow('Author', book.author || 'Unknown'));
+    bookInfoLeftEl.appendChild(infoRow('ISBN', book.isbn || '—'));
+    bookInfoLeftEl.appendChild(infoRow('Pages', book.pages ? String(book.pages) : '—'));
+
+    const tags = Array.isArray(book.tags) ? book.tags : [];
+    bookInfoRightEl.appendChild(
+        infoRow('Tags', tags.length ? tags.map((t) => `#${t}`).join('  ') : '—', 'info-tags')
+    );
+    bookInfoRightEl.appendChild(infoRow('Added', formatDateAdded(book.date_added)));
+    bookInfoRightEl.appendChild(
+        infoRow('Rating', book.rating == null ? 'Unrated' : `${book.rating} / 5`)
+    );
+
+    // The reader's own note. Rendered in its own block (not an info-row) so
+    // it can run to several lines; newlines in the JSON are preserved as
+    // written via `white-space: pre-wrap` on .info-note-body.
+    const note = document.createElement('div');
+    note.className = 'info-note';
+    const noteLabel = document.createElement('span');
+    noteLabel.className = 'info-label';
+    noteLabel.textContent = 'Description';
+    const noteBody = document.createElement('p');
+    noteBody.className = 'info-note-body';
+    noteBody.textContent = (book.description || '').trim() || "Reader's note";
+    note.append(noteLabel, noteBody);
+    bookInfoRightEl.appendChild(note);
+}
+
+function updateInspectNavState() {
+    inspectPrevBtn.disabled = currentInspectedIndex <= 0;
+    inspectNextBtn.disabled =
+        currentInspectedIndex < 0 || currentInspectedIndex >= renderedBooks.length - 1;
+}
+
+async function inspectBook(index) {
+    const book = renderedBooks[index];
+    if (!book) return;
+
+    currentInspectedIndex = index;
     currentInspectedBook = book;
     overlayEl.classList.remove('hidden');
     setNotesOpen(false);
+    renderBookInfo(book);
+    updateInspectNavState();
 
     // Notes fetch is async, but the 3D scene doesn't wait on it — the Read
     // Notes button just stays disabled until the fetch resolves.
@@ -1179,11 +1277,23 @@ async function inspectBook(book) {
     readBtn.disabled = !notes;
 }
 
+inspectPrevBtn.addEventListener('click', () => inspectBook(currentInspectedIndex - 1));
+inspectNextBtn.addEventListener('click', () => inspectBook(currentInspectedIndex + 1));
+
+// Arrow keys step through books too, but only while the 3D model is showing —
+// with the notes open the same keys drive page turns instead.
+document.addEventListener('keydown', (e) => {
+    if (overlayEl.classList.contains('hidden') || notesOpen) return;
+    if (e.key === 'ArrowLeft' && !inspectPrevBtn.disabled) inspectBook(currentInspectedIndex - 1);
+    if (e.key === 'ArrowRight' && !inspectNextBtn.disabled) inspectBook(currentInspectedIndex + 1);
+});
+
 closeBtn.addEventListener('click', () => {
     overlayEl.classList.add('hidden');
     setNotesOpen(false);
     disposeThree();
     currentInspectedBook = null;
+    currentInspectedIndex = -1;
 });
 
 // Reading Interface

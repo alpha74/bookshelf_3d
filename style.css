@@ -924,6 +924,169 @@ main {
     opacity: 0.85;
 }
 
+/* ---------- Inspect view: prev/next book arrows ---------- */
+/* Pinned to the stage's outer edges, leaving a gutter that the metadata
+   panels start after (see .book-info offsets) so the two never collide. */
+.inspect-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 5;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--control-bg);
+    border: 1px solid var(--border-soft);
+    color: var(--text-color);
+    font-size: 1.5rem;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.2s ease, opacity 0.2s ease;
+    backdrop-filter: blur(6px);
+}
+
+.inspect-nav:hover:not(:disabled) {
+    background: var(--control-hover);
+}
+
+.inspect-nav:disabled {
+    opacity: 0.2;
+    cursor: default;
+}
+
+.inspect-nav-left {
+    left: 10px;
+}
+
+.inspect-nav-right {
+    right: 10px;
+}
+
+/* ---------- Inspect view: book metadata panels ---------- */
+/* Overlaid on the stage rather than laid out as flex siblings of the canvas:
+   the renderer is sized in JS from the stage's own box (see
+   createInspectScene), so in-flow panels would shrink the row out from
+   under a canvas that has already been given an explicit pixel width. */
+.book-info {
+    position: absolute;
+    top: 0;
+    z-index: 4;
+    width: 30%;
+    max-width: 270px;
+    max-height: 100%;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    font-size: 0.85rem;
+    line-height: 1.5;
+}
+
+.book-info-left {
+    left: 66px;
+}
+
+.book-info-right {
+    right: 66px;
+}
+
+.info-title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 1.35rem;
+    line-height: 1.25;
+    color: var(--text-color);
+}
+
+.info-row {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+}
+
+.info-label {
+    font-size: 0.68rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--text-muted);
+}
+
+.info-value {
+    color: var(--text-color);
+    overflow-wrap: anywhere;
+}
+
+.info-tags {
+    color: var(--accent-color);
+    font-weight: 500;
+}
+
+.info-note {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    padding-top: 0.85rem;
+    border-top: 1px solid var(--border-soft);
+}
+
+/* pre-wrap keeps newlines the reader typed into books.json's `description`
+   as real line breaks, while still wrapping long paragraphs to the panel. */
+.info-note-body {
+    white-space: pre-wrap;
+    color: var(--text-color);
+    opacity: 0.92;
+}
+
+/* Below this width the book fills too much of the stage to leave clear space
+   beside it — drop the panels to the bottom as two columns and reclaim the
+   drag hint's space. They get a solid backdrop here because unlike the
+   desktop layout they do sit over the model, and a pale cover behind
+   unbacked text would be unreadable. A fixed height (rather than
+   max-height) keeps both columns' top edges level so the two read as one
+   bar instead of a ragged pair. */
+@media (max-width: 1024px) {
+    .book-info {
+        top: auto;
+        bottom: 0;
+        width: 50%;
+        max-width: none;
+        height: 44%;
+        font-size: 0.78rem;
+        gap: 0.6rem;
+        padding: 0.9rem 1rem 1rem;
+        background: var(--overlay-bg);
+        backdrop-filter: blur(8px);
+    }
+
+    .book-info-right {
+        border-left: 1px solid var(--border-soft);
+    }
+
+    .book-info-left {
+        left: 0;
+    }
+
+    .book-info-right {
+        right: 0;
+    }
+
+    .info-title {
+        font-size: 1.1rem;
+    }
+
+    .inspect-nav {
+        top: 30%;
+    }
+
+    .drag-hint {
+        display: none;
+    }
+}
+
 /* ---------- Loading spinner (shown while the cover texture downloads) ---------- */
 .inspect-loader {
     position: absolute;

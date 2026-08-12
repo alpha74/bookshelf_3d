@@ -128,6 +128,15 @@
         <div class="inspect-stage" id="inspect-stage">
             <!-- The 3D (Three.js) book viewer canvas is mounted here -->
 
+            <button id="inspect-prev" class="inspect-nav inspect-nav-left" aria-label="Previous book">&#8249;</button>
+            <button id="inspect-next" class="inspect-nav inspect-nav-right" aria-label="Next book">&#8250;</button>
+
+            <!-- Book metadata flanking the 3D model: identity on the left,
+                 shelving details + the reader's own note on the right.
+                 Populated by renderBookInfo() in main.js. -->
+            <aside class="book-info book-info-left" id="book-info-left"></aside>
+            <aside class="book-info book-info-right" id="book-info-right"></aside>
+
             <div class="inspect-loader hidden" id="inspect-loader">
                 <div class="spinner"></div>
             </div>
