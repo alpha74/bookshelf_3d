@@ -18,10 +18,121 @@ const MONTH_ABBR = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep
 // plain static site with full page loads per URL, not a client-side router,
 // so there's nothing to re-resolve later. Deeper paths just use their first
 // segment; the plain "/" root has none and keeps using the top-level files.
-const dataFolder = window.location.pathname.split('/').filter(Boolean)[0] || null;
+//
+// /gh/<username> is a second, mutually-exclusive way to pick a catalog: the
+// same file set (books.json, about.json, <bookid>_notes.json) is read from
+// that user's public GitHub repo instead of a local profiles/ folder — see
+// fetchGithubJson() below.
+const pathSegments = window.location.pathname.split('/').filter(Boolean);
+const githubUser = (pathSegments[0] === 'gh' && pathSegments[1]) ? pathSegments[1] : null;
+const dataFolder = !githubUser ? (pathSegments[0] || null) : null;
 
 function dataPath(fileName) {
     return dataFolder ? `profiles/${dataFolder}/${fileName}` : fileName;
+}
+
+// GitHub-backed profiles — a user's public repo named GITHUB_REPO must have a
+// GITHUB_DIR folder containing the same files a local profiles/<folder> would
+// (books.json, about.json, <bookid>_notes.json). The directory listing is
+// re-fetched on every page load (it's one small API call) and each entry's
+// git blob `sha` is compared against what's cached; a file's parsed content
+// is only re-downloaded when its sha changed (or it's new) — a plain
+// download_url can't be used for that check since it stays identical across
+// content edits to the same path. A failed listing fetch falls back to a
+// stale cache rather than breaking a profile that worked a moment ago.
+const GITHUB_REPO = 'bookshelf3d_profile';
+const GITHUB_DIR = 'v1';
+
+function githubCacheKey(user) {
+    return `gh-cache:${user}`;
+}
+
+function readGithubCache(user) {
+    try {
+        const raw = localStorage.getItem(githubCacheKey(user));
+        return raw ? JSON.parse(raw) : null;
+    } catch {
+        return null;
+    }
+}
+
+function writeGithubCache(user, cache) {
+    try {
+        localStorage.setItem(githubCacheKey(user), JSON.stringify(cache));
+    } catch {
+        // localStorage full/unavailable — cache is a nice-to-have, not required
+    }
+}
+
+// Directory listing (filename -> {url, sha}) for the gh mode, refreshed once
+// per page load and reused by every fetchGithubJson() call after it.
+async function getGithubListing(user) {
+    const cached = readGithubCache(user);
+
+    try {
+        const res = await fetch(`https://api.github.com/repos/${user}/${GITHUB_REPO}/contents/${GITHUB_DIR}`);
+        if (!res.ok) return cached || null;
+
+        const entries = await res.json();
+        if (!Array.isArray(entries)) return cached || null;
+
+        const files = {};
+        entries.forEach(entry => {
+            if (entry.type === 'file' && entry.download_url) {
+                files[entry.name] = { url: entry.download_url, sha: entry.sha };
+            }
+        });
+
+        // Carry over cached content only where the sha still matches —
+        // this is what keeps repeat visits fast without ever serving stale
+        // content: unchanged files skip the raw-content fetch entirely,
+        // changed/new/renamed files fall through and get re-downloaded.
+        const content = {};
+        Object.keys(files).forEach(name => {
+            const prevFile = cached && cached.files && cached.files[name];
+            if (prevFile && prevFile.sha === files[name].sha && cached.content[name] !== undefined) {
+                content[name] = cached.content[name];
+            }
+        });
+
+        const listing = { files, content };
+        writeGithubCache(user, listing);
+        return listing;
+    } catch {
+        return cached || null;
+    }
+}
+
+async function fetchGithubJson(user, fileName) {
+    const listing = await getGithubListing(user);
+    if (!listing || !listing.files[fileName]) return null;
+    if (listing.content[fileName] !== undefined) return listing.content[fileName];
+
+    try {
+        const res = await fetch(listing.files[fileName].url);
+        if (!res.ok) return null;
+        const data = await res.json();
+        listing.content[fileName] = data;
+        writeGithubCache(user, listing);
+        return data;
+    } catch {
+        return null;
+    }
+}
+
+// Single entry point both local and GitHub-backed catalogs fetch JSON
+// through — loadAbout/loadBooks/loadNotesForBook don't need to know which
+// source is active. Returns null (not a throw) on any failure, matching the
+// "missing file is normal" behavior the local fetch calls already relied on.
+async function fetchDataJson(fileName) {
+    if (githubUser) return fetchGithubJson(githubUser, fileName);
+    try {
+        const res = await fetch(dataPath(fileName));
+        if (!res.ok) return null;
+        return await res.json();
+    } catch {
+        return null;
+    }
 }
 
 // Theme
@@ -63,6 +174,7 @@ const tagsContainerEl = document.getElementById('tags-container');
 const shelfSearchInput = document.getElementById('shelf-search');
 const notFoundEl = document.getElementById('not-found');
 const notFoundMessageEl = document.getElementById('not-found-message');
+const ghLoadingEl = document.getElementById('gh-loading');
 const layoutControlEl = document.getElementById('layout-control');
 const layoutToggleBtn = document.getElementById('layout-toggle');
 const layoutPopoverEl = document.getElementById('layout-popover');
@@ -186,14 +298,8 @@ function aboutLinkHref(entry) {
 }
 
 async function loadAbout() {
-    try {
-        const res = await fetch(dataPath('about.json'));
-        if (!res.ok) return [];
-        const data = await res.json();
-        return Array.isArray(data) ? data : [];
-    } catch {
-        return [];
-    }
+    const data = await fetchDataJson('about.json');
+    return Array.isArray(data) ? data : [];
 }
 
 function renderAbout(links) {
@@ -228,13 +334,14 @@ document.addEventListener('click', (e) => {
     }
 });
 
-// Thrown by loadBooks() when a /<folder> URL points at a folder that has no
-// usable books.json — init() catches this specifically to show the 404 page
-// instead of logging a generic load error.
+// Thrown by loadBooks() when a /<folder> or /gh/<user> URL points at a
+// catalog that has no usable books.json — init() catches this specifically
+// to show the 404 page instead of logging a generic load error.
 class FolderNotFoundError extends Error {
-    constructor(folder) {
+    constructor(folder, source = 'local') {
         super(`Data folder "${folder}" not found`);
         this.folder = folder;
+        this.source = source;
     }
 }
 
@@ -246,13 +353,19 @@ class FolderNotFoundError extends Error {
 // isn't valid JSON, …) silently falls back to the local books.json — an
 // external source can only ever add books, never break the app.
 //
-// None of that applies when a /<folder> URL is active: that's an explicit
-// request for that folder's own local catalog, so it skips the external
-// manifest entirely and goes straight to <folder>/books.json — and unlike
-// the root case, a missing or unreadable file there is a real error (the
-// folder doesn't exist / has no data), surfaced as a FolderNotFoundError
-// rather than silently falling back to something else.
+// None of that applies when a /<folder> or /gh/<user> URL is active: that's
+// an explicit request for that catalog's own books, so it skips the external
+// manifest entirely and goes straight to books.json — and unlike the root
+// case, a missing or unreadable file there is a real error (the folder/repo
+// doesn't exist or has no data), surfaced as a FolderNotFoundError rather
+// than silently falling back to something else.
 async function loadBooks() {
+    if (githubUser) {
+        const books = await fetchDataJson('books.json');
+        if (Array.isArray(books)) return books;
+        throw new FolderNotFoundError(githubUser, 'github');
+    }
+
     if (dataFolder) {
         try {
             const res = await fetch(dataPath('books.json'));
@@ -294,19 +407,23 @@ async function loadBooks() {
     return localRes.json();
 }
 
-// Shown instead of the shelf when a /<folder> URL's folder has no usable
-// books.json (see FolderNotFoundError/loadBooks). Leaves the header (title,
-// theme toggle) in place — only the tag filters and shelf are folder-scoped.
-function showFolderNotFound(folder) {
+// Shown instead of the shelf when a /<folder> or /gh/<user> URL's catalog has
+// no usable books.json (see FolderNotFoundError/loadBooks). Leaves the header
+// (title, theme toggle) in place — only the tag filters and shelf are scoped.
+function showFolderNotFound(folder, source) {
     tagsNavEl.style.display = 'none';
     bookshelfContainerEl.style.display = 'none';
-    notFoundMessageEl.textContent = `The data folder "${folder}" doesn't exist.`;
+    notFoundMessageEl.textContent = source === 'github'
+        ? `No "${GITHUB_REPO}/${GITHUB_DIR}" data found for GitHub user "${folder}".`
+        : `The data folder "${folder}" doesn't exist.`;
     notFoundEl.classList.remove('hidden');
 }
 
 // Initialize
 async function init() {
     loadAbout().then(renderAbout);
+
+    if (githubUser) ghLoadingEl.classList.remove('hidden');
 
     try {
         allBooks = await loadBooks();
@@ -319,10 +436,12 @@ async function init() {
         renderBooks();
     } catch (err) {
         if (err instanceof FolderNotFoundError) {
-            showFolderNotFound(err.folder);
+            showFolderNotFound(err.folder, err.source);
         } else {
             console.error("Error loading data:", err);
         }
+    } finally {
+        if (githubUser) ghLoadingEl.classList.add('hidden');
     }
 }
 
@@ -1227,15 +1346,8 @@ async function loadNotesForBook(book) {
     if (notesCache.has(book.id)) return notesCache.get(book.id);
 
     let notes = null;
-    try {
-        const res = await fetch(dataPath(`${book.id}_notes.json`));
-        if (res.ok) {
-            const data = await res.json();
-            if (Array.isArray(data) && data.length) notes = data;
-        }
-    } catch {
-        // No <bookid>_notes.json for this book — that's the normal case for most books.
-    }
+    const data = await fetchDataJson(`${book.id}_notes.json`);
+    if (Array.isArray(data) && data.length) notes = data;
 
     notesCache.set(book.id, notes);
     return notes;

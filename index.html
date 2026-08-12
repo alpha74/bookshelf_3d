@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="An interactive 3D bookshelf — browse your collection, inspect books up close in 3D, and read notes with page-flip animations.">
     <title>3D Interactive Bookshelf</title>
+    <!-- Relative asset/fetch URLs (style.css, main.js, books.json, ...) must
+         resolve against the site root regardless of URL depth — a one-segment
+         /<folder> page and a two-segment /gh/<user> page would otherwise
+         resolve them differently (browsers drop only the last path segment). -->
+    <base href="/">
     <link rel="canonical" href="https://bookshelf-3d-mu.vercel.app/">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://bookshelf-3d-mu.vercel.app/">
@@ -107,12 +112,19 @@
             <button class="shelf-nav shelf-nav-right hidden" id="shelf-next" aria-label="Scroll shelf right">&#8250;</button>
         </div>
 
-        <!-- Shown instead of the shelf when the /<folder> in the URL doesn't
-             have its own data (see resolveDataFolder/loadBooks in main.js). -->
+        <!-- Shown instead of the shelf when the /<folder> or /gh/<user> in the
+             URL doesn't have its own data (see loadBooks in main.js). -->
         <div class="not-found hidden" id="not-found">
             <div class="not-found-code">404</div>
             <p class="not-found-message" id="not-found-message">That data folder doesn't exist.</p>
             <a class="not-found-home-link" href="/">Back to My Library</a>
+        </div>
+
+        <!-- Shown while a /gh/<user> URL's catalog is being fetched from
+             GitHub (see init() in main.js). -->
+        <div class="gh-loading hidden" id="gh-loading">
+            <div class="spinner"></div>
+            <p class="not-found-message">Loading bookshelf from GitHub&hellip;</p>
         </div>
     </main>
 

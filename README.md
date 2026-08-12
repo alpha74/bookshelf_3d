@@ -134,6 +134,22 @@ For a book with `"id": "book1"`, this goes in `book1_notes.json`.
 
 Visiting `/<folder>` (e.g. `/alpha74`) instead of `/` loads `profiles/<folder>/books.json` and `profiles/<folder>/<bookid>_notes.json` instead of the root files — useful for keeping a separate catalog (a different shelf, a shared demo, etc.) alongside the default one. The URL itself stays flat (just the folder name); create the actual folder under `profiles/` with its own `books.json` (and optional notes files). If `profiles/<folder>` doesn't exist, the app shows an in-page 404 instead of the shelf.
 
+### GitHub-Backed Profiles
+
+Visiting `/gh/<username>` loads a catalog straight from that GitHub user's public repo instead of anything local. The repo must be named `bookshelf3d_profile`, with the same files a `profiles/<folder>` would have inside a `v1/` folder:
+
+```
+bookshelf3d_profile/
+└── v1/
+    ├── books.json
+    ├── about.json          (optional)
+    └── <bookid>_notes.json (optional, one per book)
+```
+
+No auth or server-side code is involved — the app calls the public GitHub Contents API to list `v1/`, then fetches each file's raw content directly. The directory listing (and its per-file git blob SHAs) is re-checked on every visit; a file's content is cached in `localStorage` and only re-downloaded when its SHA shows it actually changed, so editing a file on GitHub shows up on the very next visit while unchanged files still load instantly from cache. If GitHub can't be reached at all, a stale cache is used rather than breaking the profile. If the repo, or its `v1/` folder, or `books.json` inside it doesn't exist (e.g. `/gh/nonexistent`), the app shows the same in-page 404 as a missing `/<folder>`.
+
+Try it: [`/gh/alpha74`](https://github.com/alpha74/bookshelf3d_profile/tree/main/v1).
+
 ## Usage
 
 ### Shelf Navigation

@@ -1,6 +1,7 @@
 {
     "rewrites": [
         { "source": "/query", "destination": "/query.html" },
+        { "source": "/gh/:username([^/.]+)", "destination": "/index.html" },
         { "source": "/:folder([^/.]+)", "destination": "/index.html" }
     ]
 }
