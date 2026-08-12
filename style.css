@@ -19,6 +19,8 @@
     --page-edge: #e4ded0;
     --fore-edge-color: #f1ead9;
     --card-shadow: rgba(0, 0, 0, 0.45);
+    --timeline-tick-color: #fff;
+    --timeline-tick-shadow: 0 1px 2px rgba(0, 0, 0, 0.9), 0 0 8px rgba(0, 0, 0, 0.5);
 }
 
 :root[data-theme="light"] {
@@ -42,6 +44,8 @@
     --page-edge: #e7e2d6;
     --fore-edge-color: #f4f0e6;
     --card-shadow: rgba(60, 50, 30, 0.16);
+    --timeline-tick-color: #1a1a1a;
+    --timeline-tick-shadow: 0 1px 2px rgba(255, 255, 255, 0.9), 0 0 8px rgba(255, 255, 255, 0.6);
 }
 
 * {
@@ -146,6 +150,12 @@ header {
 .icon-btn:hover {
     background: var(--tag-hover);
     transform: scale(1.08);
+}
+
+.icon-btn.active {
+    background: var(--tag-active);
+    border-color: var(--tag-active);
+    color: var(--tag-active-text);
 }
 
 .layout-control {
@@ -535,6 +545,56 @@ main {
 
 .shelf-top, .shelf-front {
     display: none;
+}
+
+/* Timeline strip — dates (from book.date_added) laid out under the plank in
+   the same coordinate space as the books above, so each tick lines up with
+   the book that introduced it. Clipped track + full-content-width inner
+   element mirrors the shelf-plank-track/shelf-plank pattern so it scrolls
+   in lockstep with the row (see syncRow in main.js). Hidden by default —
+   shown only once the timeline toggle is switched on. */
+.shelf-timeline-track {
+    position: relative;
+    overflow: hidden;
+    height: 34px;
+}
+
+.bookshelf-container.hide-timeline .shelf-timeline-track {
+    display: none;
+}
+
+.shelf-timeline {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    will-change: transform;
+}
+
+.timeline-tick {
+    position: absolute;
+    top: 0;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    color: var(--timeline-tick-color);
+    text-shadow: var(--timeline-tick-shadow);
+    pointer-events: none;
+}
+
+/* Sized to stay legible against whatever's behind the strip without
+   overwhelming a row of many closely-spaced ticks. */
+.timeline-tick-year {
+    top: 3px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+}
+
+.timeline-tick-month {
+    top: 8px;
+    font-size: 0.72rem;
+    font-weight: 500;
+    opacity: 0.9;
 }
 
 /* ---------- 3D Book Construction ---------- */

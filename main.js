@@ -5,6 +5,8 @@ let allBooks = [];
 let activeTag = 'latest';
 let currentInspectedBook = null;
 
+const MONTH_ABBR = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
 // Data folder — a single path segment in the URL (e.g. /alpha74) selects an
 // alternate data folder to load books/notes from instead of the project
 // root. The URL itself stays flat (just the folder name); the files
@@ -32,6 +34,22 @@ themeToggleBtn.addEventListener('click', () => {
     applyTheme(next);
 });
 
+// Timeline strip toggle — off by default (no stored value → false); the
+// strip itself is always built into each row's DOM (see renderBooks), this
+// just shows/hides it via a class, so toggling doesn't need a re-render.
+const timelineToggleBtn = document.getElementById('timeline-toggle');
+let showTimeline = localStorage.getItem('showTimeline') === 'true';
+function applyTimelineUI() {
+    bookshelfContainerEl.classList.toggle('hide-timeline', !showTimeline);
+    timelineToggleBtn.classList.toggle('active', showTimeline);
+    timelineToggleBtn.setAttribute('aria-pressed', String(showTimeline));
+}
+timelineToggleBtn.addEventListener('click', () => {
+    showTimeline = !showTimeline;
+    localStorage.setItem('showTimeline', String(showTimeline));
+    applyTimelineUI();
+});
+
 // DOM Elements
 const bookshelfRowsEl = document.getElementById('bookshelf-rows');
 const bookshelfContainerEl = document.getElementById('bookshelf-container');
@@ -56,6 +74,8 @@ const prevPageBtn = document.getElementById('prev-page');
 const nextPageBtn = document.getElementById('next-page');
 const inspectLoaderEl = document.getElementById('inspect-loader');
 const lampToggleBtn = document.getElementById('lamp-toggle');
+
+applyTimelineUI();
 
 // Lamp — a warm spotlight mimicking a desk lamp, toggled on/off and made to
 // shine on whichever book is currently open. No lamp fixture is rendered —
@@ -281,7 +301,9 @@ async function init() {
 
     try {
         allBooks = await loadBooks();
-        allBooks.sort((a, b) => new Date(b.date_added) - new Date(a.date_added));
+        // Ascending (oldest first) so every shelf row — and the timeline
+        // strip beneath it — reads left-to-right as oldest-to-newest.
+        allBooks.sort((a, b) => new Date(a.date_added) - new Date(b.date_added));
 
         extractTags();
         renderBooks();
@@ -368,12 +390,10 @@ function renderBooks() {
 
     let booksToRender = [];
     if (activeTag === 'latest') {
-        // No book actually has a date_added, so allBooks' order is really
-        // just books.json's own insertion order — the 25 most recently
-        // added entries are the last 25 in that array, not the first.
-        // Reversed so the most recent of those (the very last entry) shows
-        // first on the shelf, counting backward from there.
-        booksToRender = allBooks.slice(-25).reverse();
+        // allBooks is sorted ascending by date_added, so the 25 most
+        // recently added books are the last 25 in the array — kept in that
+        // same ascending order so the row still reads oldest-to-newest.
+        booksToRender = allBooks.slice(-25);
     } else if (activeTag === 'all') {
         booksToRender = allBooks;
     } else {
@@ -394,6 +414,10 @@ function renderBooks() {
 
         const shelf = document.createElement('div');
         shelf.className = 'bookshelf';
+
+        // One slot element per book, in row order — used after layout to
+        // position that book's timeline tick (see timelineTicks below).
+        const slotEls = [];
 
         rowBooks.forEach((book) => {
             const d = getThickness(book);
@@ -430,6 +454,7 @@ function renderBooks() {
             slot.appendChild(tooltip);
             slot.addEventListener('click', () => inspectBook(book));
             shelf.appendChild(slot);
+            slotEls.push(slot);
         });
 
         viewport.appendChild(shelf);
@@ -449,15 +474,65 @@ function renderBooks() {
         plankTrack.appendChild(plank);
         rowEl.appendChild(plankTrack);
 
-        function syncPlank() {
+        // Timeline strip — one tick per date change point in this row (a
+        // year tick whenever the year advances, a month tick for every other
+        // month change in between), each positioned under the book that
+        // introduced it. Ticks are sparse by design: a tick per book would
+        // overlap into an unreadable smear on any row with more than a
+        // handful of books.
+        const timelineTicks = [];
+        let lastYear = null;
+        let lastMonth = null;
+        rowBooks.forEach((book, i) => {
+            const parsed = book.date_added ? new Date(book.date_added.replace(' ', 'T')) : null;
+            if (!parsed || isNaN(parsed)) return;
+            const year = parsed.getFullYear();
+            const month = parsed.getMonth();
+            if (year !== lastYear) {
+                timelineTicks.push({ slot: slotEls[i], type: 'year', text: String(year) });
+                lastYear = year;
+                lastMonth = month;
+            } else if (month !== lastMonth) {
+                timelineTicks.push({ slot: slotEls[i], type: 'month', text: MONTH_ABBR[month] });
+                lastMonth = month;
+            }
+        });
+
+        const timelineTrack = document.createElement('div');
+        timelineTrack.className = 'shelf-timeline-track';
+        const timelineEl = document.createElement('div');
+        timelineEl.className = 'shelf-timeline';
+        const tickEls = timelineTicks.map((tick) => {
+            const tickEl = document.createElement('span');
+            tickEl.className = `timeline-tick timeline-tick-${tick.type}`;
+            tickEl.textContent = tick.text;
+            timelineEl.appendChild(tickEl);
+            return tickEl;
+        });
+        timelineTrack.appendChild(timelineEl);
+        rowEl.appendChild(timelineTrack);
+
+        // Plank and timeline both mirror the viewport's scrollable content:
+        // sized to its full scroll width and translated to cancel out the
+        // current scroll offset, so they stay glued under the books. Tick
+        // positions themselves (slot.offsetLeft) don't move on scroll — only
+        // the container translating them does — so they're set here too but
+        // stay correct without recomputation.
+        function syncRow() {
             plank.style.width = `${viewport.scrollWidth}px`;
             plank.style.transform = `translateX(${-viewport.scrollLeft}px)`;
+            timelineEl.style.width = `${viewport.scrollWidth}px`;
+            timelineEl.style.transform = `translateX(${-viewport.scrollLeft}px)`;
+            timelineTicks.forEach((tick, i) => {
+                const center = tick.slot.offsetLeft + tick.slot.offsetWidth / 2;
+                tickEls[i].style.left = `${center}px`;
+            });
         }
-        syncPlank();
+        syncRow();
 
         viewport.addEventListener('scroll', () => {
             updateShelfScrollState();
-            syncPlank();
+            syncRow();
         });
         // Mouse wheels/trackpads usually send vertical deltaY even when the
         // user means to scroll a horizontal row — convert that to horizontal.
@@ -470,7 +545,7 @@ function renderBooks() {
 
         bookshelfRowsEl.appendChild(rowEl);
         shelfViewports.push(viewport);
-        plankSyncFns.push(syncPlank);
+        plankSyncFns.push(syncRow);
     }
 
     shelfViewports.forEach((v) => { v.scrollLeft = 0; });
