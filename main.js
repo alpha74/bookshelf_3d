@@ -92,9 +92,10 @@ applyTimelineUI();
 // opens within the session (not localStorage — it's a "while I'm browsing"
 // mood, not a durable preference).
 let lampOn = true;
+const LAMP_INTENSITY = 2.25; // +25% over the original 1.8
 function applyLampUI() {
     lampToggleBtn.setAttribute('aria-pressed', String(lampOn));
-    if (threeState) threeState.lampLight.intensity = lampOn ? 1.8 : 0;
+    if (threeState) threeState.lampLight.intensity = lampOn ? LAMP_INTENSITY : 0;
 }
 lampToggleBtn.addEventListener('click', () => {
     lampOn = !lampOn;
@@ -1094,7 +1095,7 @@ function createInspectScene(book) {
     // the book, off by default. The lamp toggle just changes its intensity —
     // the actual "shine" comes from the light itself catching the cover at
     // an angle, since the cover material isn't fully matte.
-    const lampLight = new THREE.SpotLight(0xffd9a0, lampOn ? 1.8 : 0, 10, Math.PI / 5, 1, 1.8);
+    const lampLight = new THREE.SpotLight(0xffd9a0, lampOn ? LAMP_INTENSITY : 0, 10, Math.PI / 5, 1, 1.8);
     lampLight.position.set(2.1, 3, 2.6);
     lampLight.target.position.set(0, 0, 0);
     scene.add(lampLight, lampLight.target);
