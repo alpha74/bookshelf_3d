@@ -1,4 +1,6 @@
-<img width="800" height="380" alt="image" src="https://github.com/user-attachments/assets/f90c94bb-3a6f-4d91-a20a-943178a1cad3" />
+
+<img width="700" height="380" alt="image" src="https://github.com/user-attachments/assets/d805140a-b967-4975-bdd7-93de7ed93d0c" />
+
 
 # 3D Interactive Bookshelf
 
@@ -14,6 +16,10 @@ A beautiful, interactive 3D bookshelf built with HTML, CSS, JavaScript, and Thre
 - **Dark/Light Theme**: Toggle between dark and light color schemes
 - **External Catalog Support**: Load books from Google Drive, GitHub, or any JSON API
 - **Lazy Loading**: Cover images load only when books are opened, not on the shelf
+
+
+<img width="600" height="320" alt="image" src="https://github.com/user-attachments/assets/e43b78b8-9646-4e8a-b2c4-edcd018c70f1" />
+
 
 ## Run Locally
 
