@@ -1462,3 +1462,28 @@ main {
         gap: 1rem;
     }
 }
+
+/* ---------- Site footer ---------- */
+.site-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1.5rem 1rem 2rem;
+    font-size: 0.8rem;
+}
+
+.site-footer-link {
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.site-footer-link:hover {
+    color: var(--accent-color);
+}
+
+.site-footer-sep {
+    color: var(--text-muted);
+    opacity: 0.5;
+}
