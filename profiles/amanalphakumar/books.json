@@ -924,27 +924,6 @@
   },
 
   {
-    "id": "book106",
-    "title": "$100 Startup",
-    "author": "Chris Guillebeau",
-    "isbn": null,
-    "tags": [
-      "non-fiction",
-      "self-help",
-      "business"
-    ],
-    "date_added": "2025-10-05 20:16",
-    "pages": 297,
-    "rating": null,
-    "description": "Reader's note",
-    "color": "#5d576b",
-    "dimensions": {
-      "width": 140,
-      "height": 210
-    }
-  },
-
-  {
     "id": "book111",
     "title": "The Lean Startup",
     "author": "Eric Ries",
