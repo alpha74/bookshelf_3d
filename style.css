@@ -145,6 +145,7 @@ header {
     align-items: center;
     justify-content: center;
     transition: all 0.3s ease;
+    text-decoration: none;
 }
 
 .icon-btn:hover {
