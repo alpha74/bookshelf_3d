@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Generate a books.json entry for your shelf.">
+    <title>Generate Book JSON — My Library</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+</head>
+<body class="query-page generate-page">
+    <header>
+        <div class="logo">
+            <a href="/" class="logo-link"><h1>My Library</h1></a>
+            <div class="header-controls">
+                <a href="/query" class="icon-btn" title="Back to search" aria-label="Back to search">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="7"/>
+                        <line x1="16.5" y1="16.5" x2="21" y2="21"/>
+                    </svg>
+                </a>
+                <button id="theme-toggle" class="icon-btn" title="Toggle light/dark theme">🌙</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="query-main">
+        <section class="query-panel generate-panel">
+            <h2 class="query-heading">Generate book JSON</h2>
+            <p class="query-subheading">Fill in the fields below, then generate a ready-to-paste entry for <code>books.json</code>.</p>
+
+            <form id="generate-form" class="generate-form" novalidate>
+                <div class="form-field">
+                    <label for="field-id-number">ID <span class="field-required">*</span></label>
+                    <div class="id-input-row">
+                        <span class="id-prefix" aria-hidden="true">book</span>
+                        <input type="text" id="field-id-number" name="id_number" class="form-input id-number-input" inputmode="numeric" pattern="[0-9]*" placeholder="100" required autocomplete="off">
+                    </div>
+                    <p class="field-hint">Mandatory number only. Example: enter <code>100</code> to generate id <code>book100</code>.</p>
+                </div>
+
+                <div class="form-field">
+                    <label for="field-title">Title</label>
+                    <div class="lockable-input-row">
+                        <input type="text" id="field-title" name="title" class="form-input" autocomplete="off" readonly>
+                        <button type="button" class="field-edit-btn" data-unlock="field-title" title="Edit title" aria-label="Edit title">
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="form-field">
+                    <label for="field-author">Author</label>
+                    <div class="lockable-input-row">
+                        <input type="text" id="field-author" name="author" class="form-input" autocomplete="off" readonly>
+                        <button type="button" class="field-edit-btn" data-unlock="field-author" title="Edit author" aria-label="Edit author">
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-field">
+                        <label for="field-isbn">ISBN</label>
+                        <div class="lockable-input-row">
+                            <input type="text" id="field-isbn" name="isbn" class="form-input" autocomplete="off" readonly>
+                            <button type="button" class="field-edit-btn" data-unlock="field-isbn" title="Edit ISBN" aria-label="Edit ISBN">
+                                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="form-field">
+                        <label for="field-pages">Pages</label>
+                        <div class="lockable-input-row">
+                            <input type="number" id="field-pages" name="pages" class="form-input" min="1" step="1" readonly>
+                            <button type="button" class="field-edit-btn" data-unlock="field-pages" title="Edit pages" aria-label="Edit pages">
+                                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-field">
+                    <label for="field-tags">Tags</label>
+                    <input type="text" id="field-tags" name="tags" class="form-input" value="fiction" autocomplete="off">
+                    <p class="field-hint">Comma-separated (e.g. <code>fiction, classic</code>).</p>
+                </div>
+
+                <div class="form-field">
+                    <label for="field-date-added">Date added</label>
+                    <input type="datetime-local" id="field-date-added" name="date_added" class="form-input" autocomplete="off">
+                    <p class="field-hint">Defaults to now. Format in JSON: <code>YYYY-MM-DD HH:MM</code></p>
+                </div>
+
+                <div class="form-field">
+                    <span class="form-label">Rating</span>
+                    <div class="star-rating" id="star-rating" role="radiogroup" aria-label="Book rating">
+                        <button type="button" class="star-btn" data-rating="1" aria-label="1 star">★</button>
+                        <button type="button" class="star-btn" data-rating="2" aria-label="2 stars">★</button>
+                        <button type="button" class="star-btn" data-rating="3" aria-label="3 stars">★</button>
+                        <button type="button" class="star-btn" data-rating="4" aria-label="4 stars">★</button>
+                        <button type="button" class="star-btn" data-rating="5" aria-label="5 stars">★</button>
+                    </div>
+                    <p class="field-hint">Click a star to rate, click again to clear.</p>
+                </div>
+
+                <div class="form-field">
+                    <label for="field-description">Description</label>
+                    <textarea id="field-description" name="description" class="form-input form-textarea" rows="3">Reader's note</textarea>
+                    <p class="field-hint">Add your note about this book</p>
+                </div>
+
+                <div class="form-field">
+                    <label for="field-color">Color</label>
+                    <div class="color-picker-row">
+                        <input type="color" id="field-color" name="color" class="form-color" value="#7d2e46">
+                        <input type="text" id="field-color-text" class="form-input" value="#7d2e46" autocomplete="off" spellcheck="false">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-field">
+                        <label for="field-width">Width</label>
+                        <div class="lockable-input-row">
+                            <input type="number" id="field-width" name="width" class="form-input" value="160" min="1" step="1" readonly>
+                            <button type="button" class="field-edit-btn" data-unlock="field-width" title="Edit width" aria-label="Edit width">
+                                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="form-field">
+                        <label for="field-height">Height</label>
+                        <div class="lockable-input-row">
+                            <input type="number" id="field-height" name="height" class="form-input" value="250" min="1" step="1" readonly>
+                            <button type="button" class="field-edit-btn" data-unlock="field-height" title="Edit height" aria-label="Edit height">
+                                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="form-error hidden" id="form-error"></p>
+
+                <button type="submit" class="control-btn primary generate-submit" id="generate-submit">Generate JSON</button>
+            </form>
+        </section>
+
+        <section class="generate-output-section hidden" id="generate-output-section">
+            <div class="generate-output-header">
+                <h3 class="generate-output-title">Generated JSON</h3>
+                <button type="button" class="control-btn" id="copy-json-btn">Copy</button>
+            </div>
+            <pre class="generate-output" id="generate-output"></pre>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <a class="site-footer-link" href="https://alpha74.github.io/webcv" target="_blank" rel="noopener noreferrer">Created by alpha74</a>
+        <span class="site-footer-sep">&middot;</span>
+        <a class="site-footer-link" href="https://github.com/alpha74/bookshelf3d_profile/tree/main" target="_blank" rel="noopener noreferrer">Deploy your own</a>
+    </footer>
+
+    <script type="module" src="generate_books_json.js"></script>
+</body>
+</html>

@@ -215,8 +215,28 @@ function buildResultCard(book) {
     sub.textContent = subParts.join('  ·  ') || '—';
 
     meta.append(title, author, sub);
+
+    const actions = document.createElement('div');
+    actions.className = 'result-actions';
+
+    const generateBtn = document.createElement('a');
+    generateBtn.className = 'control-btn result-generate-btn';
+    generateBtn.textContent = 'Generate JSON';
+    generateBtn.href = buildGenerateJsonUrl(book);
+
+    actions.appendChild(generateBtn);
+    meta.appendChild(actions);
     card.append(coverWrap, meta);
     return card;
+}
+
+function buildGenerateJsonUrl(book) {
+    const params = new URLSearchParams();
+    if (book.title) params.set('title', book.title);
+    if (book.author) params.set('author', book.author);
+    if (book.isbn) params.set('isbn', book.isbn);
+    if (book.pages) params.set('pages', String(book.pages));
+    return `/generate_books_json?${params.toString()}`;
 }
 
 // IntersectionObserver instance is recreated per render — simpler than
