@@ -3655,16 +3655,17 @@
     "author": "Khushwant Singh",
     "isbn": "9780143065883",
     "tags": [
-      "historical-fiction"
+      "historical-fiction",
+      "must-read"
     ],
-    "date_added": "2026-08-11 23:59",
+    "date_added": "2026-08-16 01:09",
     "pages": 246,
     "rating": null,
     "description": "Reader's note",
-    "color": "#A6A1A1",
+    "color": "#2f3e46",
     "dimensions": {
-      "width": 150,
-      "height": 230
+      "width": 130,
+      "height": 200
     }
   }
 ]
