@@ -1073,6 +1073,29 @@ main {
     font-weight: 500;
 }
 
+.info-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    margin-top: 0.15rem;
+}
+
+.info-link {
+    padding: 0.2rem 0.55rem;
+    border: 1px solid var(--border-soft);
+    border-radius: 999px;
+    font-size: 0.75rem;
+    color: var(--text-color);
+    text-decoration: none;
+    transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease;
+}
+
+.info-link:hover {
+    background: var(--control-hover);
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+}
+
 .info-note {
     display: flex;
     flex-direction: column;

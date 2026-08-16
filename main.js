@@ -1386,6 +1386,40 @@ function infoRow(label, value, valueClass) {
     return row;
 }
 
+// Lookups for the inspected book on the three catalogs, each built from the
+// book's ISBN alone — no extra per-book fields in books.json are needed.
+const EXTERNAL_BOOK_LINKS = [
+    { name: 'Goodreads', href: (isbn) => `https://www.goodreads.com/search?q=${isbn}` },
+    { name: 'OpenLibrary', href: (isbn) => `https://openlibrary.org/isbn/${isbn}` },
+];
+
+function buildExternalLinksRow(isbn) {
+    const encodedIsbn = encodeURIComponent(String(isbn).trim());
+
+    const row = document.createElement('div');
+    row.className = 'info-row';
+
+    const labelEl = document.createElement('span');
+    labelEl.className = 'info-label';
+    labelEl.textContent = 'Find more about this book';
+    row.appendChild(labelEl);
+
+    const linksEl = document.createElement('div');
+    linksEl.className = 'info-links';
+    EXTERNAL_BOOK_LINKS.forEach((entry) => {
+        const a = document.createElement('a');
+        a.className = 'info-link';
+        a.href = entry.href(encodedIsbn);
+        a.target = '_blank';
+        a.rel = 'noopener noreferrer';
+        a.textContent = entry.name;
+        linksEl.appendChild(a);
+    });
+    row.appendChild(linksEl);
+
+    return row;
+}
+
 function renderBookInfo(book) {
     bookInfoLeftEl.innerHTML = '';
     bookInfoRightEl.innerHTML = '';
@@ -1398,6 +1432,10 @@ function renderBookInfo(book) {
     bookInfoLeftEl.appendChild(infoRow('Author', book.author || 'Unknown'));
     bookInfoLeftEl.appendChild(infoRow('ISBN', book.isbn || '—'));
     bookInfoLeftEl.appendChild(infoRow('Pages', book.pages ? String(book.pages) : '—'));
+
+    if (book.isbn) {
+        bookInfoLeftEl.appendChild(buildExternalLinksRow(book.isbn));
+    }
 
     const tags = Array.isArray(book.tags) ? book.tags : [];
     bookInfoRightEl.appendChild(
