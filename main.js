@@ -34,23 +34,36 @@ function dataPath(fileName) {
 // GitHub-backed profiles — a user's public repo named GITHUB_REPO must have a
 // GITHUB_DIR folder containing the same files a local profiles/<folder> would
 // (books.json, about.json, <bookid>_notes.json). The directory listing is
-// re-fetched on every page load (it's one small API call) and each entry's
-// git blob `sha` is compared against what's cached; a file's parsed content
-// is only re-downloaded when its sha changed (or it's new) — a plain
-// download_url can't be used for that check since it stays identical across
-// content edits to the same path. A failed listing fetch falls back to a
-// stale cache rather than breaking a profile that worked a moment ago.
+// fetched at most once per page load (conditionally, so an unchanged folder
+// costs no API quota) and each entry's git blob `sha` is compared against
+// what's cached; a file's parsed content is only re-downloaded when its sha
+// changed (or it's new) — a plain download_url can't be used for that check
+// since it stays identical across content edits to the same path. A failed
+// listing fetch falls back to a stale cache rather than breaking a profile
+// that worked a moment ago.
 const GITHUB_REPO = 'bookshelf3d_profile';
 const GITHUB_DIR = 'v1';
+
+// Unauthenticated api.github.com requests are capped at 60/hour per IP, and a
+// tripped cap comes back as a 403 that looks exactly like "no such repo"
+// unless the rate-limit headers are read. Recorded here when that happens so
+// loadBooks can report "try again shortly" instead of blaming the profile.
+let githubRateLimit = null;
 
 function githubCacheKey(user) {
     return `gh-cache:${user}`;
 }
 
+// Normalized on the way out so every consumer (including the 304 path, which
+// hands the cached listing straight back as the live one) can count on
+// `files`/`content` being there regardless of which version of this code, or
+// which hand edit, wrote the entry.
 function readGithubCache(user) {
     try {
         const raw = localStorage.getItem(githubCacheKey(user));
-        return raw ? JSON.parse(raw) : null;
+        const parsed = raw ? JSON.parse(raw) : null;
+        if (!parsed || !parsed.files) return null;
+        return { files: parsed.files, content: parsed.content || {}, etag: parsed.etag || null };
     } catch {
         return null;
     }
@@ -64,13 +77,49 @@ function writeGithubCache(user, cache) {
     }
 }
 
-// Directory listing (filename -> {url, sha}) for the gh mode, refreshed once
-// per page load and reused by every fetchGithubJson() call after it.
-async function getGithubListing(user) {
+// Directory listing (filename -> {url, sha}) for the gh mode, fetched once per
+// user and shared by every fetchGithubJson() call for the rest of the page's
+// life. The memo is the point: a page load asks for about.json, books.json and
+// a notes file per opened book, and re-listing the folder for each of those
+// spent a separate request out of the hour's 60 — enough to lock a visitor out
+// of their own shelf in a handful of reloads.
+const githubListings = new Map();
+
+function getGithubListing(user) {
+    if (!githubListings.has(user)) {
+        githubListings.set(user, fetchGithubListing(user));
+    }
+    return githubListings.get(user);
+}
+
+// Epoch ms at which the exhausted allowance refills, or null if this response
+// isn't a rate-limit rejection at all.
+function rateLimitResetAt(res) {
+    if (res.status !== 403 && res.status !== 429) return null;
+    if (res.headers.get('X-RateLimit-Remaining') !== '0') return null;
+    const reset = Number(res.headers.get('X-RateLimit-Reset'));
+    return Number.isFinite(reset) && reset > 0 ? reset * 1000 : Date.now();
+}
+
+async function fetchGithubListing(user) {
     const cached = readGithubCache(user);
 
     try {
-        const res = await fetch(`https://api.github.com/repos/${user}/${GITHUB_REPO}/contents/${GITHUB_DIR}`);
+        // Conditional request: GitHub answers an unchanged folder with a 304
+        // that doesn't count against the hourly allowance at all, so a repeat
+        // visitor keeps their whole quota for the raw file downloads.
+        const res = await fetch(`https://api.github.com/repos/${user}/${GITHUB_REPO}/contents/${GITHUB_DIR}`, {
+            headers: cached && cached.etag ? { 'If-None-Match': cached.etag } : {},
+        });
+
+        if (res.status === 304 && cached) return cached;
+
+        const resetAt = rateLimitResetAt(res);
+        if (resetAt) {
+            githubRateLimit = { resetAt };
+            return cached || null;
+        }
+
         if (!res.ok) return cached || null;
 
         const entries = await res.json();
@@ -95,7 +144,7 @@ async function getGithubListing(user) {
             }
         });
 
-        const listing = { files, content };
+        const listing = { files, content, etag: res.headers.get('ETag') || null };
         writeGithubCache(user, listing);
         return listing;
     } catch {
@@ -173,6 +222,7 @@ const tagsNavEl = document.getElementById('tags-nav');
 const tagsContainerEl = document.getElementById('tags-container');
 const shelfSearchInput = document.getElementById('shelf-search');
 const notFoundEl = document.getElementById('not-found');
+const notFoundCodeEl = document.querySelector('.not-found-code');
 const notFoundMessageEl = document.getElementById('not-found-message');
 const ghLoadingEl = document.getElementById('gh-loading');
 const layoutControlEl = document.getElementById('layout-control');
@@ -345,6 +395,16 @@ class FolderNotFoundError extends Error {
     }
 }
 
+// Thrown when GitHub refused the listing because this IP's hourly allowance is
+// spent. The catalog itself may be perfectly fine, so this must never be
+// reported as a missing profile.
+class GithubRateLimitError extends Error {
+    constructor(resetAt) {
+        super('GitHub API rate limit reached');
+        this.resetAt = resetAt;
+    }
+}
+
 // Book source — checked once at startup. If books_external.json exists, its
 // `link` field is fetched and used as the catalog instead of the local
 // books.json; every other part of the app is unaware of the difference and
@@ -363,6 +423,7 @@ async function loadBooks() {
     if (githubUser) {
         const books = await fetchDataJson('books.json');
         if (Array.isArray(books)) return books;
+        if (githubRateLimit) throw new GithubRateLimitError(githubRateLimit.resetAt);
         throw new FolderNotFoundError(githubUser, 'github');
     }
 
@@ -407,16 +468,31 @@ async function loadBooks() {
     return localRes.json();
 }
 
-// Shown instead of the shelf when a /<folder> or /gh/<user> URL's catalog has
-// no usable books.json (see FolderNotFoundError/loadBooks). Leaves the header
-// (title, theme toggle) in place — only the tag filters and shelf are scoped.
-function showFolderNotFound(folder, source) {
+// Shown instead of the shelf when a /<folder> or /gh/<user> URL can't be
+// turned into a catalog. Leaves the header (title, theme toggle) in place —
+// only the tag filters and shelf are scoped.
+function showShelfNotice(code, message) {
     tagsNavEl.style.display = 'none';
     bookshelfContainerEl.style.display = 'none';
-    notFoundMessageEl.textContent = source === 'github'
-        ? `No "${GITHUB_REPO}/${GITHUB_DIR}" data found for GitHub user "${folder}".`
-        : `The data folder "${folder}" doesn't exist.`;
+    notFoundCodeEl.textContent = code;
+    notFoundMessageEl.textContent = message;
     notFoundEl.classList.remove('hidden');
+}
+
+// The catalog genuinely isn't there (see FolderNotFoundError/loadBooks).
+function showFolderNotFound(folder, source) {
+    showShelfNotice('404', source === 'github'
+        ? `No "${GITHUB_REPO}/${GITHUB_DIR}" data found for GitHub user "${folder}".`
+        : `The data folder "${folder}" doesn't exist.`);
+}
+
+// The catalog is probably fine — GitHub just won't answer for this IP until the
+// hourly allowance refills, so the message says when to come back.
+function showGithubRateLimited(resetAt) {
+    const minutes = resetAt ? Math.ceil((resetAt - Date.now()) / 60000) : 0;
+    showShelfNotice('429', minutes > 0
+        ? `GitHub's hourly API limit for this network is used up. Try again in about ${minutes} minute${minutes === 1 ? '' : 's'}.`
+        : "GitHub's hourly API limit for this network is used up. Please try again shortly.");
 }
 
 // Initialize
@@ -435,7 +511,9 @@ async function init() {
         extractTags();
         renderBooks();
     } catch (err) {
-        if (err instanceof FolderNotFoundError) {
+        if (err instanceof GithubRateLimitError) {
+            showGithubRateLimited(err.resetAt);
+        } else if (err instanceof FolderNotFoundError) {
             showFolderNotFound(err.folder, err.source);
         } else {
             console.error("Error loading data:", err);
