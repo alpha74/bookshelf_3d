@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Create and preview page notes for a bookshelf book.">
+    <title>Notes Editor — My Library</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+</head>
+<body class="notes-page">
+    <header class="notes-header">
+        <div class="logo">
+            <a href="/" class="logo-link"><h1>Notes Editor</h1></a>
+            <div class="header-controls notes-header-controls">
+                <button type="button" class="control-btn" id="paste-json-btn">Paste JSON</button>
+                <button type="button" class="control-btn" id="upload-json-btn">Upload JSON</button>
+                <input type="file" id="json-file-input" accept=".json,application/json" hidden>
+                <button id="theme-toggle" class="icon-btn" title="Toggle light/dark theme">🌙</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="notes-workspace">
+        <section class="notes-editor-pane" aria-label="Notes page editor">
+            <div class="notes-pane-heading">
+                <div>
+                    <h2>Pages</h2>
+                    <p>Edit HTML content using the <code>book1_notes.json</code> structure.</p>
+                </div>
+                <span id="notes-page-count" class="notes-page-count"></span>
+            </div>
+
+            <p id="notes-error" class="notes-error hidden" role="alert"></p>
+            <div id="notes-forms" class="notes-forms"></div>
+
+            <div class="notes-output-actions">
+                <button type="button" class="control-btn" id="copy-notes-btn">Copy JSON</button>
+                <button type="button" class="control-btn primary" id="download-notes-btn">Download JSON</button>
+            </div>
+        </section>
+
+        <section class="notes-preview-pane" aria-label="Live notes preview">
+            <div class="notes-preview-heading">
+                <div>
+                    <h2>Preview</h2>
+                    <p>Updates as you edit.</p>
+                </div>
+                <span id="preview-page-label" class="notes-page-count"></span>
+            </div>
+
+            <div class="notes-preview-stage">
+                <div class="open-book-container notes-open-book-container">
+                    <div class="open-book notes-open-book" id="notes-open-book"></div>
+                </div>
+                <div class="page-controls">
+                    <button id="notes-prev-page" class="nav-btn">&larr; Prev</button>
+                    <button id="notes-next-page" class="nav-btn">Next &rarr;</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <dialog id="paste-json-dialog" class="notes-dialog">
+        <form method="dialog" class="notes-dialog-card">
+            <div class="notes-dialog-heading">
+                <h2>Paste existing notes JSON</h2>
+                <button type="submit" class="notes-dialog-close" aria-label="Close">&times;</button>
+            </div>
+            <p>Paste an array in the same format as <code>book1_notes.json</code>.</p>
+            <textarea id="paste-json-input" class="form-input form-textarea notes-json-input" rows="14" spellcheck="false" placeholder='[{"page":1,"content":"<h2>Chapter 1</h2><p>My note</p>"}]'></textarea>
+            <p id="paste-json-error" class="notes-error hidden" role="alert"></p>
+            <div class="notes-dialog-actions">
+                <button type="submit" class="control-btn">Cancel</button>
+                <button type="button" class="control-btn primary" id="load-pasted-json-btn">Start editing</button>
+            </div>
+        </form>
+    </dialog>
+
+    <script type="module" src="notes.js"></script>
+</body>
+</html>

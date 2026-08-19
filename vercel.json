@@ -2,6 +2,7 @@
     "rewrites": [
         { "source": "/query", "destination": "/query.html" },
         { "source": "/generate_books_json", "destination": "/generate_books_json.html" },
+        { "source": "/notes", "destination": "/notes.html" },
         { "source": "/gh/:username([^/.]+)", "destination": "/index.html" },
         { "source": "/:folder([^/.]+)", "destination": "/index.html" }
     ]

@@ -1774,6 +1774,322 @@ main {
     }
 }
 
+/* ---------- /notes — notes JSON editor + live book preview ---------- */
+.notes-header {
+    padding-bottom: 1.5rem;
+}
+
+.notes-header-controls {
+    gap: 0.5rem;
+}
+
+.notes-workspace {
+    flex: 1;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    min-height: calc(100vh - 105px);
+    border-top: 1px solid var(--border-soft);
+}
+
+.notes-editor-pane,
+.notes-preview-pane {
+    min-width: 0;
+    padding: 2rem clamp(1.25rem, 3vw, 3rem);
+}
+
+.notes-editor-pane {
+    border-right: 1px solid var(--border-soft);
+}
+
+.notes-preview-pane {
+    position: sticky;
+    top: 0;
+    align-self: start;
+    height: calc(100vh - 105px);
+    display: flex;
+    flex-direction: column;
+}
+
+.notes-pane-heading,
+.notes-preview-heading,
+.notes-dialog-heading,
+.notes-page-form-header,
+.notes-output-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.notes-pane-heading,
+.notes-preview-heading {
+    margin-bottom: 1.5rem;
+}
+
+.notes-pane-heading h2,
+.notes-preview-heading h2,
+.notes-dialog-heading h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+}
+
+.notes-pane-heading p,
+.notes-preview-heading p,
+.notes-dialog-card > p {
+    margin-top: 0.25rem;
+    color: var(--text-muted);
+    font-size: 0.82rem;
+    line-height: 1.45;
+}
+
+.notes-page-count {
+    flex-shrink: 0;
+    color: var(--text-muted);
+    font-size: 0.78rem;
+}
+
+.notes-forms {
+    display: flex;
+    flex-direction: column;
+}
+
+.notes-page-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1.1rem;
+    border: 1px solid var(--border-soft);
+    border-radius: 12px;
+    background: var(--tag-bg);
+}
+
+.notes-page-form-header h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+}
+
+.notes-remove-page {
+    border: 0;
+    background: transparent;
+    color: var(--text-muted);
+    font: inherit;
+    font-size: 0.75rem;
+    cursor: pointer;
+}
+
+.notes-remove-page:hover:not(:disabled) {
+    color: #e0555a;
+}
+
+.notes-remove-page:disabled {
+    opacity: 0.35;
+    cursor: default;
+}
+
+.notes-content-input {
+    min-height: 150px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 0.82rem;
+}
+
+.notes-add-page {
+    align-self: stretch;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    min-height: 38px;
+    margin: 0.45rem 0;
+    border: 1px dashed var(--border-soft);
+    border-radius: 9px;
+    background: transparent;
+    color: var(--text-muted);
+    font: inherit;
+    font-size: 0.78rem;
+    cursor: pointer;
+    transition: color 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+}
+
+.notes-add-page span {
+    font-size: 1rem;
+}
+
+.notes-add-page:hover {
+    color: var(--accent-color);
+    border-color: var(--accent-color);
+    background: var(--tag-bg);
+}
+
+.notes-output-actions {
+    justify-content: flex-end;
+    margin-top: 1.25rem;
+}
+
+.notes-error {
+    margin-bottom: 1rem;
+    color: #e0555a;
+    font-size: 0.82rem;
+}
+
+.notes-error.hidden {
+    display: none;
+}
+
+.notes-preview-stage {
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    overflow: hidden;
+}
+
+.notes-open-book-container {
+    width: min(88%, 680px);
+    margin-bottom: 0;
+}
+
+.notes-open-book {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 11;
+}
+
+.notes-preview-stage .nav-btn:disabled {
+    opacity: 0.35;
+    cursor: default;
+}
+
+.notes-preview-stage .nav-btn:disabled:hover {
+    background: var(--control-bg);
+}
+
+.notes-dialog {
+    width: min(680px, calc(100vw - 2rem));
+    max-height: calc(100vh - 2rem);
+    margin: auto;
+    padding: 0;
+    border: 1px solid var(--border-soft);
+    border-radius: 14px;
+    background: var(--bg-color);
+    color: var(--text-color);
+    box-shadow: 0 20px 70px var(--card-shadow);
+}
+
+.notes-dialog::backdrop {
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(4px);
+}
+
+.notes-dialog-card {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1.4rem;
+}
+
+.notes-dialog-close {
+    border: 0;
+    background: transparent;
+    color: var(--text-muted);
+    font-size: 1.8rem;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.notes-json-input {
+    min-height: 280px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 0.8rem;
+}
+
+.notes-dialog-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.7rem;
+}
+
+@media (max-width: 900px) {
+    .notes-header .logo {
+        justify-content: space-between;
+    }
+
+    .notes-header-controls {
+        position: static;
+        transform: none;
+    }
+
+    .notes-workspace {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .notes-editor-pane {
+        border-right: 0;
+        border-bottom: 1px solid var(--border-soft);
+    }
+
+    .notes-preview-pane {
+        position: static;
+        order: -1;
+        height: min(68vh, 620px);
+        min-height: 440px;
+        border-bottom: 1px solid var(--border-soft);
+    }
+}
+
+@media (max-width: 600px) {
+    .notes-header {
+        padding: 1.25rem;
+    }
+
+    .notes-header .logo {
+        align-items: flex-start;
+        gap: 0.8rem;
+    }
+
+    .notes-header .logo h1 {
+        font-size: 1.35rem;
+    }
+
+    .notes-header-controls {
+        flex-wrap: wrap;
+        justify-content: flex-end;
+    }
+
+    .notes-header-controls .control-btn {
+        padding: 0.45rem 0.65rem;
+        font-size: 0.72rem;
+    }
+
+    .notes-editor-pane,
+    .notes-preview-pane {
+        padding: 1.25rem;
+    }
+
+    .notes-preview-pane {
+        min-height: 390px;
+        height: 58vh;
+    }
+
+    .notes-open-book-container {
+        width: 96%;
+    }
+
+    .notes-preview-stage .page-front,
+    .notes-preview-stage .page-back {
+        padding: 1rem;
+    }
+
+    .notes-preview-stage .page-front p,
+    .notes-preview-stage .page-back p {
+        font-size: 0.72rem;
+        line-height: 1.45;
+    }
+}
+
 /* ---------- Site footer ---------- */
 .site-footer {
     display: flex;
