@@ -1516,6 +1516,7 @@ function renderBookInfo(book) {
     }
 
     const tags = Array.isArray(book.tags) ? book.tags : [];
+    bookInfoRightEl.appendChild(infoRow('ID', book.id ? `#${book.id}` : '—'));
     bookInfoRightEl.appendChild(
         infoRow('Tags', tags.length ? tags.map((t) => `#${t}`).join('  ') : '—', 'info-tags')
     );
