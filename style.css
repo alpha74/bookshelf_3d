@@ -1415,6 +1415,7 @@ main {
     position: relative;
     width: 100%;
     aspect-ratio: 2 / 3;
+    flex-shrink: 0;
     border-radius: 8px;
     overflow: hidden;
     /* Visible until the lazy-loaded <img> paints over it — a flat skeleton
@@ -1424,12 +1425,33 @@ main {
 }
 
 .result-cover {
+    position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
     opacity: 0;
     animation: result-cover-in 0.35s ease forwards;
+}
+
+.result-cover-loader {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--control-bg);
+}
+
+.result-cover-loader.hidden {
+    display: none;
+}
+
+.result-cover-loader .spinner {
+    width: 28px;
+    height: 28px;
 }
 
 @keyframes result-cover-in {
@@ -1453,6 +1475,7 @@ main {
 }
 
 .result-meta {
+    flex: 1;
     display: flex;
     flex-direction: column;
     gap: 0.25rem;
@@ -1470,10 +1493,91 @@ main {
     font-size: 0.85rem;
 }
 
+/* Two lines are reserved even when only one is used: stepping through a
+   result's ISBNs swaps a 10-digit code for a 13-digit one, which re-wraps this
+   line and would otherwise shove the cover controls below it up and down. */
 .result-sub {
+    margin-bottom: auto;
+    min-height: 2.9em;
     color: var(--text-muted);
     font-size: 0.75rem;
+    line-height: 1.45;
     opacity: 0.85;
+}
+
+/* Pinned to the bottom of the card (see .result-sub's auto margin) so every
+   card in a row lines its controls up, whatever the title/author height. */
+.result-cover-browser {
+    margin-top: 0.35rem;
+    min-height: 36px;
+}
+
+.result-show-covers-btn {
+    width: 100%;
+    height: 36px;
+    font-size: 0.75rem;
+    padding: 0.4rem 0.65rem;
+}
+
+.result-show-covers-btn.hidden,
+.result-cover-seeker.hidden {
+    display: none;
+}
+
+.result-cover-seeker {
+    display: grid;
+    grid-template-columns: 1fr 4.8rem 1fr;
+    align-items: center;
+    gap: 0.4rem;
+    min-height: 36px;
+}
+
+.result-cover-nav {
+    height: 36px;
+    padding: 0 0.45rem;
+    border: 1px solid var(--border-soft);
+    border-radius: 8px;
+    background: var(--control-bg);
+    color: var(--text-color);
+    font: inherit;
+    font-size: 0.72rem;
+    cursor: pointer;
+}
+
+.result-cover-nav:hover:not(:disabled) {
+    background: var(--control-hover);
+}
+
+.result-cover-nav:disabled {
+    opacity: 0.35;
+    cursor: default;
+}
+
+.result-cover-status {
+    flex: 1.2;
+    text-align: center;
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    font-variant-numeric: tabular-nums;
+}
+
+.result-cover-wrap.isbn-cover-missing::after {
+    content: 'No cover';
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #ffffff;
+    color: #000000;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+}
+
+.result-cover-wrap.isbn-cover-loading.isbn-cover-missing::after {
+    display: none;
 }
 
 .result-actions {
