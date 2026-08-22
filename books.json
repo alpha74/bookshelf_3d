@@ -20,8 +20,8 @@
   {
     "id": "book2",
     "title": "Life in the Uniform",
-    "author": null,
-    "isbn": null,
+    "author": "Amit Lodha",
+    "isbn": "9780143450597",
     "tags": [
       "fiction"
     ],
@@ -2001,7 +2001,7 @@
     "id": "book102",
     "title": "The Fault in Our Stars",
     "author": "John Green",
-    "isbn": "9780525478812",
+    "isbn": "893783376X",
     "tags": [
       "fiction"
     ],
@@ -2037,7 +2037,7 @@
     "id": "book104",
     "title": "How to Win Friends and Influence People",
     "author": "Dale Carnegie",
-    "isbn": "9780671027032",
+    "isbn": "9781442344815",
     "tags": [
       "fiction"
     ],
@@ -2354,8 +2354,8 @@
   {
     "id": "book121",
     "title": "The Winner Stands Alone",
-    "author": null,
-    "isbn": null,
+    "author": "Paulo Coelho",
+    "isbn": "9780061968273",
     "tags": [
       "fiction"
     ],
@@ -2373,7 +2373,7 @@
     "id": "book122",
     "title": "Metamorphosis",
     "author": "Franz Kafka",
-    "isbn": null,
+    "isbn": "9780241573730",
     "tags": [
       "classic",
       "fiction"
@@ -2392,7 +2392,7 @@
     "id": "book123",
     "title": "The Almanack of Naval Ravikant",
     "author": "Eric Jorgenson",
-    "isbn": "9781544514212",
+    "isbn": "9354893899",
     "tags": [
       "fiction"
     ],
@@ -2410,7 +2410,7 @@
     "id": "book124",
     "title": "Gaban[Hindi]",
     "author": "Munshi Premchand",
-    "isbn": null,
+    "isbn": "9789350642740",
     "tags": [
       "classic",
       "indian-literature",
@@ -2430,7 +2430,7 @@
     "id": "book125",
     "title": "Sell Like Crazy",
     "author": "Sabri Suby",
-    "isbn": null,
+    "isbn": "9780648459903",
     "tags": [
       "fiction"
     ],
@@ -2448,7 +2448,7 @@
     "id": "book126",
     "title": "Surrounded by Idiots",
     "author": "Thomas Erikson",
-    "isbn": null,
+    "isbn": "1785042181",
     "tags": [
       "fiction"
     ],
@@ -2466,7 +2466,7 @@
     "id": "book127",
     "title": "The Last Queen",
     "author": "Chitra Banerjee Divakaruni",
-    "isbn": null,
+    "isbn": "9789354894152",
     "tags": [
       "fiction"
     ],
@@ -2484,7 +2484,7 @@
     "id": "book128",
     "title": "The Lost Symbol",
     "author": "Dan Brown",
-    "isbn": null,
+    "isbn": "9780385533133",
     "tags": [
       "mystery",
       "thriller",
@@ -2503,8 +2503,8 @@
   {
     "id": "book129",
     "title": "Nirmala[Hindi]",
-    "author": null,
-    "isbn": null,
+    "author": "Premchand",
+    "isbn": "9788128400087",
     "tags": [
       "classic",
       "indian-literature",
@@ -2523,8 +2523,8 @@
   {
     "id": "book130",
     "title": "India's Most Fearless-3",
-    "author": null,
-    "isbn": null,
+    "author":"Shiv Aroor, Rahul Singh",
+    "isbn": "9780143451112 1",
     "tags": [
       "fiction"
     ],
@@ -2542,7 +2542,7 @@
     "id": "book131",
     "title": "Shoe Dog",
     "author": "Phil Knight",
-    "isbn": "9781501128035",
+    "isbn": "9781501150111",
     "tags": [
       "non-fiction",
       "biography",
@@ -2562,7 +2562,7 @@
     "id": "book132",
     "title": "Anxious People",
     "author": "Fredrik Backman",
-    "isbn": null,
+    "isbn": "9781405930253",
     "tags": [
       "fiction",
       "contemporary"
@@ -2581,7 +2581,7 @@
     "id": "book133",
     "title": "The Silent Patient",
     "author": "Alex Michaelides",
-    "isbn": null,
+    "isbn": "1409181634",
     "tags": [
       "mystery",
       "thriller",
@@ -2601,7 +2601,7 @@
     "id": "book134",
     "title": "To Kill a Mockingbird",
     "author": "Harper Lee",
-    "isbn": "9780060935467",
+    "isbn": "0062423339",
     "tags": [
       "classic",
       "fiction"
@@ -2620,7 +2620,7 @@
     "id": "book135",
     "title": "The Seven Moons of Mali Almeida",
     "author": "Shehan Karunatilaka",
-    "isbn": "9781982182933",
+    "isbn": "9781324064824",
     "tags": [
       "fiction"
     ],
@@ -2656,7 +2656,7 @@
     "id": "book137",
     "title": "Brida",
     "author": "Paulo Coelho",
-    "isbn": "9780061852633",
+    "isbn": "0007278594",
     "tags": [
       "classic",
       "fiction"
@@ -2674,8 +2674,8 @@
   {
     "id": "book138",
     "title": "Open Eyed Meditations",
-    "author": null,
-    "isbn": null,
+    "author": "Shubha Vilas",
+    "isbn": "9788175993907",
     "tags": [
       "fiction"
     ],
@@ -2692,8 +2692,8 @@
   {
     "id": "book139",
     "title": "Introduction to Indus Valley Civilization",
-    "author": null,
-    "isbn": null,
+    "author": "Sanjib Kumar Singh",
+    "isbn": "9788185832326",
     "tags": [
       "fiction"
     ],
@@ -2729,7 +2729,7 @@
     "id": "book141",
     "title": "As a Man Thinketh",
     "author": "James Allen",
-    "isbn": "9780486270660",
+    "isbn": "9388118421",
     "tags": [
       "non-fiction",
       "self-help",
@@ -2749,7 +2749,7 @@
     "id": "book142",
     "title": "The Path to Prosperity",
     "author": "James Allen",
-    "isbn": "9780486270660",
+    "isbn": "1016449291",
     "tags": [
       "fiction"
     ],
@@ -2766,8 +2766,8 @@
   {
     "id": "book143",
     "title": "The Race of My Life",
-    "author": "M. S. Dhoni",
-    "isbn": "9788184004386",
+    "author": "Milkha Singh",
+    "isbn": "8129129108",
     "tags": [
       "non-fiction",
       "biography",
@@ -2785,9 +2785,9 @@
   },
   {
     "id": "book144",
-    "title": "Diary of a Wimpy Kid (17) No Brainer",
+    "title": "Diary of a Wimpy Kid - No Brainer",
     "author": "Jeff Kinney",
-    "isbn": null,
+    "isbn": "0241583152",
     "tags": [
       "children",
       "humor",
@@ -2807,7 +2807,7 @@
     "id": "book145",
     "title": "Orbital",
     "author": "Samantha Harvey",
-    "isbn": null,
+    "isbn": "9781529922936",
     "tags": [
       "fiction"
     ],
@@ -2825,7 +2825,7 @@
     "id": "book146",
     "title": "RAW: A History of India's Covert Operations",
     "author": "Yatish Yadav",
-    "isbn": null,
+    "isbn": "9789389648096",
     "tags": [
       "fiction"
     ],
@@ -2843,7 +2843,7 @@
     "id": "book147",
     "title": "My Gita",
     "author": "Devdutt Pattanaik",
-    "isbn": "9780143427524",
+    "isbn": "9788129137708",
     "tags": [
       "fiction"
     ],
@@ -2860,8 +2860,8 @@
   {
     "id": "book148",
     "title": "How to Become People Magnet",
-    "author": null,
-    "isbn": null,
+    "author": "Marc Recklau",
+    "isbn": "1726797406",
     "tags": [
       "non-fiction",
       "self-help",
@@ -2881,7 +2881,7 @@
     "id": "book149",
     "title": "Diary of a Wimpy Kid - Hard Luck",
     "author": "Jeff Kinney",
-    "isbn": null,
+    "isbn": "1419711326",
     "tags": [
       "children",
       "humor",
@@ -2900,8 +2900,8 @@
   {
     "id": "book150",
     "title": "Inside Delta Force",
-    "author": "Eric Haney",
-    "isbn": null,
+    "author": "Eric L. Haney",
+    "isbn": "0385902735",
     "tags": [
       "fiction"
     ],
@@ -2919,7 +2919,7 @@
     "id": "book151",
     "title": "Diary of a Wimpy Kid - The Long Haul",
     "author": "Jeff Kinney",
-    "isbn": null,
+    "isbn": "9781419711893",
     "tags": [
       "children",
       "humor",
@@ -2939,7 +2939,7 @@
     "id": "book152",
     "title": "Diary of a Wimpy Kid - Old School",
     "author": "Jeff Kinney",
-    "isbn": null,
+    "isbn": "9781419717017",
     "tags": [
       "children",
       "humor",
@@ -2959,7 +2959,7 @@
     "id": "book153",
     "title": "Diary of a Wimpy Kid - Double Down",
     "author": "Jeff Kinney",
-    "isbn": null,
+    "isbn": "0141373229",
     "tags": [
       "children",
       "humor",
@@ -2979,7 +2979,7 @@
     "id": "book154",
     "title": "Fantastic Mr. Fox",
     "author": "Roald Dahl",
-    "isbn": null,
+    "isbn": "9780141930220",
     "tags": [
       "children",
       "humor",
@@ -2999,7 +2999,7 @@
     "id": "book155",
     "title": "Diary of a Wimpy Kid - The Getaway",
     "author": "Jeff Kinney",
-    "isbn": null,
+    "isbn": "9780141385297",
     "tags": [
       "children",
       "humor",
@@ -3019,7 +3019,7 @@
     "id": "book156",
     "title": "Made in America",
     "author": "Sam Walton",
-    "isbn": null,
+    "isbn": "0553562835",
     "tags": [
       "fiction"
     ],
@@ -3035,9 +3035,9 @@
   },
   {
     "id": "book157",
-    "title": "Nationalism - Tagore",
+    "title": "Nationalism",
     "author": "Rabindranath Tagore",
-    "isbn": null,
+    "isbn": "9788171677788",
     "tags": [
       "fiction"
     ],
@@ -3053,9 +3053,9 @@
   },
   {
     "id": "book158",
-    "title": "Godan[Hindi]",
+    "title": "Godan [Hindi]",
     "author": "Munshi Premchand",
-    "isbn": null,
+    "isbn": "8171822495",
     "tags": [
       "classic",
       "indian-literature",
@@ -3073,9 +3073,9 @@
   },
   {
     "id": "book159",
-    "title": "Elon Musk[Vance]",
+    "title": "Elon Musk",
     "author": "Ashlee Vance",
-    "isbn": null,
+    "isbn": "9780062469670",
     "tags": [
       "non-fiction",
       "biography",
@@ -3095,7 +3095,7 @@
     "id": "book160",
     "title": "My Life in Full",
     "author": "Indra Nooyi",
-    "isbn": null,
+    "isbn": "9789389253818",
     "tags": [
       "non-fiction",
       "biography",
@@ -3115,7 +3115,7 @@
     "id": "book161",
     "title": "Can't Hurt Me",
     "author": "David Goggins",
-    "isbn": null,
+    "isbn": "9781544512280",
     "tags": [
       "fiction"
     ],
@@ -3133,7 +3133,7 @@
     "id": "book162",
     "title": "India Grows at Night",
     "author": "Gurcharan Das",
-    "isbn": null,
+    "isbn": "0670084700",
     "tags": [
       "fiction"
     ],
@@ -3150,8 +3150,8 @@
   {
     "id": "book163",
     "title": "Life in the Uniform",
-    "author": null,
-    "isbn": null,
+    "author": "Amit Lodha",
+    "isbn": "9780143450597",
     "tags": [
       "fiction"
     ],
@@ -3168,8 +3168,8 @@
   {
     "id": "book164",
     "title": "Tiger of Drass",
-    "author": "Rachna Bisht Rawat",
-    "isbn": null,
+    "author": "Meena Nayyar",
+    "isbn": "9789354229268",
     "tags": [
       "nature",
       "adventure",
@@ -3189,7 +3189,7 @@
     "id": "book165",
     "title": "White Nights",
     "author": "Fyodor Dostoevsky",
-    "isbn": null,
+    "isbn": "0241252083",
     "tags": [
       "fiction"
     ],
@@ -3206,7 +3206,7 @@
   {
     "id": "book166",
     "title": "The Hero of Tiger Hill",
-    "author": "Sandeep Unnithan",
+    "author": "Yogendra Singh Yadav",
     "isbn": null,
     "tags": [
       "nature",
@@ -3227,7 +3227,7 @@
     "id": "book167",
     "title": "Bad Guys - Mission Unpluckable",
     "author": "Aaron Blabey",
-    "isbn": null,
+    "isbn": "1760154121",
     "tags": [
       "children",
       "humor",
@@ -3247,7 +3247,7 @@
     "id": "book168",
     "title": "Life's Amazing Secrets",
     "author": "Gaur Gopal Das",
-    "isbn": null,
+    "isbn": "9780143442295",
     "tags": [
       "fiction"
     ],
@@ -3265,7 +3265,7 @@
     "id": "book169",
     "title": "A Tiger for Malgudi",
     "author": "R. K. Narayan",
-    "isbn": null,
+    "isbn": "9780140185454",
     "tags": [
       "nature",
       "adventure",
@@ -3285,7 +3285,7 @@
     "id": "book170",
     "title": "Man Eaters of Kumaon",
     "author": "Jim Corbett",
-    "isbn": null,
+    "isbn": "1910723436",
     "tags": [
       "nature",
       "adventure",
@@ -3303,9 +3303,9 @@
   },
   {
     "id": "book171",
-    "title": "My India[Corbett]",
+    "title": "My India",
     "author": "Jim Corbett",
-    "isbn": null,
+    "isbn": "9780195623413",
     "tags": [
       "nature",
       "adventure",
@@ -3325,7 +3325,7 @@
     "id": "book172",
     "title": "The Temple Tiger",
     "author": "Jim Corbett",
-    "isbn": null,
+    "isbn": "0195613449",
     "tags": [
       "nature",
       "adventure",
@@ -3343,9 +3343,9 @@
   },
   {
     "id": "book173",
-    "title": "TreeTops[Corbett]",
+    "title": "Tree Tops",
     "author": "Jim Corbett",
-    "isbn": null,
+    "isbn": "8178240815",
     "tags": [
       "nature",
       "adventure",
@@ -3364,8 +3364,8 @@
   {
     "id": "book174",
     "title": "India's Most Fearless 2",
-    "author": null,
-    "isbn": null,
+    "author": "Shiv Aroor, Rahul Singh",
+    "isbn": "9780143443155",
     "tags": [
       "fiction"
     ],
@@ -3383,7 +3383,7 @@
     "id": "book175",
     "title": "Jungle Lore",
     "author": "Jim Corbett",
-    "isbn": null,
+    "isbn": "0195651855",
     "tags": [
       "nature",
       "adventure",
@@ -3403,7 +3403,7 @@
     "id": "book176",
     "title": "The Girl on the Train",
     "author": "Paula Hawkins",
-    "isbn": null,
+    "isbn": "9780385689502",
     "tags": [
       "mystery",
       "thriller",
@@ -3423,7 +3423,7 @@
     "id": "book177",
     "title": "Ego is the enemy",
     "author": "Ryan Holiday",
-    "isbn": null,
+    "isbn": "1781257019",
     "tags": [
       "fiction"
     ],
@@ -3441,7 +3441,7 @@
     "id": "book178",
     "title": "The Mountain is You",
     "author": "Brianna Wiest",
-    "isbn": null,
+    "isbn": "1949759229",
     "tags": [
       "fiction"
     ],
@@ -3459,7 +3459,7 @@
     "id": "book179",
     "title": "Gunaho ka Devta",
     "author": "Dharamvir Bharati",
-    "isbn": null,
+    "isbn": "8194808812",
     "tags": [
       "classic",
       "indian-literature",
@@ -3479,7 +3479,7 @@
     "id": "book180",
     "title": "The Denial of Death",
     "author": "Ernest Becker",
-    "isbn": null,
+    "isbn": "0684832402",
     "tags": [
       "fiction"
     ],
@@ -3497,7 +3497,7 @@
     "id": "book181",
     "title": "Diary of a Wimpy Kid:The Meltdown",
     "author": "Jeff Kinney",
-    "isbn": null,
+    "isbn": "9781419739248",
     "tags": [
       "children",
       "humor",
@@ -3517,7 +3517,7 @@
     "id": "book182",
     "title": "Diary of a Wimpy Kid: Wrecking Ball",
     "author": "Jeff Kinney",
-    "isbn": null,
+    "isbn": "1419739034",
     "tags": [
       "children",
       "humor",
@@ -3537,7 +3537,7 @@
     "id": "book183",
     "title": "Rashmirathi",
     "author": "Ramdhari Singh Dinkar",
-    "isbn": null,
+    "isbn": "9788180313622",
     "tags": [
       "classic",
       "indian-literature",
@@ -3556,8 +3556,8 @@
   {
     "id": "book184",
     "title": "Open Secrets: India's Intelligence Unveiled",
-    "author": null,
-    "isbn": null,
+    "author": "Maloy K. Dhar",
+    "isbn": "8170492408",
     "tags": [
       "fiction"
     ],
@@ -3575,7 +3575,7 @@
     "id": "book185",
     "title": "48 Laws of Power",
     "author": "Robert Greene",
-    "isbn": null,
+    "isbn": "110104036X",
     "tags": [
       "non-fiction",
       "self-help",
@@ -3614,7 +3614,7 @@
     "id": "book187",
     "title": "The Great Gatsby",
     "author": "F. Scott Fitzgerald",
-    "isbn": "9780743273565",
+    "isbn": "9781915582157",
     "tags": [
       "classic",
       "fiction"
