@@ -16,6 +16,7 @@ A beautiful, interactive 3D bookshelf built with HTML, CSS, JavaScript, and Thre
 - **Dark/Light Theme**: Toggle between dark and light color schemes
 - **External Catalog Support**: Load books from Google Drive, GitHub, or any JSON API
 - **Lazy Loading**: Cover images load only when books are opened, not on the shelf
+- **Local Cover Overrides**: Drop a `book101.jpg` (named after the book's `id`) next to `books.json` to supply art Open Library is missing
 
 
 <img width="600" height="320" alt="image" src="https://github.com/user-attachments/assets/e43b78b8-9646-4e8a-b2c4-edcd018c70f1" />
@@ -39,12 +40,14 @@ book_3d/
 ├── books.json              # Local book catalog
 ├── books_external.json     # External source configuration (optional)
 ├── <bookid>_notes.json     # Reading notes, one file per book (optional)
+├── <bookid>.jpg            # Optional cover image override (see below)
 ├── serve.json              # `serve` rewrite rules for /<folder> URLs
 ├── vercel.json             # Same rewrite rules for Vercel deploys
 ├── profiles/
 │   └── <folder>/           # Optional alternate data folder (see below)
 │       ├── books.json
-│       └── <bookid>_notes.json
+│       ├── <bookid>_notes.json
+│       └── <bookid>.jpg    # optional cover override
 ├── .claude/
 │   └── launch.json         # Dev server configuration
 └── README.md               # This file
@@ -136,6 +139,18 @@ Add reading notes as `<bookid>_notes.json` — one file per book, named after th
 
 For a book with `"id": "book1"`, this goes in `book1_notes.json`.
 
+### Local Cover Images
+
+Covers are loaded from Open Library by ISBN when you inspect a book. Some editions have no cover there. To fill those in (or to override OL's art), put an image file next to `books.json` whose **filename is the book's `id`**:
+
+```
+book101.jpg
+```
+
+matches a catalog entry with `"id": "book101"`. Tried extensions, in order: `.jpg`, `.jpeg`, `.png`, `.webp`. The first file that loads is used; if none exist, Open Library is used as before, then the generated title/author fallback.
+
+For a `/<folder>` catalog, put the image in that profile folder (`profiles/<folder>/book101.jpg`). For `/gh/<username>`, put it in the repo's `v1/` folder next to `books.json`.
+
 ### Alternate Data Folders
 
 Visiting `/<folder>` (e.g. `/alpha74`) instead of `/` loads `profiles/<folder>/books.json` and `profiles/<folder>/<bookid>_notes.json` instead of the root files — useful for keeping a separate catalog (a different shelf, a shared demo, etc.) alongside the default one. The URL itself stays flat (just the folder name); create the actual folder under `profiles/` with its own `books.json` (and optional notes files). If `profiles/<folder>` doesn't exist, the app shows an in-page 404 instead of the shelf.
@@ -149,7 +164,8 @@ bookshelf3d_profile/
 └── v1/
     ├── books.json
     ├── about.json          (optional)
-    └── <bookid>_notes.json (optional, one per book)
+    ├── <bookid>_notes.json (optional, one per book)
+    └── <bookid>.jpg        (optional cover override, see Local Cover Images)
 ```
 
 No auth or server-side code is involved — the app calls the public GitHub Contents API to list `v1/`, then fetches each file's raw content directly. The directory listing (and its per-file git blob SHAs) is re-checked on every visit; a file's content is cached in `localStorage` and only re-downloaded when its SHA shows it actually changed, so editing a file on GitHub shows up on the very next visit while unchanged files still load instantly from cache. If GitHub can't be reached at all, a stale cache is used rather than breaking the profile. If the repo, or its `v1/` folder, or `books.json` inside it doesn't exist (e.g. `/gh/nonexistent`), the app shows the same in-page 404 as a missing `/<folder>`.
@@ -187,7 +203,7 @@ Try it: [`/gh/alpha74`](https://github.com/alpha74/bookshelf3d_profile/tree/main
 - **OrbitControls** for 3D camera interaction
 - **localStorage** persists theme preference across sessions
 - **Lamp state** is session-only (not persisted)
-- **Cover images** fetched lazily from Open Library API
+- **Cover images** fetched lazily from Open Library, unless a local `<bookid>.jpg` (or `.png`/`.webp`) is present
 
 ## Troubleshooting
 

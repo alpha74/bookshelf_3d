@@ -33,7 +33,7 @@ function dataPath(fileName) {
 
 // GitHub-backed profiles — a user's public repo named GITHUB_REPO must have a
 // GITHUB_DIR folder containing the same files a local profiles/<folder> would
-// (books.json, about.json, <bookid>_notes.json). The directory listing is
+// (books.json, about.json, <bookid>_notes.json, optional <bookid>.jpg covers). The directory listing is
 // fetched at most once per page load (conditionally, so an unchanged folder
 // costs no API quota) and each entry's git blob `sha` is compared against
 // what's cached; a file's parsed content is only re-downloaded when its sha
@@ -1144,6 +1144,70 @@ async function fetchImageWithCache(url) {
     }
 }
 
+// Optional override covers — a file whose name matches the book's `id`
+// (e.g. id "book101" → book101.jpg) sitting next to books.json. Tried
+// before Open Library so a catalog can supply art for editions OL has
+// no cover for. Extensions are tried in this order; the first image that
+// actually loads wins. Not put through the 30-day IndexedDB cache: a
+// replaced local file should show up on the next inspect, not a month later.
+const LOCAL_COVER_EXTS = ['jpg', 'jpeg', 'png', 'webp'];
+
+function localCoverFileNames(book) {
+    const id = String(book && book.id ? book.id : '').trim();
+    if (!id) return [];
+    return LOCAL_COVER_EXTS.map((ext) => `${id}.${ext}`);
+}
+
+function blobLooksLikeImage(blob, fileName) {
+    if (!blob || blob.size < 500) return false;
+    const type = (blob.type || '').toLowerCase();
+    if (type.startsWith('image/')) return true;
+    // Some static hosts omit Content-Type; trust the extension in that case.
+    return /\.(jpe?g|png|webp)$/i.test(fileName);
+}
+
+async function fetchLocalCoverBlob(book) {
+    const names = localCoverFileNames(book);
+    if (!names.length) return null;
+
+    if (githubUser) {
+        const listing = await getGithubListing(githubUser);
+        if (!listing) return null;
+        for (const name of names) {
+            const file = listing.files[name];
+            if (!file || !file.url) continue;
+            try {
+                const res = await fetch(file.url, { mode: 'cors', credentials: 'omit' });
+                if (!res.ok) continue;
+                const blob = await res.blob();
+                if (blobLooksLikeImage(blob, name)) return blob;
+            } catch {
+                // try the next extension
+            }
+        }
+        return null;
+    }
+
+    for (const name of names) {
+        try {
+            const res = await fetch(dataPath(name), { credentials: 'omit' });
+            if (!res.ok) continue;
+            const blob = await res.blob();
+            if (blobLooksLikeImage(blob, name)) return blob;
+        } catch {
+            // try the next extension
+        }
+    }
+    return null;
+}
+
+async function fetchCoverBlob(book) {
+    const local = await fetchLocalCoverBlob(book);
+    if (local) return local;
+    if (!book.isbn) return null;
+    return fetchImageWithCache(`https://covers.openlibrary.org/b/isbn/${book.isbn}-L.jpg`);
+}
+
 // A real hardcover isn't one solid block — the page block is slightly
 // smaller than the covers, which overhang it on the top, bottom and
 // fore-edge (but sit flush with it at the spine, where the pages are bound).
@@ -1301,16 +1365,16 @@ function createInspectScene(book) {
     scene.add(bookGroup.group);
 
     // The cover texture is fetched only now — the moment this book is
-    // actually opened — never while it's just sitting on the shelf. It's
-    // also routed through the IndexedDB cover cache (see fetchImageWithCache
-    // above), so re-opening the same book — even after a page reload —
-    // reuses the cached image instead of hitting Open Library again, as
+    // actually opened — never while it's just sitting on the shelf. A
+    // local file named after the book's id (book101.jpg, see
+    // fetchCoverBlob) wins if present; otherwise Open Library is used,
+    // routed through the IndexedDB cover cache so re-opening the same
+    // ISBN — even after a page reload — skips a network round-trip as
     // long as the cached copy hasn't passed CACHE_DURATION_MS.
     inspectLoaderEl.classList.remove('hidden');
     const loader = new THREE.TextureLoader();
     loader.setCrossOrigin('anonymous');
-    const coverUrl = `https://covers.openlibrary.org/b/isbn/${book.isbn}-L.jpg`;
-    fetchImageWithCache(coverUrl).then((blob) => {
+    fetchCoverBlob(book).then((blob) => {
         // The user may have closed this book or opened another one while
         // the fetch/cache lookup was in flight — don't apply a stale result.
         if (!threeState || threeState.renderer !== renderer) return;
