@@ -620,7 +620,7 @@
     "id": "book32",
     "title": "The Immortals of Meluha",
     "author": "Amish Tripathi",
-    "isbn": "9789380658744",
+    "isbn": "9789380658742",
     "tags": [
       "fiction"
     ],
@@ -636,9 +636,9 @@
   },
   {
     "id": "book33",
-    "title": "The Scion of Ikshvaku",
+    "title": "Ram: The Scion of Ikshvaku",
     "author": "Amish Tripathi",
-    "isbn": "9789385155200",
+    "isbn": "9789356290792",
     "tags": [
       "fiction"
     ],
@@ -1520,8 +1520,8 @@
   {
     "id": "book76",
     "title": "The Valley of Fear",
-    "author": null,
-    "isbn": null,
+    "author": "Arthur Conan Doyle",
+    "isbn": "9781444808063",
     "tags": [
       "fiction"
     ],
@@ -1538,8 +1538,8 @@
   {
     "id": "book77",
     "title": "Hooked-How to form Habit forming products",
-    "author": null,
-    "isbn": null,
+    "author": "Nir Eyal",
+    "isbn": "9780241184837",
     "tags": [
       "non-fiction",
       "self-help",
@@ -1558,8 +1558,8 @@
   {
     "id": "book78",
     "title": "The Ride of LifeTime - Disney",
-    "author": null,
-    "isbn": null,
+    "author": "Robert Iger",
+    "isbn": "9780593170984",
     "tags": [
       "fiction"
     ],
@@ -1576,8 +1576,8 @@
   {
     "id": "book79",
     "title": "Everything I Never Told You",
-    "author": null,
-    "isbn": null,
+    "author": "Ajay K. Pandey",
+    "isbn": "8194790859",
     "tags": [
       "fiction"
     ],
@@ -1594,8 +1594,8 @@
   {
     "id": "book80",
     "title": "No Rules Rules-Netflix",
-    "author": null,
-    "isbn": null,
+    "author": "Reed Hastings, Erin Meyer",
+    "isbn": "9780753553664",
     "tags": [
       "fiction"
     ],
@@ -1633,7 +1633,7 @@
     "id": "book82",
     "title": "A Man Called Ove",
     "author": "Fredrik Backman",
-    "isbn": null,
+    "isbn": "9781410472922",
     "tags": [
       "fiction",
       "contemporary"
@@ -1651,8 +1651,8 @@
   {
     "id": "book83",
     "title": "Doesn't Hurt To Ask",
-    "author": null,
-    "isbn": null,
+    "author": "Trey Gowdy",
+    "isbn": "9780593138922",
     "tags": [
       "fiction"
     ],
@@ -1670,7 +1670,7 @@
     "id": "book84",
     "title": "Pride and Prejudice",
     "author": "Jane Austen",
-    "isbn": "9780141439512",
+    "isbn": "1035007797",
     "tags": [
       "fiction"
     ],
@@ -1688,13 +1688,13 @@
     "id": "book85",
     "title": "The Kite Runner",
     "author": "Khaled Hosseini",
-    "isbn": "9781594631931",
+    "isbn": "1408803720",
     "tags": [
       "fiction",
       "contemporary"
     ],
     "date_added": "2025-07-18 09:56",
-    "pages": 324,
+    "pages": 371,
     "rating": null,
     "description": "Reader's note",
     "color": "#8d6e63",
@@ -1706,8 +1706,8 @@
   {
     "id": "book86",
     "title": "Do Bailon Ki Katha[Hindi]",
-    "author": null,
-    "isbn": null,
+    "author": "Premchand",
+    "isbn": "9781523468164",
     "tags": [
       "fiction"
     ],
@@ -1725,7 +1725,7 @@
     "id": "book87",
     "title": "A Thousand Splendid Suns",
     "author": "Khaled Hosseini",
-    "isbn": "9781594489501",
+    "isbn": "074758589X",
     "tags": [
       "fiction",
       "contemporary"
@@ -1743,8 +1743,8 @@
   {
     "id": "book88",
     "title": "Kafan[Hindi]",
-    "author": null,
-    "isbn": null,
+    "author": "Premchand",
+    "isbn": "9789388304085",
     "tags": [
       "fiction"
     ],
@@ -1761,8 +1761,8 @@
   {
     "id": "book89",
     "title": "Pratigya[Hindi]",
-    "author": null,
-    "isbn": null,
+    "author": "Premchand",
+    "isbn": "9789389851632",
     "tags": [
       "fiction"
     ],
@@ -1780,7 +1780,7 @@
     "id": "book90",
     "title": "And the Mountains Echoed",
     "author": "Khaled Hosseini",
-    "isbn": null,
+    "isbn": "1408842459",
     "tags": [
       "fiction"
     ],
@@ -1797,8 +1797,8 @@
   {
     "id": "book91",
     "title": "Idgaah[Hindi]",
-    "author": null,
-    "isbn": null,
+    "author": "Premchand",
+    "isbn": "8186219714",
     "tags": [
       "fiction"
     ],
@@ -1816,7 +1816,7 @@
     "id": "book92",
     "title": "Ikigai",
     "author": "Héctor García",
-    "isbn": "9780143130720",
+    "isbn": "1469007436",
     "tags": [
       "fiction"
     ],
@@ -1833,8 +1833,8 @@
   {
     "id": "book93",
     "title": "Namaha: Stories from the Land of Gods",
-    "author": null,
-    "isbn": null,
+    "author": "Abhishek Singh",
+    "isbn": "9789388810395",
     "tags": [
       "fiction"
     ],
@@ -1870,9 +1870,9 @@
   },
   {
     "id": "book95",
-    "title": "Vardaan - Munshi Premchand",
-    "author": null,
-    "isbn": null,
+    "title": "Vardaan [Hindi]",
+    "author": "Premchand",
+    "isbn": "1981763414",
     "tags": [
       "classic",
       "indian-literature",
@@ -1892,7 +1892,7 @@
     "id": "book96",
     "title": "Veronika Decides to Die",
     "author": "Paulo Coelho",
-    "isbn": null,
+    "isbn": "0722539924",
     "tags": [
       "classic",
       "fiction"
@@ -1911,7 +1911,7 @@
     "id": "book97",
     "title": "The HitcherHiker's Guide to the Galaxy",
     "author": "Douglas Adams",
-    "isbn": null,
+    "isbn": "9781529051438",
     "tags": [
       "fiction"
     ],
@@ -1929,7 +1929,7 @@
     "id": "book98",
     "title": "The Restaurant at the End of the Universe",
     "author": "Douglas Adams",
-    "isbn": null,
+    "isbn": "9781529034530",
     "tags": [
       "fiction"
     ],
@@ -1947,7 +1947,7 @@
     "id": "book99",
     "title": "Life, The Universe and Everything",
     "author": "Douglas Adams",
-    "isbn": null,
+    "isbn": "1529044391",
     "tags": [
       "fiction"
     ],
@@ -1965,7 +1965,7 @@
     "id": "book100",
     "title": "So Long and Thanks for All the Fish",
     "author": "Douglas Adams",
-    "isbn": null,
+    "isbn": "1529044413",
     "tags": [
       "fiction"
     ],
@@ -1983,7 +1983,7 @@
     "id": "book101",
     "title": "Mostly Harmless",
     "author": "Douglas Adams",
-    "isbn": null,
+    "isbn": "9781529044423",
     "tags": [
       "fiction"
     ],
@@ -2001,7 +2001,7 @@
     "id": "book102",
     "title": "The Fault in Our Stars",
     "author": "John Green",
-    "isbn": "893783376X",
+    "isbn": "9789047706618",
     "tags": [
       "fiction"
     ],
@@ -2019,7 +2019,7 @@
     "id": "book103",
     "title": "Never Split the Difference",
     "author": "Chris Voss",
-    "isbn": null,
+    "isbn": "1847941494",
     "tags": [
       "fiction"
     ],
@@ -2054,8 +2054,8 @@
   {
     "id": "book105",
     "title": "Sangram[Hindi]",
-    "author": null,
-    "isbn": null,
+    "author": "Premchand",
+    "isbn": "9788128400209",
     "tags": [
       "fiction"
     ],
@@ -2073,7 +2073,7 @@
     "id": "book106",
     "title": "$100 Startup",
     "author": "Chris Guillebeau",
-    "isbn": null,
+    "isbn": "9780451496645",
     "tags": [
       "non-fiction",
       "self-help",
@@ -2093,12 +2093,12 @@
     "id": "book107",
     "title": "Tomb of Sand",
     "author": "Geetanjali Shree",
-    "isbn": null,
+    "isbn": "1911284614",
     "tags": [
       "fiction"
     ],
     "date_added": "2025-10-09 15:02",
-    "pages": 360,
+    "pages": 700,
     "rating": null,
     "description": "Reader's note",
     "color": "#6a994e",
@@ -2109,9 +2109,9 @@
   },
   {
     "id": "book108",
-    "title": "Immortals of Meluha (again)",
-    "author": null,
-    "isbn": null,
+    "title": "Immortals of Meluha x2",
+    "author": "Amish Tripathi",
+    "isbn": "9789380658742",
     "tags": [
       "fiction"
     ],
@@ -2128,8 +2128,8 @@
   {
     "id": "book109",
     "title": "The Secret of Nagas",
-    "author": null,
-    "isbn": null,
+    "author": "Amish Tripathi",
+    "isbn": "9381626340",
     "tags": [
       "fiction"
     ],
@@ -2146,13 +2146,13 @@
   {
     "id": "book110",
     "title": "The Oath of Vayuputras",
-    "author": null,
-    "isbn": null,
+    "author": "Amish Tripathi",
+    "isbn": "9789382618348",
     "tags": [
       "fiction"
     ],
     "date_added": "2025-10-20 23:22",
-    "pages": 400,
+    "pages": 575,
     "rating": null,
     "description": "Reader's note",
     "color": "#6c757d",
@@ -2202,8 +2202,8 @@
   {
     "id": "book113",
     "title": "Sevasadan[Hindi]",
-    "author": null,
-    "isbn": null,
+    "author": "Premchand",
+    "isbn": "9780195668995",
     "tags": [
       "classic",
       "indian-literature",
@@ -2242,8 +2242,8 @@
   {
     "id": "book115",
     "title": "Karmabhoomi[Hindi]",
-    "author": null,
-    "isbn": null,
+    "author": "Premchand",
+    "isbn": "9788171707737",
     "tags": [
       "classic",
       "indian-literature",
@@ -2263,7 +2263,7 @@
     "id": "book116",
     "title": "This is Marketing",
     "author": "Seth Godin",
-    "isbn": null,
+    "isbn": "9780525542797",
     "tags": [
       "non-fiction",
       "self-help",
@@ -2281,9 +2281,9 @@
   },
   {
     "id": "book117",
-    "title": "Scion of Ikshvaku(again)",
-    "author": null,
-    "isbn": null,
+    "title": "Ram: Scion of Ikshvaku x2",
+    "author": "Amish Tripathi",
+    "isbn": "9789356290792",
     "tags": [
       "fiction"
     ],
@@ -2299,9 +2299,9 @@
   },
   {
     "id": "book118",
-    "title": "Warrior of Mithila",
-    "author": null,
-    "isbn": null,
+    "title": "Sita: Warrior of Mithila",
+    "author": "Amish Tripathi",
+    "isbn": "9789356290914",
     "tags": [
       "fiction"
     ],
@@ -2317,9 +2317,9 @@
   },
   {
     "id": "book119",
-    "title": "Enemy of Aryavarta",
-    "author": null,
-    "isbn": null,
+    "title": "Ravaan: Enemy of Aryavarta",
+    "author": "Amish Tripathi",
+    "isbn": "9356290970",
     "tags": [
       "fiction"
     ],
@@ -2336,13 +2336,13 @@
   {
     "id": "book120",
     "title": "War of Lanka",
-    "author": null,
-    "isbn": null,
+    "author": "Amish Tripathi",
+    "isbn": "9789356291522",
     "tags": [
       "fiction"
     ],
     "date_added": "2025-11-27 19:09",
-    "pages": 400,
+    "pages": 500,
     "rating": null,
     "description": "Reader's note",
     "color": "#6c757d",
