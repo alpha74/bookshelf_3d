@@ -3667,5 +3667,24 @@
       "width": 130,
       "height": 200
     }
+  },
+{
+    "id": "book193",
+    "title": "25 Greatest Speeches by Swami Vivekananda",
+    "author": "Swami Vivekananda",
+    "isbn": "9355203713",
+    "tags": [
+      "spiritual",
+"philosophical"
+    ],
+    "date_added": "2026-09-22 02:26",
+    "pages": 265,
+    "rating": null,
+    "description": "Reader's note",
+    "color": "#c44536",
+    "dimensions": {
+      "width": 130,
+      "height": 200
+    }
   }
 ]
