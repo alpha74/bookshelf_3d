@@ -3700,10 +3700,10 @@
     "pages": 350,
     "rating": null,
     "description": "Reader's note",
-    "color": "##d86e00",
+    "color": "#d86e00",
     "dimensions": {
       "width": 150,
-      "height": 250
+      "height": 220
     }
   }
 ]
