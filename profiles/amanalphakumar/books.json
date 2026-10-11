@@ -3686,5 +3686,24 @@
       "width": 130,
       "height": 200
     }
+  },
+{
+    "id": "book194",
+    "title": "Spying in South Asia",
+    "author": "Paul M. McGarr",
+    "isbn": "9781108912068",
+    "tags": [
+      "Cold-war-intelligence",
+"spying"
+    ],
+    "date_added": "2026-10-11 14:246",
+    "pages": 350,
+    "rating": null,
+    "description": "Reader's note",
+    "color": "##d86e00",
+    "dimensions": {
+      "width": 150,
+      "height": 250
+    }
   }
 ]
