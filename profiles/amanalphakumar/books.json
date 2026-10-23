@@ -3705,5 +3705,23 @@
       "width": 150,
       "height": 235
     }
+  },
+{
+  "id": "book195",
+  "title": "Origin",
+  "author": "Dan Brown",
+  "isbn": "1787630013",
+  "tags": [
+    "fiction"
+  ],
+  "date_added": "2026-10-18 17:17",
+  "pages": 632,
+  "rating": 4,
+  "description": "AI theme. Features a super intelligent synthetic AI called \"Winston\"",
+  "color": "#7d2e46",
+  "dimensions": {
+    "width": 160,
+    "height": 250
   }
+}
 ]
