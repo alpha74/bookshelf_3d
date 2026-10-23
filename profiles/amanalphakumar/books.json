@@ -2484,7 +2484,7 @@
     "id": "book128",
     "title": "The Lost Symbol",
     "author": "Dan Brown",
-    "isbn": "9780385533133",
+    "isbn": "1409091481",
     "tags": [
       "mystery",
       "thriller",
@@ -2601,7 +2601,7 @@
     "id": "book134",
     "title": "To Kill a Mockingbird",
     "author": "Harper Lee",
-    "isbn": "0062423339",
+    "isbn": "0758777981",
     "tags": [
       "classic",
       "fiction"
@@ -2703,8 +2703,8 @@
     "description": "Reader's note",
     "color": "#355c7d",
     "dimensions": {
-      "width": 140,
-      "height": 210
+      "width": 210,
+      "height": 200
     }
   },
   {
@@ -2729,7 +2729,7 @@
     "id": "book141",
     "title": "As a Man Thinketh",
     "author": "James Allen",
-    "isbn": "9388118421",
+    "isbn": "9781585425648",
     "tags": [
       "non-fiction",
       "self-help",
@@ -2815,7 +2815,7 @@
     "pages": 280,
     "rating": null,
     "description": "Reader's note",
-    "color": "#8d6e63",
+    "color": "#111010",
     "dimensions": {
       "width": 140,
       "height": 210
@@ -2851,7 +2851,7 @@
     "pages": 448,
     "rating": null,
     "description": "Reader's note",
-    "color": "#6a994e",
+    "color": "#e2ca00",
     "dimensions": {
       "width": 140,
       "height": 210
@@ -3123,7 +3123,7 @@
     "pages": 476,
     "rating": null,
     "description": "Reader's note",
-    "color": "#7d2e46",
+    "color": "#1e1c1d",
     "dimensions": {
       "width": 140,
       "height": 210
@@ -3141,7 +3141,7 @@
     "pages": 352,
     "rating": null,
     "description": "Reader's note",
-    "color": "#3c6e71",
+    "color": "#ad7700",
     "dimensions": {
       "width": 140,
       "height": 210
@@ -3179,7 +3179,7 @@
     "pages": 280,
     "rating": null,
     "description": "Reader's note",
-    "color": "#0f4c5c",
+    "color": "#b50007",
     "dimensions": {
       "width": 140,
       "height": 210
@@ -3547,7 +3547,7 @@
     "pages": 144,
     "rating": null,
     "description": "Reader's note",
-    "color": "#2f3e46",
+    "color": "#dce5ea",
     "dimensions": {
       "width": 140,
       "height": 210
@@ -3614,7 +3614,7 @@
     "id": "book187",
     "title": "The Great Gatsby",
     "author": "F. Scott Fitzgerald",
-    "isbn": "9781915582157",
+    "isbn": "0762498137",
     "tags": [
       "classic",
       "fiction"
