@@ -3696,7 +3696,7 @@
       "Cold-war-intelligence",
 "spying"
     ],
-    "date_added": "2026-10-11 14:246",
+    "date_added": "2026-10-11 14:24",
     "pages": 350,
     "rating": null,
     "description": "Reader's note",
@@ -3719,6 +3719,26 @@
   "rating": 4,
   "description": "AI theme. Features a super intelligent synthetic AI called \"Winston\"",
   "color": "#7d2e46",
+  "dimensions": {
+    "width": 160,
+    "height": 250
+  }
+},
+{
+  "id": "book196",
+  "title": "Propaganda",
+  "author": "Edward L. Bernays",
+  "isbn": "1939438837",
+  "tags": [
+    "non-fiction",
+    "psychology",
+    "public relations"
+  ],
+  "date_added": "2026-11-05 23:51",
+  "pages": 159,
+  "rating": 4,
+  "description": "Written by Father of Public Relations",
+  "color": "#d29d00",
   "dimensions": {
     "width": 160,
     "height": 250
