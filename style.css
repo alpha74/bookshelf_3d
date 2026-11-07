@@ -691,6 +691,20 @@ main {
                rotateY(var(--rest-y, -90deg)) rotateZ(var(--rest-z, 0deg));
 }
 
+/* Click: the book slides a little farther off the shelf than the hover
+   lift — forward and up, still spine-out — then the inspect overlay
+   fades in (see openBookFromShelf). Kept after the hover rule so it
+   wins while the pointer is still over the slot. */
+.book-slot.is-pulling {
+    z-index: 6;
+}
+
+.book-slot.is-pulling .book {
+    transform: translateY(-32px) translateZ(110px) scale(1.12)
+               rotateY(var(--rest-y, -90deg)) rotateZ(var(--rest-z, 0deg));
+    transition: transform 0.38s cubic-bezier(0.22, 0.8, 0.3, 1);
+}
+
 /* Hover tooltip — a small speech-balloon above the book showing title +
    author. It's a plain 2D element (a sibling of .book, not inside it), so
    it isn't subject to the book's own 3D perspective/rotation — it just
@@ -728,6 +742,12 @@ main {
 .book-slot:hover .book-tooltip {
     opacity: 1;
     transform: translateX(-50%) translateY(0) scale(1);
+}
+
+.book-slot.is-pulling .book-tooltip {
+    opacity: 0;
+    transform: translateX(-50%) translateY(6px) scale(0.94);
+    transition: none;
 }
 
 .book-tooltip-title {

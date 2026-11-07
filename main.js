@@ -726,7 +726,7 @@ function renderBooks() {
 
             slot.appendChild(bookEl);
             slot.appendChild(tooltip);
-            slot.addEventListener('click', () => inspectBook(flatIndex));
+            slot.addEventListener('click', () => openBookFromShelf(slot, flatIndex));
             shelf.appendChild(slot);
             slotEls.push(slot);
         });
@@ -1610,6 +1610,37 @@ function updateInspectNavState() {
         currentInspectedIndex < 0 || currentInspectedIndex >= renderedBooks.length - 1;
 }
 
+// How long the shelf book spends sliding out before the detail view opens.
+// Matches the .book-slot.is-pulling .book transition in style.css.
+const SHELF_PULL_MS = 380;
+let shelfPullTimer = null;
+
+function openBookFromShelf(slot, index) {
+    if (slot.classList.contains('is-pulling')) return;
+
+    document.querySelectorAll('.book-slot.is-pulling').forEach((el) => {
+        el.classList.remove('is-pulling');
+    });
+    clearTimeout(shelfPullTimer);
+
+    slot.classList.add('is-pulling');
+
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    shelfPullTimer = setTimeout(() => {
+        shelfPullTimer = null;
+        if (!slot.isConnected || !slot.classList.contains('is-pulling')) return;
+        inspectBook(index);
+    }, reduceMotion ? 0 : SHELF_PULL_MS);
+}
+
+function releasePulledBook() {
+    clearTimeout(shelfPullTimer);
+    shelfPullTimer = null;
+    document.querySelectorAll('.book-slot.is-pulling').forEach((el) => {
+        el.classList.remove('is-pulling');
+    });
+}
+
 async function inspectBook(index) {
     const book = renderedBooks[index];
     if (!book) return;
@@ -1648,6 +1679,7 @@ closeBtn.addEventListener('click', () => {
     disposeThree();
     currentInspectedBook = null;
     currentInspectedIndex = -1;
+    releasePulledBook();
 });
 
 // Reading Interface
