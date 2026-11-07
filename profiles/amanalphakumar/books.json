@@ -3743,5 +3743,25 @@
     "width": 160,
     "height": 250
   }
+},
+{
+  "id": "book197",
+  "title": "The Theory of Everything",
+  "author": "Stephen Hawking",
+  "isbn": "9781590074497",
+  "tags": [
+    "non-fiction",
+    "science",
+    "cosmology"
+  ],
+  "date_added": "2026-11-07 23:43",
+  "pages": 132,
+  "rating": 4,
+  "description": "Frequently reminds of movie: Interstellar",
+  "color": "#232323",
+  "dimensions": {
+    "width": 150,
+    "height": 260
+  }
 }
 ]
